@@ -1,0 +1,32 @@
+body {
+    padding: 50px;
+    padding-top: 90px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+
+  .header {
+    padding: 0px 50px 0px 50px;
+    background: #5271ff;
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    color: white;
+    font-size: 20px;
+  }
+
+  .circle {
+    height: 60px;
+    width: 60px;
+    top: 50%;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 10px 0px 10px 0px;
+    vertical-align: middle;
+  }
+
+  .headerContent {
+    display: inline-block;
+    vertical-align: middle;
+  }
