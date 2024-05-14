@@ -4,6 +4,7 @@ body {
   font: 14px Helvetica, Arial, sans-serif;
 }
 
+/* HEADER START */
 .header {
   padding: 0px;
   background: #5271ff;
@@ -26,7 +27,7 @@ body {
   vertical-align: middle;
 }
 
-.searchBar {
+#searchBar {
   width: 300px;
   background-color: white;
   border-radius: 50px;
@@ -51,16 +52,22 @@ body {
   background-color: #5271ff;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
 .headerContent {
   display: inline-block;
   vertical-align: middle;
   margin: auto;
+}
+
+#menu {
+  float: right
+}
+
+/* HEADER END */
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .row {
@@ -113,10 +120,6 @@ ul {
   border: 3px;
   border-style: solid;
   border-color: black;
-}
-
-#menu {
-  float: right
 }
 
 img {
