@@ -5,7 +5,67 @@ body {
 }
 
 
-div.header {
+.header {
+    padding: 0px;
+    background: #5271ff;
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    color: white;
+    font-size: 2em;
+    line-height: 80px;
+    margin-top: 0;
+  }
+
+  .circle {
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 20px 10px 20px 50px;
+    vertical-align: middle;
+  }
+
+  #searchBar {
+    width: 300px;
+    background-color: white;
+    border-radius: 50px;
+    float: right;
+    margin: 10px 10px 10px 50px;
+    vertical-align: middle;
+    color: gray;
+  }
+
+
+  .smallCircle {
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 5px 20px 5px 10px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .blue {
+    background-color: #5271ff;
+  }
+
+  .headerContent {
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
+  }
+
+  #menu {
+    float: right
+  }
+
+
+
+div.header-text /* was div.header */ {
     font-size: 1.2vw;
     background-color: royalblue;
     height:6em;
@@ -13,6 +73,8 @@ div.header {
     text-align: left;
     margin-top: 0;
 }
+/*
+
 
 div.header h1 {
     margin: 0;
@@ -63,9 +125,15 @@ div.setting-popout {
     float: right;
 }
 
-.group-Banner img {
-    object-fit: fill;
+*/
+
+.group-Banner {
+    background-image: url("/images/groupBanner.png");
+    background-repeat:no-repeat;
+    background-size: cover;
+    height: 15vw;
     width: 100vw;
+    margin-top: 100px;
 }
 
 div.posts-container {
@@ -104,7 +172,7 @@ div.posts-container {
 
 div .post-title {
     background-size: contain;
-    background-image: linear-gradient(to right, royalblue, magenta);
+    background-image: linear-gradient(to right, royalblue, rgb(255, 103, 171));
     max-width: fit-content;
     height: 4em;
     border-radius: 2em 2em 2em 2em;
@@ -114,9 +182,11 @@ div .post-title {
 
 .post-title h2 {
     float: left;
+    color: white;
     display: inline;
     margin:0.5em;
     margin-top: 0.75em;
+    margin-right:1.5em;
 }
 
 .post-title img {
@@ -239,17 +309,21 @@ div.about-tab {
 
 }
 
+
+
+.about-tab h2 {
+    margin: 0.2em;
+    margin-top: 2em;
+    margin-bottom: 0em;
+    display: inline;
+}
+
 .about-tab .member-count {
     font-size: 1vw;
     float: right;
     margin-top:0em;
     margin-bottom: 0.5em;
     display: block;
-}
-
-.header {
-    margin: 0;
-    margin-top: 0.5em;
 }
 
 .about-tab p {
@@ -303,10 +377,19 @@ div.about-tab {
     font-weight: lighter;
 }
 
+.posts-container a {
+    margin-left: 28.25vw;
+}
+
 .extend-list {
-    padding-left: 6.45em;
+    margin-left: 6.45em;
     text-align: center;
     font-size: 1vw;
     color: gray;
     text-decoration: underline;
+}
+
+.extend-list:hover {
+    color: black;
+    cursor: pointer;
 }

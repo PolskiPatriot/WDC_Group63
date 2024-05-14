@@ -1,0 +1,442 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+
+.header {
+    padding: 0px;
+    background: #5271ff;
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    color: white;
+    font-size: 2em;
+    line-height: 80px;
+    margin-top: 0;
+  }
+
+  .circle {
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 20px 10px 20px 50px;
+    vertical-align: middle;
+  }
+
+  #searchBar {
+    width: 300px;
+    background-color: white;
+    border-radius: 50px;
+    float: right;
+    margin: 10px 10px 10px 50px;
+    vertical-align: middle;
+    color: gray;
+  }
+
+
+  .smallCircle {
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 5px 20px 5px 10px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .blue {
+    background-color: #5271ff;
+  }
+
+  .headerContent {
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
+  }
+
+  #menu {
+    float: right
+  }
+
+
+
+div.header-text /* was div.header */ {
+    font-size: 1.2vw;
+    background-color: royalblue;
+    height:6em;
+    size: auto;
+    text-align: left;
+    margin-top: 0;
+}
+/*
+
+
+div.header h1 {
+    margin: 0;
+    padding-top: 0.925em;
+    padding-bottom: 0.925em;
+    padding-left: 0.1em;
+    color:antiquewhite;
+    float: left;
+}
+
+.header-logo {
+    border-radius: 90%;
+    float: left;
+    margin-top: 1em;
+    height: 4em;
+    margin-left: 0.5em;
+}
+
+div.search {
+    border-radius: 1em 1em 1em 1em;
+    background-color: white;
+    margin-top: 1.68em;
+    margin-left: 1em;
+    float: right;
+    height:3.2vw;
+}
+
+.search img {
+    border-radius: 1em 0em 0em 1em;
+    float: left;
+    margin-top: 0em;
+    height: 3.05vw;
+    border-color: grey;
+    margin-bottom: 1vw;
+}
+
+.search input {
+    font-size: 1.2vw;
+    border-radius: 0em 1em 1em 0em;
+    float: left;
+    height: 2.9vw;
+    width: 9vw;
+    border: 0;
+    text-align: left;
+}
+
+div.setting-popout {
+    float: right;
+}
+
+*/
+
+.group-Banner {
+    background-image: url("/images/groupBanner.png");
+    background-repeat:no-repeat;
+    background-size: cover;
+    height: 15vw;
+    width: 100vw;
+    margin-top: 100px;
+}
+
+.create {
+    font-size: 1vw;
+    float:right;
+    margin-top:12em;
+    margin-right:1em;
+    padding:0.5em;
+    background: white;
+    border-style: dotted;
+    border-width: 0.1em;
+    border-radius: 1em;
+
+}
+
+.create:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.create:active {
+    background-color: darkgray;
+}
+
+div.posts-container {
+    font-size: 0.8vw;
+    background-color: white;
+    float: left;
+    width: 60vw;
+    text-align: left;
+    margin-left: 8vw;
+    border-style: solid;
+    border-width: 0 0.3em 0 0.3em;
+    border-color: royalblue;
+}
+
+
+.post {
+    background-color: white;
+    margin: 0.5em 0.5em 0.5em 0em;
+    border-radius: 3em;
+    padding: 0.25em 1em 1em 0.4em;
+    border-style: solid;
+    border-width: 0.1em;
+    border-color: darkgray;
+}
+
+.post-header {
+    display: inline-block;
+    width: 58vw;
+    height: 4em;
+    margin-left: 0.25em;
+}
+
+.post-header button {
+    float: right;
+}
+
+div .post-title {
+    background-size: contain;
+    background-image: linear-gradient(to right, royalblue, rgb(255, 103, 171));
+    max-width: fit-content;
+    height: 4em;
+    border-radius: 2em 2em 2em 2em;
+    display: inline-block;
+}
+
+
+.post-title h2 {
+    float: left;
+    color: white;
+    display: inline;
+    margin:0.5em;
+    margin-top: 0.75em;
+    margin-right:1.5em;
+}
+
+.post-title img {
+    float: left;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    height: 3em;
+    border-radius: 90%;
+}
+
+.post-type {
+    font-size: 1.3vw;
+    float: right;
+    background: white;
+    border-style: dotted;
+    border-width: 0.1em;
+    border-color: black;
+    max-width: fit-content;
+    max-height: fit-content;
+    border-radius: 1em;
+    padding: 0.2em;
+    margin-top: 0.375em;
+}
+
+.post-header a {
+    color: rgb(37, 37, 37);
+}
+
+.post-header a:hover {
+    background-color: lightgray;
+}
+
+
+.event-image {
+    object-fit:fill;
+    width: 58vw;
+}
+
+div .likes-display {
+    display: inline-block;
+    height: 2.1em;
+}
+
+.likes-display p {
+    margin:0;
+    margin-top: 0.44em;
+    margin-bottom: 0.44em;
+    float:left;
+}
+
+.likes-display img {
+    float: left;
+    height: 2.1em;
+    margin: 0;
+}
+
+
+div .post-footer {
+    display: inline-block;
+    width: 58vw;
+}
+
+div .event-rsvp {
+    float: right;
+}
+
+.event-rsvp p {
+    display: inline-block;
+    font-size: 0.75vw;
+    background: white;
+    border-style: dotted;
+    border-width: 0.1em;
+    border-color: black;
+    max-width: fit-content;
+    max-height: fit-content;
+    border-radius: 1em;
+    padding: 0.15em;
+    margin-top: 0.375em;
+    margin-left: 0.4em;
+}
+
+.event-rsvp button {
+    font-size: 1vw;
+    float: right;
+    background: white;
+    border-style: dotted;
+    border-width: 0.1em;
+    border-color: black;
+    max-width: fit-content;
+    max-height: fit-content;
+    border-radius: 1em;
+    padding: 0.15em;
+    margin-top: 0em;
+    margin-left: 0.4em;
+}
+
+.event-rsvp button:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.event-rsvp button:active {
+    background-color: darkgray;
+}
+
+
+div.about-tab {
+    font-size: 0.8vw;
+    margin-right: 8vw;
+    width: 16vw;
+    text-align: left;
+    background-color: white;
+    float: right;
+    padding: 0.5em;
+    border-style: solid;
+    border-width: 0 0.3em 0 0.3em;
+    border-color: royalblue;
+
+}
+
+.about-tab h1 {
+    margin: 0.2em;
+    margin-bottom: 1em;
+    display: inline;
+}
+
+.about-text {
+    margin-top: 2em;
+}
+
+.about-tab h2 {
+    margin: 0.2em;
+    margin-top: 2em;
+    margin-bottom: 0em;
+    display: inline;
+}
+
+.edits{
+    font-size: 0.8vw;
+    margin-top:0em;
+    float:right;
+    text-decoration: underline;
+}
+
+.edits:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.edits:active {
+    cursor:cl
+}
+
+.member-count {
+    font-size: 1vw;
+    margin-top:0em;
+    margin-bottom: 0em;
+}
+
+.member-count a {
+    float:right;
+    color:black;
+}
+
+.about-tab p {
+    margin-top: 0.1em;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.event-container {
+    margin-top: 0.75em;
+    text-align: left;
+}
+
+.event-name {
+    text-align: left;
+    text-decoration: underline;
+}
+
+.date {
+    float: left;
+}
+
+.attending {
+    float: right;
+}
+
+.branch {
+    width: 18em;
+    height: 4em;
+}
+
+.group-logo {
+    float: left;
+    display: inline;
+    height: 3em;
+    margin-top: 0.5em;
+    border-radius: 3em 3em 3em 3em;
+}
+
+.branch {
+    margin-bottom: 0.5em;
+}
+
+.branch p {
+    font-size: 1.1vw;
+    margin-left: 0.3em;
+    margin-top: 0.885em;
+    float: left;
+    display: inline;
+    text-decoration: underline;
+    font-weight: lighter;
+}
+
+.extend-list {
+    margin-left: 6.45em;
+    text-align: center;
+    font-size: 1vw;
+    color: gray;
+    text-decoration: underline;
+}
+
+.posts-container a {
+    margin-left: 28.25vw;
+}
+
+.extend-list:hover {
+    color: black;
+    cursor: pointer;
+}

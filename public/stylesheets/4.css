@@ -1,0 +1,130 @@
+
+
+.header {
+    padding: 0px;
+    background: #5271ff;
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    color: white;
+    font-size: 2em;
+    line-height: 80px;
+  }
+
+  .circle {
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 20px 10px 20px 50px;
+    vertical-align: middle;
+  }
+
+  #searchBar {
+    width: 300px;
+    background-color: white;
+    border-radius: 50px;
+    float: right;
+    margin: 10px 10px 10px 50px;
+    vertical-align: middle;
+    color: gray;
+  }
+
+
+  .smallCircle {
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 5px 20px 5px 10px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .blue {
+    background-color: #5271ff;
+  }
+
+  .headerContent {
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
+  }
+
+  #menu {
+    float: right
+  }
+
+body {
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+
+.text-header {
+  font-size: 1.2vw;
+  height:6em;
+  size:auto;
+  text-align:left;
+  margin-top: 100px;
+}
+
+div.text-header h1 {
+  margin-top: 1em;
+  float: left;
+}
+
+div.return {
+  margin-top:2.6em;
+  margin-left:1em;
+  float:right;
+}
+
+.return a {
+  background: white;
+  border-style: dotted;
+  border-width: 0.1em;
+  padding: 0.5em;
+  border-radius: 1em;
+}
+
+.return a:visited {
+  color: black;
+}
+
+.member-count {
+  font-size: 1.2vw;
+  margin-top: 0;
+}
+
+.user-listing {
+  background-color: rgb(250, 229, 221);
+  height: 3em;
+  border-radius: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+.user-listing span {
+  margin: 0;
+  padding-top:1em;
+  padding-left: 0.9em;
+  color:black;
+  float: left;
+}
+
+div.actions {
+  padding-top: 1em;
+  float:right;
+  padding-right: 1.5em;
+}
+
+.actions a {
+  background: white;
+  border-style: dotted;
+  border-width: 0.1em;
+  padding: 0.25em 0.5em 0.25em 0.5em;
+  border-radius: 1em;
+  margin-left: 1.5em;
+}
+
