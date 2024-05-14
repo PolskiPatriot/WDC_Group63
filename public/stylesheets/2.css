@@ -28,6 +28,7 @@ div.header h1 {
     float: left;
     margin-top: 1em;
     height: 4em;
+    margin-left: 0.5em;
 }
 
 div.search {
@@ -44,14 +45,13 @@ div.search {
     float: left;
     margin-top: 0em;
     height: 3.05vw;
-    border-right: 0.1em;
     border-color: grey;
     margin-bottom: 1vw;
 }
 
 .search input {
     font-size: 1.2vw;
-    border-radius: 0em 1.5em 1.5em 0em;
+    border-radius: 0em 1em 1em 0em;
     float: left;
     height: 2.9vw;
     width: 9vw;
@@ -63,16 +63,166 @@ div.setting-popout {
     float: right;
 }
 
+.group-Banner img {
+    object-fit: fill;
+    width: 100vw;
+}
 
 div.posts-container {
-    background-color: grey;
+    font-size: 0.8vw;
+    background-color: white;
     float: left;
+    width: 60vw;
+    text-align: left;
+    margin-left: 8vw;
+    border-style: solid;
+    border-width: 0 0.3em 0 0.3em;
+    border-color: royalblue;
 }
+
+
+.post {
+    background-color: white;
+    margin: 0.5em 0.5em 0.5em 0em;
+    border-radius: 3em;
+    padding: 0.25em 1em 1em 0.4em;
+    border-style: solid;
+    border-width: 0.1em;
+    border-color: darkgray;
+}
+
+.post-header {
+    display: inline-block;
+    width: 58vw;
+    height: 4em;
+    margin-left: 0.25em;
+}
+
+.post-header button {
+    float: right;
+}
+
+div .post-title {
+    background-size: contain;
+    background-image: linear-gradient(to right, royalblue, magenta);
+    max-width: fit-content;
+    height: 4em;
+    border-radius: 2em 2em 2em 2em;
+    display: inline-block;
+}
+
+
+.post-title h2 {
+    float: left;
+    display: inline;
+    margin:0.5em;
+    margin-top: 0.75em;
+}
+
+.post-title img {
+    float: left;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    height: 3em;
+    border-radius: 90%;
+}
+
+.post-type {
+    font-size: 1.3vw;
+    float: right;
+    background: white;
+    border-style: dotted;
+    border-width: 0.1em;
+    border-color: black;
+    max-width: fit-content;
+    max-height: fit-content;
+    border-radius: 1em;
+    padding: 0.2em;
+    margin-top: 0.375em;
+}
+
+.post-header a {
+    color: rgb(37, 37, 37);
+}
+
+.post-header a:hover {
+    background-color: lightgray;
+}
+
+
+.event-image {
+    object-fit:fill;
+    width: 58vw;
+}
+
+div .likes-display {
+    display: inline-block;
+    height: 2.1em;
+}
+
+.likes-display p {
+    margin:0;
+    margin-top: 0.44em;
+    margin-bottom: 0.44em;
+    float:left;
+}
+
+.likes-display img {
+    float: left;
+    height: 2.1em;
+    margin: 0;
+}
+
+
+div .post-footer {
+    display: inline-block;
+    width: 58vw;
+}
+
+div .event-rsvp {
+    float: right;
+}
+
+.event-rsvp p {
+    display: inline-block;
+    font-size: 0.75vw;
+    background: white;
+    border-style: dotted;
+    border-width: 0.1em;
+    border-color: black;
+    max-width: fit-content;
+    max-height: fit-content;
+    border-radius: 1em;
+    padding: 0.15em;
+    margin-top: 0.375em;
+    margin-left: 0.4em;
+}
+
+.event-rsvp button {
+    font-size: 1vw;
+    float: right;
+    background: white;
+    border-style: dotted;
+    border-width: 0.1em;
+    border-color: black;
+    max-width: fit-content;
+    max-height: fit-content;
+    border-radius: 1em;
+    padding: 0.15em;
+    margin-top: 0em;
+    margin-left: 0.4em;
+}
+
+.event-rsvp button:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
 
 div.about-tab {
     font-size: 0.8vw;
     margin-right: 8vw;
-    width: 20em;
+    width: 16vw;
     text-align: left;
     background-color: white;
     float: right;
