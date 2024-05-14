@@ -1,32 +1,223 @@
 body {
-    padding: 50px;
-    padding-top: 90px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  }
+  padding: 50px;
+  padding-top: 110px;
+  font: 14px Helvetica, Arial, sans-serif;
+}
 
-  .header {
-    padding: 0px 50px 0px 50px;
-    background: #5271ff;
-    top: 0;
-    left: 0;
-    position: fixed;
-    width: 100%;
-    color: white;
-    font-size: 20px;
-  }
+/* HEADER START */
+.header {
+  padding: 0px;
+  background: #5271ff;
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  color: white;
+  font-size: 2em;
+  line-height: 80px;
+}
 
-  .circle {
-    height: 60px;
-    width: 60px;
-    top: 50%;
-    background-color: white;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 10px 0px 10px 0px;
-    vertical-align: middle;
-  }
+.circle {
+  height: 60px;
+  width: 60px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 20px 10px 20px 50px;
+  vertical-align: middle;
+}
 
-  .headerContent {
-    display: inline-block;
-    vertical-align: middle;
-  }
+#searchBar {
+  width: 300px;
+  background-color: white;
+  border-radius: 50px;
+  float: right;
+  margin: 10px 10px 10px 50px;
+  vertical-align: middle;
+  color: gray;
+}
+
+
+.smallCircle {
+  height: 60px;
+  width: 60px;
+  background-color: white;
+  border-radius: 50%;
+  margin: 5px 20px 5px 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.blue {
+  background-color: #5271ff;
+}
+
+.headerContent {
+  display: inline-block;
+  vertical-align: middle;
+  margin: auto;
+}
+
+#menu {
+  float: right
+}
+
+/* HEADER END */
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  display: flex;
+}
+
+.quicklink {
+  width: 100px;
+}
+
+.column {
+  height: 1200px;
+  padding: 30px;
+  display: inline-flex;
+  flex-grow: 1;
+}
+
+#leftColumn {
+
+  background-color: lightgray;
+  flex: 0.25;
+  display: inline;
+}
+
+#middleColumn {
+
+  background-color: rgb(96, 96, 96);
+  flex: 0.5;
+  flex-direction: column;
+}
+
+#rightColumn {
+
+  background-color: lightgray;
+  flex: 0.25;
+  display: inline;
+}
+
+.heading {
+  font-size: 2.5em;
+  display: block;
+}
+
+.post {
+  background-color: white;
+  flex-grow: auto;
+  display: block;
+  border-radius: 20px;
+  padding: 10px;
+  border: 3px;
+  border-style: solid;
+  border-color: black;
+}
+
+img {
+  width: 98%;
+  height: 300px;
+  object-fit: cover;
+  margin: 0px 20px 0px 20px;
+  border-radius: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.postTitle {
+  margin: 0px 0px 0px 5px;
+  padding: 0px 25px 0px 0px;
+  border: 0px;
+  border-radius: 50px;
+  border-color: blueviolet;
+  background-color: blueviolet;
+  display: inline-block;
+  font-size: 2.5em;
+  color: white;
+}
+
+.postType {
+  height: 70px;
+  margin: 0px 5px 0px 0px;
+  padding: 0px 20px;
+  border: 5px;
+  border-style: dashed;
+  border-color: black;
+  border-radius: 50px;
+  background-color: transparent;
+  font-size: 2.5em;
+  color: black;
+  text-align: center;
+  line-height: 70px;
+  vertical-align: top;
+  float: right;
+}
+
+.postContent {
+  padding: 0px 5px;
+  font-size: 1.55em;
+}
+
+.eventAttendees {
+  height: 50px;
+  margin: 0px 20px 0px 0px;
+  padding: 0px 20px;
+  border: 5px;
+  border-style: dashed;
+  border-color: black;
+  border-radius: 50px;
+  background-color: transparent;
+  font-size: 2em;
+  color: black;
+  text-align: center;
+  line-height: 50px;
+  vertical-align: top;
+  float: right;
+}
+
+.eventRSVP {
+  height: 50px;
+  margin: 0px 5px 0px 0px;
+  padding: 0px 20px;
+  border: 5px;
+  border-style: dashed;
+  border-color: black;
+  border-radius: 50px;
+  background-color: transparent;
+  font-size: 2.5em;
+  color: black;
+  text-align: center;
+  line-height: 50px;
+  vertical-align: top;
+  float: right;
+}
+
+.postLikes {
+  height: 60px;
+  margin: 0px 0px 0px 5px;
+  border: 0px;
+  background-color: transparent;
+  font-size: 2em;
+  color: black;
+  text-align: center;
+  line-height: 60px;
+  vertical-align: top;
+  float: left;
+}
+
+.seeMore {
+  text-decoration: underline;
+  margin: auto;
+  text-align: center;
+  font-size: 1.5em;
+  color: gray;
+}
