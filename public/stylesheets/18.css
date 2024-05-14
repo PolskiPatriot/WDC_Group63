@@ -1,0 +1,142 @@
+.header {
+    padding: 0px;
+    background: #5271ff;
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    color: white;
+    font-size: 2em;
+    line-height: 80px;
+}
+
+.circle {
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 20px 10px 20px 50px;
+    vertical-align: middle;
+}
+
+#searchBar {
+    width: 300px;
+    background-color: white;
+    border-radius: 50px;
+    float: right;
+    margin: 10px 10px 10px 50px;
+    vertical-align: middle;
+    color: gray;
+}
+
+
+.smallCircle {
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 5px 20px 5px 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.blue {
+    background-color: #5271ff;
+}
+
+.headerContent {
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
+}
+
+#menu {
+    float: right
+}
+
+.spacing {
+    margin: 100px;
+    height: 1vh;
+}
+
+
+.links-list {
+    font-size: 1.2vw;
+    margin-top: 30vh;
+    margin-right: 5vw;
+    width: 15vw;
+    float: left;
+}
+
+.list {
+    list-style: none;
+    padding-left: 1vw;
+}
+
+.links-list a {
+    color: rgb(82, 82, 82);
+}
+
+.links-list a:hover {
+    color: black;
+}
+
+.links-list li {
+    margin-top: 1em;
+}
+
+.organisation-container {
+    margin-top: 150px;
+    font-size: 0.8vw;
+    width:75vw;
+    text-align: left;
+    float:left;
+}
+
+.organisation-container h1 {
+    margin-bottom: 2em;
+}
+.organisation {
+    width: 75vw;
+    text-align: left;
+    height: 4em;
+    background: rgb(250, 229, 221);
+    border-radius: 2em;
+    margin-top: 2em;
+}
+.organisation span {
+    color:black;
+    display:inline;
+    float: left;
+    font-size:1.5vw;
+    margin-top: 0.51em;
+    margin-left: 0.5em;
+}
+.organisation img {
+    margin-left: 0.5em;
+    height: 3em;
+    display:inline;
+    margin-top: 0.5em;
+    border-radius: 90%;
+    float: left;
+}
+.organisation a {
+    font-size:1vw;
+    margin-top:0.4em;
+    margin-right: 0.5em;
+    float: right;
+    text-decoration: none;
+    display:inline;
+    padding: 0.5em;
+    border-style: dotted;
+    border-width: 0.15em;
+    background-color: white;
+    border-radius: 1.2em;
+}
+
+.organisation a:hover {
+    background-color: grey;
+    cursor: pointer;
+    color: white;
+}
