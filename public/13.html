@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>untitled - Home Page</title>
+    <link rel="stylesheet" href="/stylesheets/header.css">
+    <link rel="stylesheet" href="/stylesheets/13.css">
+</head>
+
+<body id="content">
+    <!-- HEADER START -->
+    <div class="header">
+        <span class="circle"></span>
+        <h1 class="headerContent">untitled</h1>
+        <button type="button" onclick="menuOpen()" class="circle" id="menu">=</button>
+        <span id="searchBar">
+            <span class="smallCircle blue"></span>
+            <input type="text" placeholder="Search" />
+        </span>
+    </div>
+    <!-- HEADER END -->
+    <div id="menuContents">
+        <a href="/10.html" id="logIn">Log In</a>
+        <a href="/13.html" id="signUp">Sign Up</a>
+        <a href="/15.html" id="settings">Settings</a>
+        <a href="#" id="logOut">Log Out</a>
+    </div>
+    <div class="row">
+        <div class="column" id="leftColumn">
+        </div>
+        <div class="column" id="middleColumn">
+            <h1>Sign Up</h1>
+            <div class="textInputs">
+                <div class="nameInput">
+                    <input type="text" class="barInput" placeholder="First Name" />
+                    <input type="text" class="barInput" placeholder="Last Name" />
+                </div>
+                <input type="text" class="barInput" placeholder="Email" />
+                <input type="text" class="barInput" placeholder="Password" />
+                <input type="text" class="barInput" placeholder="Confirm Password" />
+            </div>
+            <div class="loginButtons">
+                <button type="button" class="inputLogin">SIGN UP</button>
+            </div>
+            <div class="textInputs">
+                <a href="#" class="barButtons"><span class="smallCircle blue floatLeft"></span>Sign up with Google</a>
+                <a href="#" class="barButtons"><span class="smallCircle blue floatLeft"></span>Sign up with Facebook</a>
+            </div>
+        </div>
+        <div class="column" id="rightColumn">
+        </div>
+    </div>
+    <script>
+        var menu = document.getElementById('menuContents');
+        function menuOpen() {
+            menu.classList.toggle("visible");
+        }
+    </script>
+</body>
+
+</html>

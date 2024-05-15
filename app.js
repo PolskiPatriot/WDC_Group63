@@ -5,6 +5,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var mainFeedRouter = require('./routes/1');
 var groupRouter = require('./routes/2');
 var groupManagerRouter = require('./routes/3');
 var viewUserRouter = require('./routes/4');
@@ -21,6 +22,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/mainFeed', mainFeedRouter);
 app.use('/group', groupRouter);
 app.use('/groupManager', groupManagerRouter);
 app.use('/Users', viewUserRouter);

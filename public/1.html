@@ -3,90 +3,143 @@
 
 <head>
     <title>untitled - Home Page</title>
+    <link rel="stylesheet" href="/stylesheets/header.css">
     <link rel="stylesheet" href="/stylesheets/1.css">
-
 </head>
 
-<body>
+<body id="content">
     <!-- HEADER START -->
-    <div class="header">
-        <span class="circle"></span>
-        <h1 class="headerContent">untitled</h1>
-        <span class="circle" id="menu"></span>
-        <span id="searchBar">
-            <span class="smallCircle blue"></span>Search
-        </span>
+    <div>
+        <div class="header">
+            <span class="circle"></span>
+            <h1 class="headerContent">untitled</h1>
+            <button type="button" onclick="menuOpen()" class="circle" id="menu">=</button>
+            <span id="searchBar">
+                <span class="smallCircle blue"></span><input type="text" placeholder="Search" />
+            </span>
+        </div>
+        <div id="menuContents">
+            <a href="/10.html" id="logIn">Log In</a>
+            <a href="/13.html" id="signUp">Sign Up</a>
+            <a href="/15.html" id="settings">Settings</a>
+            <a href="#" id="logOut">Log Out</a>
+        </div>
     </div>
     <!-- HEADER END -->
     <div class="row">
         <div class="column" id="leftColumn">
             <h1 class="heading">Your Communities</h1>
             <ul>
-                <li class="postContent">
-                    <div class="smallCircle blue"></div>
-                    Group 1
+                <li class="postContent groupContent">
+                    <a href="#">
+                        <div class="smallCircle blue"></div>Group 1
+                    </a>
                 </li>
-                <li class="postContent">
-                    <div class="smallCircle blue"></div>
-                    Group 2
+                <li class="postContent groupContent">
+                    <a href="#">
+                        <div class="smallCircle blue"></div>Group 2
+                    </a>
                 </li>
-                <li class="postContent">
-                    <div class="smallCircle blue"></div>
-                    Group 3
+                <li class="postContent groupContent">
+                    <a href="#">
+                        <div class="smallCircle blue"></div>Group 3
+                    </a>
                 </li>
             </ul>
-            <div class="seeMore">See More</div>
+            <a href="#" class="seeMore">See More</a>
 
             <h1 class="heading">Popular</h1>
             <ul>
-                <li class="postContent">
-                    <div class="smallCircle blue"></div>
-                    Group 1
+                <li class="postContent groupContent">
+                    <a href="#">
+                        <div class="smallCircle blue"></div>Group 1
+                    </a>
                 </li>
-                <li class="postContent">
-                    <div class="smallCircle blue"></div>
-                    Group 2
+                <li class="postContent groupContent">
+                    <a href="#">
+                        <div class="smallCircle blue"></div>Group 2
+                    </a>
                 </li>
-                <li class="postContent">
-                    <div class="smallCircle blue"></div>
-                    Group 3
+                <li class="postContent groupContent">
+                    <a href="#">
+                        <div class="smallCircle blue"></div>Group 3
+                    </a>
                 </li>
             </ul>
-            <div class="seeMore">See More</div>
+            <a href="#" class="seeMore">See More</a>
         </div>
         <div class="column" id="middleColumn">
             <div class="post">
-                <img src="https://i.imgur.com/ZWJboJH.png" alt="a person carrying empty plastic bottles" /> <br />
+                <img src="https://i.imgur.com/ZWJboJH.png" alt="a person carrying empty plastic bottles" />
                 <div class="postTitle"><span class="smallCircle"></span>Untitled title</div>
                 <div class="postType">Event</div>
                 <p class="postContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dui augue, posuere et
                     finibus et,
                     elementum sed est. Nulla lectus erat, malesuada vel consectetur sit amet, pulvinar non justo.
                     Integer porttitor, elit et euismod euismod</p>
-                <div class="eventRSVP">RSVP</div>
+                <button type="button" class="eventRSVP">RSVP</button>
                 <div class="eventAttendees">321 attending</div>
+                <div class="postLikes">100+ 👍</div>
+            </div>
+            <div class="post">
+                <div class="postTitle"><span class="smallCircle"></span>Untitled title</div>
+                <div class="postType">Update</div>
+                <p class="postContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dui augue, posuere et
+                    finibus et,
+                    elementum sed est. Nulla lectus erat, malesuada vel consectetur sit amet, pulvinar non justo.
+                    Integer porttitor, elit et euismod euismod</p>
+                <div class="postLikes">100+ 👍</div>
+            </div>
+            <div class="post">
+                <div class="postTitle"><span class="smallCircle"></span>Untitled title</div>
+                <div class="postType">Post</div>
+                <p class="postContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dui augue, posuere et
+                    finibus et,
+                    elementum sed est. Nulla lectus erat, malesuada vel consectetur sit amet, pulvinar non justo.
+                    Integer porttitor, elit et euismod euismod</p>
                 <div class="postLikes">100+ 👍</div>
             </div>
         </div>
         <div class="column" id="rightColumn">
             <h1 class="heading">Quick Links</h1>
-            <ul>
-                <li class="postContent quickLink">
-                    Calendar
-                    <div class="smallCircle blue"></div>
-                </li>
-                <li class="postContent quickLink">
-                    Events
-                    <div class="smallCircle blue"></div>
-                </li>
-                <li class="postContent quickLink">
-                    Groups
-                    <div class="smallCircle blue"></div>
-                </li>
-            </ul>
+            <div class="quickLink">
+                <ul class="quickLinkContent">
+                    <li><a href="#">
+                            Calendar</a>
+                    </li>
+                    <li><a href="#">
+                            Events</a>
+                    </li>
+                    <li><a href="#">
+                            Groups</a>
+                    </li>
+                </ul>
+                <ul class="quickLinkContent icons">
+                    <li>
+                        <a href="#">
+                            <div class="smallCircle blue"></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="smallCircle blue"></div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="smallCircle blue"></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-
+    <script>
+        var menu = document.getElementById('menuContents');
+        function menuOpen() {
+            menu.classList.toggle("visible");
+        }
+    </script>
 </body>
 
 </html>

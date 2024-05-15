@@ -1,0 +1,130 @@
+body {
+    font-size: 14px;
+    margin: 0;
+    font-family: "Helvetica", sans-serif;
+    background-size: contain;
+    background-image: linear-gradient(to right, #5271ff, rgb(255, 90, 252));
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: left;
+    display: inline;
+}
+
+.row {
+    display: flex;
+    padding-top: 120px;
+}
+
+.column {
+    display: inline-flex;
+    flex-grow: 1;
+}
+
+#leftColumn {
+    flex: 0.4;
+    display: inline;
+    text-align: center;
+}
+
+#middleColumn {
+    background-color: white;
+    flex: 0.45;
+    display: block;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 50px 30px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.barInput {
+    width: 90%;
+    border-radius: 50px;
+    border-width: 10px;
+    border-color: #5271ff;
+    border-style: solid;
+    font-size: 1.5em;
+    padding: 20px 0px 20px 20px;
+    margin: 20px 0px;
+}
+
+.floatLeft {
+    float: left;
+}
+
+.barButtons {
+    width: 90%;
+    border-radius: 50px;
+    border-width: 10px;
+    border-color: #5271ff;
+    border-style: solid;
+    font-size: 2em;
+    padding: 0px 0px 0px 0px;
+    margin: 20px 0px;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    line-height: 70px;
+}
+
+.textInputs {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.loginButtons {
+    align-items: end;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputLogin {
+    padding: 15px;
+    background-color: #5271ff;
+    border-radius: 50px;
+    border-style: solid;
+    border-width: 0px;
+    color: white;
+    font-size: 1.5em;
+    text-decoration: underline;
+    margin-right: 20px;
+}
+
+.inputLogin:hover {
+    background-color: #5c71cc;
+}
+
+#forgotPassword {
+    font-size: 2em;
+    margin: 20px 20px 0px 0px;
+    color: #5c71cc;
+}
+
+#signUpLink {
+    font-size: 2em;
+    margin: 20px 20px 0px 0px;
+    float: right
+}
+
+#signUpLink a {
+    color: #5c71cc;
+}
+
+#rightColumn {
+    flex: 0.15;
+    display: inline;
+    text-align: center;
+}
+
+.heading {
+    font-size: 2.5em;
+    display: block;
+}
