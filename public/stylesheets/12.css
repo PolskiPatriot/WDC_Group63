@@ -23,7 +23,6 @@ h2 {
 
 .row {
     display: flex;
-    padding-top: 120px;
 }
 
 .column {
@@ -35,6 +34,7 @@ h2 {
     flex: 0.4;
     display: inline;
     text-align: center;
+    padding-top: 140px;
 }
 
 #middleColumn {
@@ -46,6 +46,14 @@ h2 {
     padding: 50px 30px;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
+    padding-top: 140px;
+}
+
+#rightColumn {
+    flex: 0.15;
+    display: inline;
+    text-align: center;
+    padding-top: 140px;
 }
 
 .barInput {
@@ -120,12 +128,6 @@ h2 {
 
 #signUpLink a {
     color: #5c71cc;
-}
-
-#rightColumn {
-    flex: 0.15;
-    display: inline;
-    text-align: center;
 }
 
 .heading {
