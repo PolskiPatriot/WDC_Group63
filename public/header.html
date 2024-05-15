@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>untitled - Home Page</title>
+    <link rel="stylesheet" href="/stylesheets/header.css">
+</head>
+
+<body id="content">
+    <!-- HEADER START -->
+    <div>
+        <div class="header">
+            <span class="circle"></span>
+            <h1 class="headerContent">untitled</h1>
+            <button type="button" onclick="menuOpen()" class="circle" id="menu">=</button>
+            <span id="searchBar">
+                <span class="smallCircle blue"></span><input type="text" placeholder="Search" />
+            </span>
+        </div>
+        <div id="menuContents">
+            <a href="/10.html" id="logIn">Log In</a>
+            <a href="/12.html" id="signUp">Sign Up</a>
+            <a href="/15.html" id="settings">Settings</a>
+            <a href="#" id="logOut">Log Out</a>
+        </div>
+    </div>
+    <!-- HEADER END -->
+
+    <!-- DROP DOWN MENU START -->
+    <script>
+        var menu = document.getElementById('menuContents');
+        function menuOpen() {
+            menu.classList.toggle("visible");
+        }
+    </script>
+    <!-- DROP DOWN MENU END -->
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+/* HEADER START */
+body {
+    margin: 0;
+    font-size: 14px;
+    font-family: sans-serif;
+  }
+
+  .header {
+    padding: 0px;
+    background: #5271ff;
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    color: white;
+    font-size: 2em;
+    line-height: 80px;
+  }
+
+  #menuContents {
+    display: none;
+    visibility: visible;
+    position: fixed;
+    right: 5px;
+    top: 70px;
+    z-index: 1;
+    font-size: 2em;
+    width: 200px;
+    height: 300px;
+    border: 3px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+  }
+
+  #menuContents a {
+    padding: 10px 20px;
+    margin: 5px;
+    display: block;
+  }
+
+  #menuContents.visible {
+    display: flex;
+  }
+
+  .circle {
+    height: 80px;
+    width: 80px;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 20px 10px 20px 50px;
+    vertical-align: middle;
+  }
+
+  #logIn {
+    background-color: #5271ff;
+    border-radius: 50px;
+    color: white;
+  }
+
+  #signUp {
+    background-color: lightgray;
+    border-radius: 50px;
+    color: black;
+  }
+
+  #settings {
+    color: black;
+  }
+
+  #logOut {
+    color: rgb(109, 109, 109);
+  }
+
+  #searchBar {
+    width: 300px;
+    background-color: white;
+    border-radius: 50px;
+    float: right;
+    margin: 20px 10px 20px 50px;
+    padding: 0px 0px 0px 5px;
+    box-sizing: border-box;
+    color: gray;
+  }
+
+  #searchBar input {
+    padding: 10px 10px;
+    width: 165px;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 0.8em;
+  }
+
+  .smallCircle {
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 5px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .blue {
+    background-color: #5271ff;
+  }
+
+  .headerContent {
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
+  }
+
+  #menu {
+    float: right
+  }
+
+  #menu:hover {
+    background-color: #cccccc;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  /* HEADER END */
