@@ -6,127 +6,9 @@ body {
 }
 
 
-.header {
-    padding: 0px;
-    background: #5271ff;
-    top: 0;
-    left: 0;
-    position: fixed;
-    width: 100%;
-    color: white;
-    font-size: 2em;
-    line-height: 80px;
-    margin-top: 0;
-  }
-
-  .circle {
-    height: 60px;
-    width: 60px;
-    background-color: white;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 20px 10px 20px 50px;
-    vertical-align: middle;
-  }
-
-  #searchBar {
-    width: 300px;
-    background-color: white;
-    border-radius: 50px;
-    float: right;
-    margin: 10px 10px 10px 50px;
-    vertical-align: middle;
-    color: gray;
-  }
-
-
-  .smallCircle {
-    height: 60px;
-    width: 60px;
-    background-color: white;
-    border-radius: 50%;
-    margin: 5px 20px 5px 10px;
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  .blue {
-    background-color: #5271ff;
-  }
-
-  .headerContent {
-    display: inline-block;
-    vertical-align: middle;
-    margin: auto;
-  }
-
-  #menu {
-    float: right
-  }
-
-
-
-div.header-text /* was div.header */ {
-    font-size: 1.2vw;
-    background-color: royalblue;
-    height:6em;
-    size: auto;
-    text-align: left;
-    margin-top: 0;
+.header-banner {
+    height:120px;
 }
-/*
-
-
-div.header h1 {
-    margin: 0;
-    padding-top: 0.925em;
-    padding-bottom: 0.925em;
-    padding-left: 0.1em;
-    color:antiquewhite;
-    float: left;
-}
-
-.header-logo {
-    border-radius: 90%;
-    float: left;
-    margin-top: 1em;
-    height: 4em;
-    margin-left: 0.5em;
-}
-
-div.search {
-    border-radius: 1em 1em 1em 1em;
-    background-color: white;
-    margin-top: 1.68em;
-    margin-left: 1em;
-    float: right;
-    height:3.2vw;
-}
-
-.search img {
-    border-radius: 1em 0em 0em 1em;
-    float: left;
-    margin-top: 0em;
-    height: 3.05vw;
-    border-color: grey;
-    margin-bottom: 1vw;
-}
-
-.search input {
-    font-size: 1.2vw;
-    border-radius: 0em 1em 1em 0em;
-    float: left;
-    height: 2.9vw;
-    width: 9vw;
-    border: 0;
-    text-align: left;
-}
-
-div.setting-popout {
-    float: right;
-}
-
-*/
 
 .group-Banner {
     background-image: url("/images/groupBanner.png");
@@ -134,7 +16,15 @@ div.setting-popout {
     background-size: cover;
     height: 15vw;
     width: 100vw;
-    margin-top: 100px;
+}
+
+div.header-text {
+    font-size: 1.2vw;
+    background-color: royalblue;
+    height:6em;
+    size: auto;
+    text-align: left;
+    margin-top: 0;
 }
 
 div.posts-container {
