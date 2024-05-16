@@ -10,7 +10,7 @@ body {
 div.header-text {
     font-size: 1.2vw;
     background-color: royalblue;
-    height:6em;
+    height: 6em;
     size: auto;
     text-align: left;
     margin-top: 0;
@@ -19,22 +19,22 @@ div.header-text {
 
 .group-Banner {
     background-image: url("/images/groupBanner.png");
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     background-size: cover;
     height: 15vw;
     width: 100vw;
 }
 
 .header-banner {
-    height:120px;
+    height: 120px;
 }
 
 .create {
     font-size: 1vw;
-    float:right;
-    margin-top:12em;
-    margin-right:1em;
-    padding:0.5em;
+    float: right;
+    margin-top: 12em;
+    margin-right: 1em;
+    padding: 0.5em;
     background: white;
     border-style: dotted;
     border-width: 0.1em;
@@ -99,9 +99,9 @@ div .post-title {
     float: left;
     color: white;
     display: inline;
-    margin:0.5em;
+    margin: 0.5em;
     margin-top: 0.75em;
-    margin-right:1.5em;
+    margin-right: 1.5em;
 }
 
 .post-title img {
@@ -136,7 +136,7 @@ div .post-title {
 
 
 .event-image {
-    object-fit:fill;
+    object-fit: fill;
     width: 58vw;
 }
 
@@ -146,10 +146,10 @@ div .likes-display {
 }
 
 .likes-display p {
-    margin:0;
+    margin: 0;
     margin-top: 0.44em;
     margin-bottom: 0.44em;
-    float:left;
+    float: left;
 }
 
 .likes-display img {
@@ -239,10 +239,10 @@ div.about-tab {
     display: inline;
 }
 
-.edits{
+.edits {
     font-size: 0.8vw;
-    margin-top:0em;
-    float:right;
+    margin-top: 0em;
+    float: right;
     text-decoration: underline;
 }
 
@@ -252,18 +252,18 @@ div.about-tab {
 }
 
 .edits:active {
-    cursor:cl
+    cursor: pointer;
 }
 
 .member-count {
     font-size: 1vw;
-    margin-top:0em;
+    margin-top: 0em;
     margin-bottom: 0em;
 }
 
 .member-count a {
-    float:right;
-    color:black;
+    float: right;
+    color: black;
 }
 
 .about-tab p {

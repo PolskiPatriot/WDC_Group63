@@ -23,8 +23,7 @@ body {
  }
 
   #menuContents {
-    display: none;
-    visibility: visible;
+    display: flex;
     position: fixed;
     right: 5px;
     z-index: 0;
@@ -45,11 +44,8 @@ body {
   #menuContents a {
     padding: 20px 60px;
     margin: 15px 0px;
-    display: block;
-  }
-
-  #menuContents.visible {
-    display: flex;
+    display: inline-block;
+    text-align: center;
   }
 
   .circle {
@@ -130,6 +126,7 @@ body {
   #menu {
     float: right;
     border-style: none;
+    font-size: 1.5em;
   }
 
   #menu:hover {
@@ -146,4 +143,11 @@ body {
   border-width: 0px;
 }
 
+.headerIframe#dropdown {
+  display: none;
+}
+
+.headerIframe.visible#dropdown {
+  display: inline-block;
+}
   /* HEADER END */
