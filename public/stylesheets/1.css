@@ -172,22 +172,23 @@ img {
 
 .postLikes {
   height: 60px;
+  width: 150px;
   margin: 0px 0px 0px 5px;
   border: 0px;
   background-color: transparent;
-  font-size: 2em;
+  font-size: 1.5em;
   color: black;
   text-align: center;
   line-height: 60px;
   vertical-align: top;
   float: left;
-  display: inline;
+  display: flex;
 }
 
 .postLikes img {
-  height:60px;
-  float: left;
-  margin-top: 0;
+  height:53.2px;
+  display: inline;
+  object-fit: scale-down;
 }
 
 div .likes-display {
