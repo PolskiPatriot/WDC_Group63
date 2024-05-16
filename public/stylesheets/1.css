@@ -83,6 +83,7 @@ img {
   border-style: dashed;
   border-color: black;
   border-radius: 50px;
+  border-width: 0.0725em;
   background-color: transparent;
   font-size: 2.5em;
   color: black;
@@ -137,6 +138,7 @@ img {
   border-style: dashed;
   border-color: black;
   border-radius: 50px;
+  border-width: 0.0725em;
   background-color: transparent;
   font-size: 2em;
   color: black;
@@ -154,7 +156,7 @@ img {
   background-color: transparent;
   border-style: dashed;
   border-color: black;
-  border-width: 5px;
+  border-width: 0.058em;
   font-size: 2.5em;
   color: black;
   text-align: center;
@@ -179,6 +181,31 @@ img {
   line-height: 60px;
   vertical-align: top;
   float: left;
+  display: inline;
+}
+
+.postLikes img {
+  height:60px;
+  float: left;
+  margin-top: 0;
+}
+
+div .likes-display {
+  display: inline-block;
+  height: 2.1em;
+}
+
+.likes-display p {
+  margin:0;
+  margin-top: 0.44em;
+  margin-bottom: 0.44em;
+  float:left;
+}
+
+.likes-display img {
+  float: left;
+  height: 2.1em;
+  margin: 0;
 }
 
 .seeMore {
