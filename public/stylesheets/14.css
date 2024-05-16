@@ -1,0 +1,155 @@
+body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    overflow: auto;
+  }
+
+
+#pageTitle{
+  position:relative;
+  font-size: 3em;
+  margin-bottom: 0;
+  margin-top: 0;
+  margin-left: 2vw;
+}
+
+#attendingHeader{
+  position:relative;
+  margin-left: 2vw;
+}
+
+#subDivHeadings{
+  display: flex;
+  font-size: 1em;
+  width: 100%;
+  margin: 0;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#subDivHeadingsButtons{
+  margin:0;
+  margin-left:1vw;
+  height: 100%;
+  display: flex;
+  height: 2.5em;
+  align-items:end;
+}
+
+#monthYear{
+  position:relative;
+  margin-left: auto;
+}
+#mainDiv {
+  position: absolute;
+  height:auto;
+  top:8vw;
+}
+
+.container {
+  flex-grow: auto;
+  margin-left: 2vw;
+  float: left;
+  position: relative;
+  top:0vw;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-gap: 0px;
+}
+
+
+.item {
+  background-color: white;
+  border: 0.1vw solid black;
+  text-align: left;
+  width: 9vw;
+  height: 9vw;
+  font-size: 1.25em;
+  flex-grow: auto;
+}
+
+.container {
+  counter-reset: itemCounter;
+}
+
+.item::before {
+  position:sticky;
+  margin-top:0;
+  counter-increment: itemCounter;
+  content: counter(itemCounter);
+  margin-left: 0px;
+}
+
+.interiorObject{
+  display: flexbox;
+  position:static;
+  margin-top: 1.5vw;
+  height: 6vw;
+  width: 9vw;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: whitesmoke;
+  overflow-y: auto;
+}
+
+.eventButton1{
+  background-color: #E4E0DC;
+  border-style: none;
+  padding: 0.5em 2vw;
+  font-size: 1em;
+  text-align: center;
+  border-radius: 1vw;
+  font-weight: bold;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.eventButton2{
+  background-color: #E4E0DC;
+  border-style: none;
+  padding: 0.5em 2vw;
+  font-size: 1em;
+  border-radius: 1vw;
+  text-align: center;
+  font-weight: bold;
+  color: purple;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.eventButton3{
+  background-color: #E4E0DC;
+  border-style: none;
+  padding: 0.5em 2vw;
+  font-size: 1em;
+  text-align: center;
+  border-radius: 1vw;
+  font-weight: bold;
+  color: green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.eventButton4{
+  background-color: #E4E0DC;
+  border-style: none;
+  padding: 0.5em 2vw;
+  font-size: 1em;
+  text-align: center;
+  border-radius: 1vw;
+  font-weight: bold;
+  color: orange;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
