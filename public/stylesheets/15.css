@@ -1,0 +1,95 @@
+body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+
+.MyProfile {
+  font-size: 1.5vw;
+  top:15vw;
+  box-sizing: content-box;
+  width: 50vw;
+  height: 35vh;
+  position:relative;
+  overflow: auto;
+  border: 0.2vw solid black;
+  border-radius: 2vw;
+  background-color:   white;
+  left: 0%;
+  z-index: 0;
+
+}
+
+.circleUser {
+    float: left;
+    height: 4vw;
+    width: 4vw;
+    background-color: blue;
+    border-radius: 50%;
+    margin: 10px 20px 10px 10px;
+}
+
+.profileContent_div {
+    text-align: left;
+    position: relative;
+}
+
+
+.links-list {
+  font-size: 1.2vw;
+  margin-top: 30vh;
+  margin-right: 5vw;
+  width: 15vw;
+  float: left;
+}
+
+.list {
+  list-style: none;
+  padding-left: 1vw;
+}
+
+.links-list a {
+  color: rgb(82, 82, 82);
+}
+
+.links-list a:hover {
+  color: black;
+}
+
+.links-list li {
+  margin-top: 1em;
+}
+
+a {
+  text-decoration: underline;
+  color: black;
+}
+
+#Desc_profile{
+  margin-left: 20px;
+  font: 1em;
+}
+#Edit_profileName {
+  position: absolute;
+  right: 20vw;
+  top: 2vh;
+  padding: 0;
+  font-size: 0.8em;
+  border: none;
+  background: none;
+}
+
+#Page_Title{
+  position: absolute;
+  left: 1vw;
+  top: 11vh;
+  font-size: 5em;
+}
+
+#Edit_profileAbout{
+  position: absolute;
+  right: 20vw;
+  top: 9vh;
+  font-size: 0.8em;
+  padding: 0;
+  border: none;
+  background: none;
+}

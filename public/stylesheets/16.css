@@ -1,0 +1,92 @@
+
+body {
+    font-family: "Helvetica", sans-serif;
+  }
+  body {
+    font-family: sans-serif;
+    overflow: auto; }
+  
+  .links-list {
+    font-size: 1.2vw;
+    margin-top: 30vh;
+    margin-right: 5vw;
+    width: 15vw;
+    float: left;
+  }
+  
+  .list {
+    list-style: none;
+    padding-left: 1vw;
+  }
+  
+  .links-list a {
+    color: rgb(82, 82, 82);
+  }
+  
+  .links-list a:hover {
+    color: black;
+  }
+  
+  .links-list li {
+    margin-top: 1em;
+  }
+  
+  
+  .Contact_Details{
+    border-radius: 25px;
+    box-sizing: content-box;
+    position: absolute;
+    width:400px;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: white;
+    top: 130px;
+    left: 300px; /* Position it at the left of the nearest positioned ancestor or the body */
+  }
+  input{
+    margin-bottom: 20px; /* Adds 20px space below each input field */
+    margin-left: 10px;
+    border-radius: 25px;
+    padding-left: 5px;
+    width: 150px;
+  }
+  label{
+    margin-left: 10px;
+  }
+  
+  
+  .Contact {
+    font-size: 1.5vw;
+    top:15vw;
+    box-sizing: content-box;
+    width: 35vw;
+    height: 54vh;
+    position:relative;
+    overflow: auto;
+    border: 0.2vw solid black;
+    border-radius: 2vw;
+    background-color:   white;
+    left: 0%;
+    z-index: 0;
+    padding-left: 1em;
+  
+  }
+  
+  #Page_Title{
+    position: absolute;
+    left: 1vw;
+    top: 11vh;
+    font-size: 5em;
+  }
+  #SUBMIT{
+    border-style: solid green;
+    border-color: #04AA6D;
+    position: absolute;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    margin-left: 26vw;
+    font-size: 1vw;
+    border-radius: 1vw;
+  }
+  
+  
