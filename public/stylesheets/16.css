@@ -1,14 +1,13 @@
 
 body {
-  font-family: 14px, "Helvetica", sans-serif;
-  overflow: hidden
+  font-family: "Helvetica", sans-serif;
 }
 body {
   font-family: sans-serif;
   overflow: auto; }
 
 .links-list {
-  font-size: 1.2em;
+  font-size: 1.2vw;
   margin-top: 30vh;
   margin-right: 5vw;
   width: 15vw;
@@ -33,6 +32,17 @@ body {
 }
 
 
+.Contact_Details{
+  border-radius: 25px;
+  box-sizing: content-box;
+  position: absolute;
+  width:400px;
+  padding: 5px;
+  border: 1px solid black;
+  background-color: white;
+  top: 130px;
+  left: 300px;
+}
 input{
   margin-bottom: 20px;
   margin-left: 10px;
@@ -47,24 +57,25 @@ label{
 
 .Contact {
   font-size: 1.5em;
-  margin-top: 30vh;
+  top:15vw;
   box-sizing: content-box;
-  width: 40%;
-  height:auto;
+  width: 35vw;
+  height: 54vh;
   position:relative;
-  float: left;
   overflow: auto;
   border: 0.2vw solid black;
   border-radius: 2vw;
   background-color:   white;
+  left: 0%;
   z-index: 0;
   padding-left: 1em;
 
 }
 
-#pageTitle{
+#Page_Title{
+  position: absolute;
+  left: 1vw;
   top: 11vh;
-  text-align: center;
   font-size: 5em;
 }
 #SUBMIT{
@@ -74,8 +85,7 @@ label{
   padding-left: 2vw;
   padding-right: 2vw;
   margin-left: 26vw;
-  bottom: 2vw;
-  font-size: 1em;
+  font-size: 1vw;
   border-radius: 1vw;
 }
 
