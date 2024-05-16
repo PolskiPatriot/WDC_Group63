@@ -1,6 +1,6 @@
 body {
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  }
+  font-family: 14px, "Helvetica", sans-serif;
+}
 
 .MyProfile {
   font-size: 1.5vw;
@@ -81,7 +81,7 @@ a {
   position: absolute;
   left: 1vw;
   top: 11vh;
-  font-size: 5vw;
+  font-size: 5em;
 }
 
 #editProfileAbout{
