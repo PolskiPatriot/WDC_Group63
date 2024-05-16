@@ -1,0 +1,126 @@
+body {
+    font-family: "Helvetica", sans-serif;
+  }
+
+.header {
+    padding: 0px;
+    background: #5271ff;
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    color: white;
+    font-size: 2em;
+    line-height: 80px;
+}
+
+.circle {
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 20px 10px 20px 50px;
+    vertical-align: middle;
+}
+
+#searchBar {
+    width: 300px;
+    background-color: white;
+    border-radius: 50px;
+    float: right;
+    margin: 10px 10px 10px 50px;
+    vertical-align: middle;
+    color: gray;
+}
+
+
+.smallCircle {
+    height: 60px;
+    width: 60px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 5px 20px 5px 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.blue {
+    background-color: #5271ff;
+}
+
+.headerContent {
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
+}
+
+#menu {
+    float: right
+}
+
+.spacing {
+    margin: 100px;
+    height: 1vh;
+}
+
+
+
+.links-list {
+    font-size: 1.2vw;
+    margin-top: 30vh;
+    margin-right: 5vw;
+    width: 15vw;
+    float: left;
+}
+
+.list {
+    list-style: none;
+    padding-left: 1vw;
+}
+
+.links-list a {
+    color: rgb(82, 82, 82);
+}
+
+.links-list a:hover {
+    color: black;
+}
+
+.links-list li {
+    margin-top: 1em;
+}
+
+
+.search input {
+    font-size: 1.5vw;
+    border-radius: 0.7em;
+    border-width: 0.1em;
+    border-color: rgb(123, 123, 123);
+    border-style: solid;
+    float:right;
+}
+
+.Terms {
+    font-size: 1.5vw;
+    top:13vw;
+    box-sizing: content-box;
+    width: 40vw;
+    height: auto;
+    position:relative;
+    overflow: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 2vw;
+    background-color:   white;
+    left: 0%;
+    z-index: 0;
+    font-size: 1vw;
+    font-family: sans-serif;
+  }
+  #Page_Title{
+    position: absolute;
+    left: 1vw;
+    top: 11vh;
+    font-size: 5em;
+  }

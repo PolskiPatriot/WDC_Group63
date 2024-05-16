@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <link rel="stylesheet" href="/stylesheets/21.css">
+    <link rel="stylesheet" href="/stylesheets/header.css">
+
+</head>
+
+<body>
+    <iframe class="headerIframe" title="header" name="header" src="header.html" width="100%" height="120px" style="z-index: 10;"></iframe>
+    <iframe class="headerIframe" title="dropdown" name="dropdown" id="dropdown" src="dropdown.html" width="315px" height="460px" style="z-index: 10;"></iframe>
+    <div class="links-list">
+
+        <ul class="list">
+        <li><a href="#">My Profile</a></li>
+        <li><a href="#">Contact Details</a></li>
+        <li><a href="#">Terms and Conditions</a></li>
+        <li><a href="#">Organisations</a></li>
+        <li><a href="#">Pending Organisations</a></li>
+        <li><a href="#" style="color:black">Create Organisation</a></li>
+        <li><a href="#">Delete Profile</a></li>
+        </ul>
+    </div>
+    <div class="Add_Form_ORG">
+        <h1 style="text-align: left; margin-left: 1vw;">Create Organisation</h1>
+        <div class="Sub_Add_Form">
+        <label id="Image_Tag">Upload Image</label><button type="button" id="AddImage"></button>
+        <p>Name</p>
+        <input type="text" id="org_name" name="org_name" placeholder="Enter Organisation Name" style>
+        <p>About</p>
+        <textarea class="Organisation_Create_Text" placeholder="Here is your about page! Feel free to type anything..."></textarea><br>
+        <button type="button" id="OK">OK</button>
+        <button type="button" id="CANCEL">CANCEL</button>
+
+        </div>
+    </div>
+
+</body>
+</html>
