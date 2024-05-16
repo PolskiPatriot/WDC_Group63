@@ -119,6 +119,7 @@ body {
     border-radius: 2vw;
     background-color:   white;
     left: 35%;
+    z-index: 1;
 }
 
 .Organisation_Create_Text{
