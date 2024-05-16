@@ -64,7 +64,7 @@ body {
     border-radius: 1vw;
     margin-top: 0px;
 }
-#OK{
+.OK{
     border-style: solid green;
     border-color: #04AA6D;
     padding-left: 2em;
@@ -73,7 +73,7 @@ body {
     border-radius: 1em;
 }
 
-#CANCEL{
+.CANCEL{
     border-style: solid #990000    ;
     border-color: red;
     padding-left: 1em;
@@ -98,4 +98,25 @@ body {
     display: flex;
     margin-left: 14em;
     align-items: center;
+}
+
+.deleteConfirmation{
+    position: absolute;
+    padding: 0.5em;
+    border:0.2em solid black;
+    background-color: aliceblue;
+    border-top-right-radius:1em;
+    border-bottom-right-radius:1em;
+    border-bottom-left-radius:1em;
+    top:34vw;
+    left:0em;
+    display: flex;
+    margin-left:1vw;
+    align-items: center;
+    flex-direction: column;
+}
+
+#confirmationButton{
+    display: flex;
+    flex-direction: row;
 }

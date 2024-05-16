@@ -23,7 +23,7 @@
         <li><a href="#">Delete Profile</a></li>
         </ul>
     </div>
-    <div class="addForm">
+    <div class="addForm" style="z-index: 1;">
         <h1 style="text-align: left; margin-left: 1vw;">Create Organisation</h1>
         <div class="subAddForm">
         <div id="uploadImageDiv">
@@ -33,9 +33,17 @@
         <input type="text" id="orgName" name="orgName" placeholder="Enter Organisation Name" style>
         <p>About</p>
         <textarea class="organisationCreateText" placeholder="Here is your about page! Feel free to type anything..."></textarea><br>
-        <button type="button" id="OK">OK</button>
-        <button type="button" id="CANCEL">CANCEL</button>
+        <button type="button" class="OK">OK</button>
+        <button type="button" class="CANCEL">CANCEL</button>
 
+        </div>
+    </div>
+
+    <div class="deleteConfirmation" style="z-index: 2;">
+        <span>Are you sure you want to delete your account?</span>
+        <div id="confirmationButton">
+        <button type="button" class="OK">OK</button>
+        <button type="button" class="CANCEL">CANCEL</button>
         </div>
     </div>
 
