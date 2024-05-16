@@ -76,8 +76,9 @@
     text-align: left;
     height: 4em;
     background: rgb(250, 229, 221);
-    border-radius: 2em;
+    border-radius: 4em;
     margin-top: 2em;
+    padding: 2em 0em;
 }
 .organisation span {
     color:black;
@@ -88,25 +89,26 @@
     margin-left: 0.5em;
 }
 .organisation img {
-    margin-left: 0.5em;
-    height: 3em;
+    margin-left: 1em;
+    height: 6em;
     display:inline;
-    margin-top: 0.5em;
+    margin-top: -1em;
     border-radius: 90%;
     float: left;
 }
 .organisation a {
     font-size:1vw;
-    margin-top:0.4em;
-    margin-right: 0.5em;
+    font-weight: bold;
+    margin-top:-0.1em;
+    margin-right: 1em;
     float: right;
     text-decoration: none;
     display:inline;
-    padding: 0.5em;
+    padding: 1em;
     border-style: dotted;
     border-width: 0.15em;
     background-color: white;
-    border-radius: 1.2em;
+    border-radius: 1.5em;
 }
 
 .organisation a:hover {
