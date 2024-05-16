@@ -1,5 +1,5 @@
 body {
-    font-family: "Helvetica", sans-serif;
+    font-family: 14px, "Helvetica", sans-serif;
   }
 
 .header {
@@ -91,16 +91,6 @@ body {
     margin-top: 1em;
 }
 
-
-.search input {
-    font-size: 1.5vw;
-    border-radius: 0.7em;
-    border-width: 0.1em;
-    border-color: rgb(123, 123, 123);
-    border-style: solid;
-    float:right;
-}
-
 .Terms {
     font-size: 1.5vw;
     top:13vw;
@@ -118,7 +108,7 @@ body {
     font-size: 1vw;
     font-family: sans-serif;
   }
-  #Page_Title{
+  #pageTitle{
     position: absolute;
     left: 1vw;
     top: 11vh;

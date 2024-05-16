@@ -27,7 +27,7 @@ body {
     margin: 10px 20px 10px 10px;
 }
 
-.profileContent_div {
+.profileContentDiv {
     text-align: left;
     position: relative;
 }
@@ -63,11 +63,11 @@ a {
   color: black;
 }
 
-#Desc_profile{
+#descProfile{
   margin-left: 20px;
   font: 1em;
 }
-#Edit_profileName {
+#editProfileName {
   position: absolute;
   right: 20vw;
   top: 2vh;
@@ -77,14 +77,14 @@ a {
   background: none;
 }
 
-#Page_Title{
+#pageTitle{
   position: absolute;
   left: 1vw;
   top: 11vh;
-  font-size: 5vw; 
+  font-size: 5vw;
 }
 
-#Edit_profileAbout{
+#editProfileAbout{
   position: absolute;
   right: 20vw;
   top: 9vh;
