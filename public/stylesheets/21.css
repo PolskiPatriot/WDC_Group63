@@ -1,6 +1,7 @@
 body {
     font-family: 14px, "Helvetica", sans-serif;
-    overflow: auto; }
+    overflow: auto;
+}
 
 .links-list {
     font-size: 1.2vw;
@@ -26,22 +27,23 @@ body {
 .links-list li {
     margin-top: 1em;
 }
+
 .addForm {
     font-size: 1.5em;
-    top:10vw;
+    top: 10vw;
     box-sizing: content-box;
     width: 37em;
     height: 27em;
-    position:relative;
+    position: relative;
     overflow: auto;
     border: 0.2vw solid black;
     border-radius: 2vw;
-    background-color:   white;
+    background-color: white;
     left: 0%;
     z-index: 0;
 }
 
-.organisationCreateText{
+.organisationCreateText {
     width: 90%;
     height: 15vw;
     padding: 12px 20px;
@@ -51,20 +53,22 @@ body {
     background-color: #f8f8f8;
     overflow-y: scroll;
     font-size: 16px;
-  }
-.subAddForm{
+}
+
+.subAddForm {
     margin-left: 3.5em;
     font-size: 0.9em;
 }
 
-#orgName{
+#orgName {
     border-style: solid black;
     padding-left: 1vw;
     font-size: 1em;
     border-radius: 1vw;
     margin-top: 0px;
 }
-.OK{
+
+.OK {
     border-style: solid green;
     border-color: #04AA6D;
     padding-left: 2em;
@@ -73,50 +77,55 @@ body {
     border-radius: 1em;
 }
 
-.CANCEL{
-    border-style: solid #990000    ;
+.CANCEL {
+    border-style: solid #990000;
     border-color: red;
     padding-left: 1em;
     padding-right: 1em;
     font-size: 1em;
     border-radius: 1em;
 }
-#addImage{
+
+#addImage {
     border-style: none;
-    height:3em;
-    width:3em;
+    height: 3em;
+    width: 3em;
     margin-left: 0.5em;
     background-image: url("/images/addImage.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
 
-#uploadImageDiv{
+#uploadImageDiv {
     position: absolute;
-    top:8em;
-    left:14.5em;
+    top: 8em;
+    left: 14.5em;
     display: flex;
     margin-left: 14em;
     align-items: center;
 }
 
-.deleteConfirmation{
+.deleteConfirmation {
     position: absolute;
     padding: 0.5em;
-    border:0.2em solid black;
+    border: 0.2em solid black;
     background-color: aliceblue;
-    border-top-right-radius:1em;
-    border-bottom-right-radius:1em;
-    border-bottom-left-radius:1em;
-    top:34.5vw;
-    left:0em;
+    border-top-right-radius: 1em;
+    border-bottom-right-radius: 1em;
+    border-bottom-left-radius: 1em;
+    top: 34.5vw;
+    left: 0em;
     display: flex;
-    margin-left:1vw;
+    margin-left: 1vw;
     align-items: center;
     flex-direction: column;
 }
 
-#confirmationButton{
+#confirmationButton {
     display: flex;
     flex-direction: row;
+}
+
+#dropdown {
+    margin-top: 120px;
 }

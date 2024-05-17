@@ -1,6 +1,7 @@
 body {
     font-family: 14px, "Helvetica", sans-serif;
-    overflow: auto; }
+    overflow: auto;
+}
 
 .links-list {
     font-size: 1.2vw;
@@ -31,17 +32,17 @@ body {
 .organisation-header {
     margin-top: 150px;
     font-size: 0.8vw;
-    width:75vw;
+    width: 75vw;
     text-align: left;
-    height:4em;
-    float:left;
+    height: 4em;
+    float: left;
 }
 
 .organisation-header h1 {
-    margin:0;
-    margin-top:0.13em;
-    margin-bottom:0.13em;
-    float:left;
+    margin: 0;
+    margin-top: 0.13em;
+    margin-bottom: 0.13em;
+    float: left;
 }
 
 .search input {
@@ -50,19 +51,20 @@ body {
     border-width: 0.1em;
     border-color: rgb(123, 123, 123);
     border-style: solid;
-    float:right;
+    float: right;
 }
 
 .organisation-container {
     font-size: 0.8vw;
-    width:75vw;
+    width: 75vw;
     text-align: left;
-    float:left;
+    float: left;
 }
 
 .organisation-container h1 {
     margin-bottom: 2em;
 }
+
 .organisation {
     width: 75vw;
     text-align: left;
@@ -71,29 +73,32 @@ body {
     border-radius: 2em;
     margin-top: 2em;
 }
+
 .organisation span {
-    color:black;
-    display:inline;
+    color: black;
+    display: inline;
     float: left;
-    font-size:1.5vw;
+    font-size: 1.5vw;
     margin-top: 0.51em;
     margin-left: 0.5em;
 }
+
 .organisation img {
     margin-left: 0.5em;
     height: 3em;
-    display:inline;
+    display: inline;
     margin-top: 0.5em;
     border-radius: 90%;
     float: left;
 }
+
 .organisation a {
-    font-size:1vw;
-    margin-top:0.4em;
+    font-size: 1vw;
+    margin-top: 0.4em;
     margin-right: 0.5em;
     float: right;
     text-decoration: none;
-    display:inline;
+    display: inline;
     padding: 0.5em;
     border-style: dotted;
     border-width: 0.15em;
@@ -109,20 +114,20 @@ body {
 
 .addForm {
     font-size: 1.5vw;
-    top:1vw;
+    top: 1vw;
     box-sizing: content-box;
     width: 40vw;
     height: 35vw;
-    position:relative;
+    position: relative;
     overflow: auto;
     border: 0.2vw solid black;
     border-radius: 2vw;
-    background-color:   white;
+    background-color: white;
     left: 35%;
     z-index: 1;
 }
 
-.organisationCreateText{
+.organisationCreateText {
     width: 80%;
     height: 15vw;
     padding: 12px 20px;
@@ -132,20 +137,22 @@ body {
     background-color: #f8f8f8;
     overflow-y: scroll;
     font-size: 16px;
-  }
-.subAddForm{
+}
+
+.subAddForm {
     margin-left: 5vw;
     font-size: 1.2vw;
 }
 
-#orgName{
+#orgName {
     border-style: solid black;
     padding-left: 1vw;
     font-size: 1vw;
     border-radius: 1vw;
     margin-top: 0px;
 }
-#OK{
+
+#OK {
     border-style: solid green;
     border-color: #04AA6D;
     padding-left: 2vw;
@@ -154,19 +161,20 @@ body {
     border-radius: 1vw;
 }
 
-#CANCEL{
-    border-style: solid #990000    ;
+#CANCEL {
+    border-style: solid #990000;
     border-color: red;
     padding-left: 1vw;
     padding-right: 1vw;
     font-size: 1vw;
     border-radius: 1vw;
 }
-#addImage{
+
+#addImage {
     border-style: none;
     position: absolute;
-    height:2vw;
-    width:2vw;
+    height: 2vw;
+    width: 2vw;
     background-image: url("/images/addImage.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -174,19 +182,23 @@ body {
     margin-left: 26vw;
 }
 
-#imageTag{
+#imageTag {
     position: absolute;
     top: 9.7vw;
     margin-left: 18vw;
 }
 
-#addTable{
+#addTable {
     border-style: none;
     position: re;
-    height:2vw;
-    width:2vw;
+    height: 2vw;
+    width: 2vw;
     background-image: url("/images/AddIcon.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     margin-left: 44%;
+}
+
+#dropdown {
+    margin-top: 120px;
 }

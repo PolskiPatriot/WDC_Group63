@@ -1,6 +1,7 @@
 .body {
     font-family: sans-serif;
 }
+
 .spacing {
     margin: 100px;
     height: 1vh;
@@ -35,14 +36,15 @@
 .organisation-container {
     margin-top: 150px;
     font-size: 0.8vw;
-    width:75vw;
+    width: 75vw;
     text-align: left;
-    float:left;
+    float: left;
 }
 
 .organisation-container h1 {
     margin-bottom: 2em;
 }
+
 .organisation {
     width: 75vw;
     text-align: left;
@@ -52,30 +54,33 @@
     margin-top: 2em;
     padding: 2em 0em;
 }
+
 .organisation span {
-    color:black;
-    display:inline;
+    color: black;
+    display: inline;
     float: left;
-    font-size:1.5vw;
+    font-size: 1.5vw;
     margin-top: 0.51em;
     margin-left: 0.5em;
 }
+
 .organisation img {
     margin-left: 1em;
     height: 6em;
-    display:inline;
+    display: inline;
     margin-top: -1em;
     border-radius: 90%;
     float: left;
 }
+
 .organisation a {
-    font-size:1vw;
+    font-size: 1vw;
     font-weight: bold;
-    margin-top:-0.1em;
+    margin-top: -0.1em;
     margin-right: 1em;
     float: right;
     text-decoration: none;
-    display:inline;
+    display: inline;
     padding: 1em;
     border-style: dotted;
     border-width: 0.15em;
@@ -87,4 +92,8 @@
     background-color: grey;
     cursor: pointer;
     color: white;
+}
+
+#dropdown {
+    margin-top: 120px;
 }
