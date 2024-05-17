@@ -17,6 +17,11 @@ body {
     line-height: 80px;
   }
 
+.header a {
+  color: white;
+  text-decoration: none;
+}
+
  #dropdown {
   margin-top: 100px;
   right: 5px;
