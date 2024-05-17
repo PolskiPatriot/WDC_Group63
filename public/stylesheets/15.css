@@ -4,7 +4,7 @@ body {
 
 .MyProfile {
   font-size: 1.5vw;
-  top:15vw;
+  top:8vw;
   box-sizing: content-box;
   width: 50vw;
   height: 35vh;
@@ -35,7 +35,7 @@ body {
 
 .links-list {
   font-size: 1.2vw;
-  margin-top: 30vh;
+  margin-top: 20vh;
   margin-right: 5vw;
   width: 15vw;
   float: left;
