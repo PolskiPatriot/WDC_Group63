@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,38 +8,108 @@
     <link rel="stylesheet" href="/stylesheets/header.css">
     <title>Document</title>
 </head>
+
 <body>
 
-    <div class="header-banner">
-        <iframe class="headerIframe" title="header" name="header" src="header.html" width="100%" height="120px"></iframe>
-        <iframe class="headerIframe" title="dropdown" name="dropdown" id="dropdown" src="dropdown.html" width="315px" height="460px"></iframe>
-    </div>
+    <iframe class="headerIframe" title="header" name="header" id="header" src="header.html" width="100%"
+        height="120px"></iframe>
+    <iframe class="headerIframe" title="dropdown" name="dropdown" id="dropdown" src="dropdown.html" width="315px"
+        height="460px"></iframe>
+    <main>
+        <div class="group-Banner">
+
+            <a class="create">New Post</a>
+            <a class="create">New Event</a>
+        </div>
 
 
-    <div class="group-Banner">
+        <div class="posts-container">
+            <h1>Pinned Posts</h1>
+            <div class="pinned-posts">
 
-        <a class="create">New Post</a>
-        <a class="create">New Event</a>
-    </div>
+                <div class="post">
+                    <div class="post-header">
+                        <div class="post-title">
+                            <img src="/images/headerLogo.png" alt="Logo">
+                            <h2>Untitled Post</h2>
+                        </div>
+
+                        <p class="post-type" href="#">
+                            Update
+                        </p>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <div class="post-footer">
+                        <div class="likes-display">
+                            <p>100+</p>
+                            <img src="/images/LikesIcon.jpeg" alt="likesIcon">
+                        </div>
+                        <div class="event-rsvp">
+                            <button type="submit"> Edit</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
-    <div class="posts-container">
-        <h1>Pinned Posts</h1>
-        <div class="pinned-posts">
 
-            <div class="post">
-                <div class="post-header">
-                    <div class="post-title">
-                        <img src="/images/headerLogo.png" alt="Logo">
-                        <h2>Untitled Post</h2>
+            <h1>Recent Posts</h1>
+            <div class="recent-posts">
+
+                <div class="post">
+                    <div class="post-header">
+                        <div class="post-title">
+                            <img src="/images/headerLogo.png" alt="Logo">
+                            <h2>Untitled Post</h2>
+                        </div>
+
+                        <p class="post-type" href="#">
+                            Event
+                        </p>
                     </div>
 
-                    <p class="post-type" href="#">
-                        Update
-                    </p>
+                    <img class="event-image" src="/images/eventImage.png" alt="event Image">
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                    <div class="post-footer">
+                        <div class="likes-display">
+                            <p>100+</p>
+                            <img src="/images/LikesIcon.jpeg" alt="likesIcon">
+                        </div>
+                        <div class="event-rsvp">
+                            <button type="submit"> Edit</button>
+                            <p> 321 attending </p>
+
+                        </div>
+                    </div>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <div class="post-footer">
+
+                <div class="post">
+                    <div class="post-header">
+                        <div class="post-title">
+                            <img src="/images/headerLogo.png" alt="Logo">
+                            <h2>Untitled Post</h2>
+                        </div>
+
+                        <p class="post-type" href="#">
+                            Update
+                        </p>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     <div class="likes-display">
                         <p>100+</p>
                         <img src="/images/LikesIcon.jpeg" alt="likesIcon">
@@ -48,148 +119,99 @@
 
                     </div>
                 </div>
-            </div>
-        </div>
 
+                <div class="post">
+                    <div class="post-header">
+                        <div class="post-title">
+                            <img src="/images/headerLogo.png" alt="Logo">
+                            <h2>Untitled Post</h2>
+                        </div>
 
-
-        <h1>Recent Posts</h1>
-        <div class="recent-posts">
-
-            <div class="post">
-                <div class="post-header">
-                    <div class="post-title">
-                        <img src="/images/headerLogo.png" alt="Logo">
-                        <h2>Untitled Post</h2>
+                        <p class="post-type" href="#">
+                            Event
+                        </p>
                     </div>
 
-                    <p class="post-type" href="#">
-                        Event
-                    </p>
-                </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-                <img class="event-image" src="/images/eventImage.png" alt="event Image">
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                <div class="post-footer">
-                    <div class="likes-display">
-                        <p>100+</p>
-                        <img src="/images/LikesIcon.jpeg" alt="likesIcon">
-                    </div>
-                    <div class="event-rsvp">
-                        <button type="submit"> Edit</button>
-                        <p> 321 attending </p>
-
+                    <div class="post-footer">
+                        <div class="likes-display">
+                            <p>100+</p>
+                            <img src="/images/LikesIcon.jpeg" alt="likesIcon">
+                        </div>
+                        <div class="event-rsvp">
+                            <button type="submit"> Edit</button>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="post">
-                <div class="post-header">
-                    <div class="post-title">
-                        <img src="/images/headerLogo.png" alt="Logo">
-                        <h2>Untitled Post</h2>
-                    </div>
-
-                    <p class="post-type" href="#">
-                        Update
-                    </p>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <div class="likes-display">
-                    <p>100+</p>
-                    <img src="/images/LikesIcon.jpeg" alt="likesIcon">
-                </div>
-                <div class="event-rsvp">
-                    <button type="submit"> Edit</button>
-
-                </div>
-            </div>
-
-            <div class="post">
-                <div class="post-header">
-                    <div class="post-title">
-                        <img src="/images/headerLogo.png" alt="Logo">
-                        <h2>Untitled Post</h2>
-                    </div>
-
-                    <p class="post-type" href="#">
-                        Event
-                    </p>
-                </div>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                <div class="post-footer">
-                    <div class="likes-display">
-                        <p>100+</p>
-                        <img src="/images/LikesIcon.jpeg" alt="likesIcon">
-                    </div>
-                    <div class="event-rsvp">
-                        <button type="submit"> Edit</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a class="extend-list">See More</a>
-    </div>
-
-
-
-    <div class="about-tab">
-
-        <h1>Group Name</h1>
-        <br>
-        <div class="member-count">
-            <a href="/Users"> 12312 Members</a>
-        </div>
-        <div class="about-text">
-            <h2> About</h2>
-            <span class="edits"> edit </span>
-        </div>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-        <h2 class="header-text">Upcoming Events</h2>
-        <div class="event-container">
-            <p style="text-align: left;" class="event-name">Event Name</p>
-            <span class="date">Date</span>
-            <span class="attending">123 attending</span>
-            <br> <br>
-
-            <p style="text-align: left;" class="event-name">Event Name</p>
-            <span class="date">Date</span>
-            <span class="attending">123 attending</span>
-            <br> <br>
-
-            <p style="text-align: left;" class="event-name">Event Name</p>
-            <span class="date">Date</span>
-            <span class="attending">123 attending</span>
-            <br> <br>
-        </div>
-
-        <h2 class="header-text">Related Branches</h2>
-        <span class="edits"> edit </span>
-        <br>
-        <div class="branches-container">
-            <div class="branch">
-                <img class="group-logo" src="/images/groupLogo.png" alt="group icon">
-                <p>Group Name</p>
-            </div>
-            <div class="branch">
-                <img class="group-logo" src="/images/groupLogo.png" alt="group icon">
-                <p>Group Name</p>
-            </div>
-            <div class="branch">
-                <img class="group-logo" src="/images/groupLogo.png" alt="group icon">
-                <p>Group Name</p>
-            </div>
-
             <a class="extend-list">See More</a>
-
         </div>
-    </div>
 
 
+
+        <div class="about-tab">
+
+            <h1>Group Name</h1>
+            <br>
+            <div class="member-count">
+                <a href="/Users"> 12312 Members</a>
+            </div>
+            <div class="about-text">
+                <h2> About</h2>
+                <span class="edits"> edit </span>
+            </div>
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
+
+            <h2 class="header-text">Upcoming Events</h2>
+            <div class="event-container">
+                <p style="text-align: left;" class="event-name">Event Name</p>
+                <span class="date">Date</span>
+                <span class="attending">123 attending</span>
+                <br> <br>
+
+                <p style="text-align: left;" class="event-name">Event Name</p>
+                <span class="date">Date</span>
+                <span class="attending">123 attending</span>
+                <br> <br>
+
+                <p style="text-align: left;" class="event-name">Event Name</p>
+                <span class="date">Date</span>
+                <span class="attending">123 attending</span>
+                <br> <br>
+            </div>
+
+            <h2 class="header-text">Related Branches</h2>
+            <span class="edits"> edit </span>
+            <br>
+            <div class="branches-container">
+                <div class="branch">
+                    <img class="group-logo" src="/images/groupLogo.png" alt="group icon">
+                    <p>Group Name</p>
+                </div>
+                <div class="branch">
+                    <img class="group-logo" src="/images/groupLogo.png" alt="group icon">
+                    <p>Group Name</p>
+                </div>
+                <div class="branch">
+                    <img class="group-logo" src="/images/groupLogo.png" alt="group icon">
+                    <p>Group Name</p>
+                </div>
+
+                <a class="extend-list">See More</a>
+
+            </div>
+        </div>
+
+    </main>
 </body>
+
 </html>
