@@ -4,29 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Untitled</title>
-  <link rel="stylesheet" href="6.css">
-</head>
-<body>
-<head>
-    <title>Header</title>
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/stylesheets/6.css">
+  <link rel="stylesheet" href="/stylesheets/header.css">
 </head>
 
 <body id="content">
-    <div class="header">
-        <span class="circle"></span>
-        <h1 class="headerContent">untitled</h1>
-        <button type="button" onclick="parent.frames['dropdown'].menuOpen()" class="circle" id="menu">=</button>
-        <span id="searchBar">
-            <input type="text" placeholder="Search" /><span class="smallCircle blue"></span>
-        </span>
-    </div>
+  
+  <div class="header-banner">
+    <iframe class="headerIframe" title="header" name="header" src="header.html" width="100%" height="120px"></iframe>
+    <iframe class="headerIframe" title="dropdown" name="dropdown" id="dropdown" src="dropdown.html" width="315px" height="460px"></iframe>
+  </div>
   <main>
     <div class= "banner"></div>
 
     <div class="event-container">
       <div class="event-details">
-        <img class="imageadd" src='https://kruso.me/build/kruso_me/assets/features_add-image-cb682032.png'>
+        <img class="imageadd" src='https://kruso.me/build/kruso_me/assets/features_add-image-cb682032.png' alt="add Image">
         <h2 class="details-title">Details</h2>
         <div class="event-info">
           <p class="event-title">Event Title: Title</p>
@@ -41,15 +34,12 @@
         </div>
 
         <div class="event-buttons">
-          <button class="dotted-button">RSVP</button>
+          <button class="dotted-button" type="button">RSVP</button>
           <span class="attendees">321 attending</span>
 
         </div>
       </div>
       </div>
-    </div>
-
-
   </main>
 </body>
 </html>

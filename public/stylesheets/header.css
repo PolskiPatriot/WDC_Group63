@@ -20,6 +20,7 @@ body {
  #dropdown {
   margin-top: 100px;
   right: 5px;
+  z-index: 10;
  }
 
   #menuContents {
@@ -151,3 +152,8 @@ body {
   display: inline-block;
 }
   /* HEADER END */
+
+
+.header-banner {
+    height:120px;
+}
