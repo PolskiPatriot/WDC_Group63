@@ -9,10 +9,24 @@ var groupRouter = require('./routes/2');
 var groupManagerRouter = require('./routes/3');
 var viewUserRouter = require('./routes/4');
 
+// database initialisation
+var sql = require('mysql');
+var databasePool = sql.createPool({
+    host: 'localhost',
+    database: 'database',
+});
+
 var app = express();
 
+app.engine('html', require('ejs').renderFile);
 app.set('views', path.join(__dirname, '/public'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');
+
+// declare database
+app.use(function(req, res, next) {
+    req.pool = databasePool;
+    next();
+});
 
 app.use(logger('dev'));
 app.use(express.json());
