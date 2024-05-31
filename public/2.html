@@ -19,134 +19,115 @@
     <main>
         <div class="group-Banner">
         </div>
+
         <div class="posts-container">
-
-            <h1>Pinned Posts</h1>
+            <h1>Pinned Posts </h1>
             <div class="pinned-posts">
+                <%
+                if (pinnedData.length > 0) {
+                    pinnedData.forEach(function(postData) {
+                        %>
+                        <div class="post">
+                            <div class="post-header">
+                                <div class="post-title">
+                                    <img src="/images/headerLogo.png" alt="Logo">
+                                    <h2><%= postData.title %></h2>
+                                </div>
 
-                <div class="post">
-                    <div class="post-header">
-                        <div class="post-title">
-                            <img src="/images/headerLogo.png" alt="Logo">
-                            <h2>Untitled Post</h2>
+                                <%
+                                if (postData.eventID = 'NULL'){
+                                %>
+                                    <p class="post-type" href="#">
+                                        Update
+                                    </p>
+                                <%
+                                    } else {
+                                %>
+                                    <p class="post-type" href="#">
+                                        Event
+                                    </p>
+                                    <%
+                                 }
+                                 %>
+                            </div>
+                            <p> <%= postData.content %></p>
+                            <div class="post-footer">
+                                <div class="likes-display">
+                                    <p><%= postData.likeCount %></p>
+                                    <img src="/images/LikesIcon.jpeg" alt="likesIcon">
+                                </div>
+                            </div>
                         </div>
 
-                        <p class="post-type" href="#">
-                            Update
-                        </p>
+                <%
+                    })
+                } else {
+                %>
+                    <div class="empty">
+                        <p> There are no pinned Posts</p>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <div class="post-footer">
-                        <div class="likes-display">
-                            <p>100+</p>
-                            <img src="/images/LikesIcon.jpeg" alt="likesIcon">
-                        </div>
-                    </div>
-                </div>
+                <%
+                    }
+                %>
+
+
             </div>
-
-
-
             <h1>Recent Posts</h1>
             <div class="recent-posts">
 
-                <div class="post">
-                    <div class="post-header">
-                        <div class="post-title">
-                            <img src="/images/headerLogo.png" alt="Logo">
-                            <h2>Untitled Post</h2>
-                        </div>
+                <%
+                if (recentData.length > 0) {
+                    recentData.forEach(function(postData) {
+                        %>
+                        <div class="post">
+                            <div class="post-header">
+                                <div class="post-title">
+                                    <img src="/images/headerLogo.png" alt="Logo">
+                                    <h2><%= postData.title %></h2>
+                                </div>
 
-                        <p class="post-type" href="#">
-                            Event
-                        </p>
-                    </div>
+                                <%
+                                if (postData.eventID = 'NULL'){
+                                %>
+                                    <p class="post-type" href="#">
+                                        Update
+                                    </p>
+                                <%
+                                    } else {
+                                %>
+                                    <p class="post-type" href="#">
+                                        Event
+                                    </p>
+                                    <%
+                                 }
+                                 %>
+                            </div>
+                            <p> <%= postData.content %></p>
+                            <div class="post-footer">
+                                <div class="likes-display">
+                                    <p><%= postData.likeCount %></p>
+                                    <img src="/images/LikesIcon.jpeg" alt="likesIcon">
+                                </div>
+                            </div>
 
-                    <img class="event-image" src="/images/eventImage.png" alt="event Image">
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                    <div class="post-footer">
-                        <div class="likes-display">
-                            <p>100+</p>
-                            <img src="/images/LikesIcon.jpeg" alt="likesIcon">
-                        </div>
-                        <div class="event-rsvp">
-                            <button type="submit"> RSVP</button>
-                            <p> 321 attending </p>
-
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-                <div class="post">
-                    <div class="post-header">
-                        <div class="post-title">
-                            <img src="/images/headerLogo.png" alt="Logo">
-                            <h2>Untitled Post</h2>
-                        </div>
-
-                        <p class="post-type" href="#">
-                            Update
-                        </p>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <div class="likes-display">
-                        <p>100+</p>
-                        <img src="/images/LikesIcon.jpeg" alt="likesIcon">
-                    </div>
-                </div>
-                <div class="post">
-                    <div class="post-header">
-                        <div class="post-title">
-                            <img src="/images/headerLogo.png" alt="Logo">
-                            <h2>Untitled Post</h2>
-                        </div>
-
-                        <p class="post-type" href="#">
-                            Event
-                        </p>
-                    </div>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                    <div class="post-footer">
-                        <div class="likes-display">
-                            <p>100+</p>
-                            <img src="/images/LikesIcon.jpeg" alt="likesIcon">
-                        </div>
-                        <div class="event-rsvp">
-                            <button type="submit"> RSVP</button>
-                            <p> 321 attending </p>
-
-                        </div>
-                    </div>
-                </div>
             </div>
-            <a class="extend-list">See More</a>
+                <%
+                    })
+                } else {
+                %>
+                    <div class="empty">
+                        <p> This organisation has no posts</p>
+                    </div>
+                    <%if (recentData.length >3) { %>
+                    <a class="extend-list">See More</a>
+                <%
+                    }}
+                %>
+
+
+
         </div>
-
-
-
+        </div>
         <div class="about-tab">
             <h1>Group Name</h1>
             <p class="member-count">12312 Members</p>
@@ -195,6 +176,7 @@
 
             </div>
         </div>
+
     </main>
 
 </body>
