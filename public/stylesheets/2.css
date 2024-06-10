@@ -152,7 +152,7 @@ div .event-rsvp {
 
 .event-rsvp p {
     display: inline-block;
-    font-size: 0.75vw;
+    font-size: 1vw;
     background: white;
     border-style: dotted;
     border-width: 0.1em;
@@ -160,13 +160,13 @@ div .event-rsvp {
     max-width: fit-content;
     max-height: fit-content;
     border-radius: 1em;
-    padding: 0.15em;
+    padding: 0.3em;
     margin-top: 0.375em;
     margin-left: 0.4em;
 }
 
 .event-rsvp button {
-    font-size: 1vw;
+    font-size: 1.3vw;
     float: right;
     background: white;
     border-style: dotted;
@@ -175,7 +175,7 @@ div .event-rsvp {
     max-width: fit-content;
     max-height: fit-content;
     border-radius: 1em;
-    padding: 0.15em;
+    padding: 0.3em;
     margin-top: 0em;
     margin-left: 0.4em;
 }

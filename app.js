@@ -8,6 +8,9 @@ var mainFeedRouter = require('./routes/1');
 var groupRouter = require('./routes/2');
 var groupManagerRouter = require('./routes/3');
 var viewUserRouter = require('./routes/4');
+var viewEventRouter = require('./routes/5');
+var editEventRouter = require('./routes/6');
+var editPostRouter = require('./routes/7');
 
 // database initialisation
 var sql = require('mysql');
@@ -38,6 +41,9 @@ app.use('/', mainFeedRouter);
 app.use('/group', groupRouter);
 app.use('/groupManager', groupManagerRouter);
 app.use('/Users', viewUserRouter);
+app.use('/Event', viewEventRouter);
+app.use('/editEvent', editEventRouter);
+app.use('/editPost', editPostRouter);
 
 module.exports = app;
 

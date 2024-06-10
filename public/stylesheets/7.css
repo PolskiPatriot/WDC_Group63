@@ -35,7 +35,7 @@ body {
     background-color: #f8f9fa;
     border-radius: 10px;
     padding: 20px;
-    flex: 1 1 300px;
+    width: 93vw;
   }
 
   .event-details {
@@ -44,6 +44,7 @@ body {
     padding: 20px;
     margin-bottom: 20px;
     display: inline-block;
+    width:25vw;
   }
 
 
@@ -119,7 +120,7 @@ body {
     background-size: cover;
     width: 100%;
     height: 1%;
-    padding: 200px;
+    padding: 150px;
     overflow: hidden;
     z-index: -1;
   }
@@ -144,16 +145,88 @@ body {
   }
 
 
-  .notesTitle{
-    font-size: 35px;
-    width: 20px;
+  .notes-container{
+    font-size: 25px;
+  }
 
+  .notes-container textarea {
+    font-size: 19px;
+    resize:vertical;
+    width: 90%;
+    height:6em;
+    margin-left: 2vw;
+    background-color: transparent;
+    border-width: 0.05em;
+    border-radius: 1em;
+    padding-left: 10px;
+  }
+
+  .notes-container textarea:focus {
+   outline: none;
+  }
+
+  .notes-container h2 {
+    font-size: 1.2em;
+    font-weight: normal;
+    margin-top:0px;
+    padding-bottom: 10px;
+    float:left;
   }
 
   .notes{
     font-size: 20px;
-    display: inline-block;
     vertical-align: middle;
-    margin-left: 100px;
+    margin-left: 20px;
+  }
+
+  .visibility-toggle {
+    font-size: 1.2em;
+    float:left;
+  }
+
+  .visibility-toggle input {
+    margin-left: 0.5em;
+    -ms-transform: scale(1.5);
+    -webkit-transform: scale(1.5) ;
+    transform: scale(1.5);
+    vertical-align: middle;
+  }
+  .event-buttons {
+    margin-top:4%;
+    display: inline;
+    align-items: center;
+    float: right;
+    margin-bottom: 5px;
+  }
+
+  .event-buttons button {
+    display: inline-block;
+    font-size: 2em;
+    width: 7.5vw;
+    border-radius: 1em;
+    border-style:solid;
+    background-color: transparent;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+  }
+
+  .event-buttons button:hover {
+    background-color: #dddddd;
+  }
+  .event-buttons button:active {
+    background-color: #aaaaaa;
+  }
+
+  .delete {
+    border-color: black;
+  }
+
+  .post {
+    border-color: #05ab05;
+  }
+
+  .cancel {
+    border-color: red;
   }
 

@@ -30,7 +30,7 @@ div.header-text {
 }
 
 .create {
-    font-size: 1vw;
+    font-size: 1.35vw;
     float: right;
     margin-top: 12em;
     margin-right: 1em;
@@ -39,7 +39,8 @@ div.header-text {
     border-style: dotted;
     border-width: 0.1em;
     border-radius: 1em;
-
+    text-decoration: none;
+    color:black;
 }
 
 .create:hover {
@@ -52,7 +53,7 @@ div.header-text {
 }
 
 div.posts-container {
-    font-size: 0.8vw;
+    font-size: 1.2vw;
     background-color: white;
     float: left;
     width: 60vw;
@@ -72,6 +73,13 @@ div.posts-container {
     border-style: solid;
     border-width: 0.1em;
     border-color: darkgray;
+}
+
+.empty {
+    text-align: center;
+    font-size: 2em;
+    color: darkgrey;
+    margin-bottom: 1.5em;
 }
 
 .post-header {
@@ -113,7 +121,7 @@ div .post-title {
 }
 
 .post-type {
-    font-size: 1.3vw;
+    font-size: 1.5vw;
     float: right;
     background: white;
     border-style: dotted;
@@ -170,7 +178,7 @@ div .event-rsvp {
 
 .event-rsvp p {
     display: inline-block;
-    font-size: 0.75vw;
+    font-size: 1.4vw;
     background: white;
     border-style: dotted;
     border-width: 0.1em;
@@ -184,7 +192,7 @@ div .event-rsvp {
 }
 
 .event-rsvp button {
-    font-size: 1vw;
+    font-size: 1.5vw;
     float: right;
     background: white;
     border-style: dotted;
@@ -194,7 +202,7 @@ div .event-rsvp {
     max-height: fit-content;
     border-radius: 1em;
     padding: 0.15em;
-    margin-top: 0em;
+    margin-top: 0.3em;
     margin-left: 0.4em;
 }
 
@@ -209,7 +217,7 @@ div .event-rsvp {
 
 
 div.about-tab {
-    font-size: 0.8vw;
+    font-size: 1.4vw;
     margin-right: 8vw;
     width: 16vw;
     text-align: left;
@@ -240,8 +248,8 @@ div.about-tab {
 }
 
 .edits {
-    font-size: 0.8vw;
-    margin-top: 0em;
+    font-size: 1.3vw;
+    margin-top: 0.4em;
     float: right;
     text-decoration: underline;
 }
@@ -267,9 +275,8 @@ div.about-tab {
 }
 
 .about-tab p {
-    margin-top: 0.1em;
-    text-align: center;
-    margin-bottom: 0;
+    margin: 0.1em 0.3em 0.5em 0.3em;
+    text-align: left;
 }
 
 .event-container {
