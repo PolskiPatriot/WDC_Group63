@@ -95,17 +95,27 @@ body {
   }
 
   .details-container {
-    display: flex;
+    display: inline-block;
     gap: 20px;
+    width:100%;
   }
 
+  .notes-container {
+    display: inline;
+    float:left;
+    width: fit-content;
+    max-width: 70%;
+    margin-left: 5%
+  }
   .details{
-    flex: 1;
+
     background-color: white;
     border-radius: 10px;
     padding: 20px;
-    width: 200%;
+    width:fit-content;
+
     box-sizing: border-box;
+    float: left;
   }
 
   .group-info {

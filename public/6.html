@@ -6,6 +6,7 @@
   <title>Untitled</title>
   <link rel="stylesheet" href="/stylesheets/6.css">
   <link rel="stylesheet" href="/stylesheets/header.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body id="content">
@@ -17,27 +18,41 @@
     <div class= "banner"></div>
 
     <div class="event-container">
-      <div class="event-details">
-        <img class="imageadd" src='https://kruso.me/build/kruso_me/assets/features_add-image-cb682032.png' alt="add Image">
-        <h2 class="details-title">Details</h2>
-        <div class="event-info">
-          <p class="event-title">Event Title: Title</p>
-          <p class="event-time">Event Time: Time</p>
-          <p class="event-location">Event Location: Address</p>
-          <p class="event-date">Event Date: Date</p>
-          <p class="event-length">Event Duration: Hours</p>
-        </div>
-        <div class="text-box">
-          <p class="notes">Notes:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dui augue, posuere et finibus et, elementum sed est. Nulla lectus erat, malesuada vel consectetur sit amet, pulvinar non justo. Integer porttitor, elit et euismod euismod, mauris neque lobortis mi, sed rhoncus diam urna nec nulla. Cras egestas velit tempor mi dignissim varius.</p>
 
+      <form method="POST" id="eventForm" action="editEvent/0xB4C1790B18B711EF9D3B0242AC110002" class="form">
+      <input name="imgUpload" type="file" id="file-upload" hidden value="noImg">
+      <label for="file-upload" class="file-upload"><img class="imageadd" src='https://kruso.me/build/kruso_me/assets/features_add-image-cb682032.png' alt="add Image"></label>
+      <div class="event-details">
+
+        <h2 class="details-title">Details</h2>
+
+        <div class="event-info">
+          <p class="event-title">Event Title:  <input class="title-input" placeholder="Title" type="text" name="title" required></p>
+          <p class="event-time">Event Time: <input class="time-input" type="time" name="time" required min="00:00" max="23:59" step="1"></p>
+          <p class="event-location">Event Location: <input class="address-input" placeholder="Address" type="text" name="address" required></p>
+          <p class="event-date">Event Date: <input class="date-input" type="date" name="date" required></p>
+          <p class="event-length">Event Duration: <input class="duration-input" placeholder="... Hours" type="number" name="duration" required></p>
+          <br>
+          <div class="visibility-toggle">
+              <p>Public <input type="radio" name="answer" value="0"></p>
+              <p>Private <input type="radio" name="answer" value="1" checked></p>
+              <p>Pinned <input type="checkbox" name="pinned"> </p>
+          </div>
+
+        </div>
+        </div>
+        <div class="event-content">
+          <h3 class="notes">Notes: </h3>
+          <textarea required name="content" class="content-input" style="white-space: pre-wrap;" onkeydown="if(event.keyCode === 13) {return true}" placeholder="Input your notes here"></textarea>
         </div>
 
         <div class="event-buttons">
-          <button class="dotted-button" type="button">RSVP</button>
-          <span class="attendees">321 attending</span>
+          <button class="delete" type="submit">Delete</button>
 
+          <button class="post" type="submit">Post</button>
+          <button class="cancel" type="submit">Cancel</button>
         </div>
-      </div>
+      </form>
       </div>
   </main>
 </body>

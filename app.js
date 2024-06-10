@@ -8,12 +8,20 @@ var mainFeedRouter = require('./routes/1');
 var groupRouter = require('./routes/2');
 var groupManagerRouter = require('./routes/3');
 var viewUserRouter = require('./routes/4');
+var viewEventRouter = require('./routes/5');
+var editEventRouter = require('./routes/6');
+var editPostRouter = require('./routes/7');
+var viewMyOrgsRouter = require('./routes/9');
+var viewAdminOrgsRouter = require('./routes/18');
+var viewPendingOrgsRouter = require('./routes/19');
+var viewBranchOrgsRouter = require('./routes/20');
+var createNewOrgRouter = require('./routes/21');
 
 // database initialisation
 var sql = require('mysql');
 var databasePool = sql.createPool({
-    host: 'localhost',
-    database: 'database',
+    host: "localhost",
+    database: "uDatabase"
 });
 
 var app = express();
@@ -38,6 +46,14 @@ app.use('/', mainFeedRouter);
 app.use('/group', groupRouter);
 app.use('/groupManager', groupManagerRouter);
 app.use('/Users', viewUserRouter);
+app.use('/Event', viewEventRouter);
+app.use('/editEvent', editEventRouter);
+app.use('/editPost', editPostRouter);
+app.use('/viewMyOrgs', viewMyOrgsRouter);
+app.use('/viewAdminOrgs',viewAdminOrgsRouter);
+app.use('/viewPendingOrgs', viewPendingOrgsRouter);
+app.use('/viewBranchOrgs', viewBranchOrgsRouter);
+app.use('/createNewOrg', createNewOrgRouter);
 
 module.exports = app;
 

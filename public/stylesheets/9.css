@@ -19,7 +19,7 @@ body {
     padding: 20px;
   }
 
-  .group-container {
+  #group-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -61,15 +61,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
     position: relative;
-  }
-
-  .dotted-outline {
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    border: 2px dotted #721c24;
-    border-radius: 7px;
-    z-index: 0;
+    outline-width: 2px;
+    outline-color: #721c24;
+    outline-style: dotted;
   }

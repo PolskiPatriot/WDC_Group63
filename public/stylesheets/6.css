@@ -31,35 +31,135 @@ body {
     gap: 20px;
   }
 
+  .form {
+    margin:0;
+    padding:0;
+  }
+
   .event-container {
-    background-color: #f8f9fa;
+    background-color: #f3f3f3;
     border-radius: 10px;
     padding: 20px;
     flex: 1 1 300px;
+    width: 90vw;
   }
 
   .event-details {
-    background-color: #ffffff;
+
     border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    width: 25vw;
+    float: left;
+  }
+
+  .notes {
+    margin-top: 0px;
+
   }
 
   .event-info {
+    margin-top:0;
     margin-bottom: 10px;
   }
 
-  .event-title, .event-time, .event-location, .event-date, .event-length {
-    font-size: 24px;
+  .event-info p {
+    font-size:20px;
     margin-bottom: 5px;
   }
 
-  .event-buttons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  .event-title input, .event-time input, .event-location input, .event-date input, .event-length input{
+    font-size: 18px;
+    margin-bottom: 5px;
+    width: 120px;
+    background-color: transparent;
+    color: black;
+    border: 0px;
   }
 
+  .event-title input::placeholder, .event-time input::placeholder, .event-location input::placeholder, .event-date input::placeholder, .event-length input::placeholder{
+    color:lightgray;
+  }
+
+  .visibility-toggle {
+    margin-top:50px;
+
+  }
+
+  .visibility-toggle input {
+    margin-left:0.5em;  
+    -ms-transform: scale(1.5);
+    -webkit-transform: scale(1.5) ;
+    transform: scale(1.5);
+    vertical-align: middle;
+  }
+
+  .event-buttons {
+    margin-top: 9.5%;
+    display: inline;
+    align-items: center;
+    float: right;
+    margin-bottom: 5px;
+  }
+
+  .event-buttons button {
+    display: inline-block;
+    font-size: 2em;
+    width: 7.5vw;
+    border-radius: 1em;
+    border-style:solid;
+    background-color: transparent;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+  }
+
+  .event-buttons button:hover {
+    background-color: #dddddd;
+  }
+  .event-buttons button:active {
+    background-color: #aaaaaa;
+  }
+
+  .delete {
+    border-color: black;
+  }
+
+  .post {
+    border-color: #05ab05;
+  }
+
+  .cancel {
+    border-color: red;
+  }
+
+  .event-content {
+    width: 75vw;
+    margin-top: 0%;
+    font-size: 1.5em;
+    text-align: justify;
+  }
+
+  .event-content h3 {
+    font-weight: normal;
+    font-size: 2em;
+  }
+
+  .content-input {
+    font-size: 18px;
+    height: 20vh;
+    width: 45vw;
+  }
+
+  .content-input textarea {
+    height: 10vh;
+    width: 45vw;
+  }
+
+  textarea {
+    resize:none;
+  }
   .dotted-button {
     background-color: #4285f4;
     color: white;
@@ -114,6 +214,7 @@ body {
   }
   .details-title{
     font-size: 35px;
+    margin-top: 10px;
   }
 
   .group-info {
@@ -138,9 +239,9 @@ body {
     background-position: center;
     background-size: cover;
     width: 100%;
-    height: 1%;
-    padding: 200px;
-    overflow: hidden;
+    height: 10%;
+    padding: 150px;
+    overflow:scroll;
     z-index: -1;
   }
   .imageadd {
@@ -148,6 +249,14 @@ body {
   width: 5%;
   margin-top: 1%;
   margin-right: 2%;
+  }
+
+  .imageadd:hover {
+    cursor: pointer;
+  }
+
+  .imageadd:active {
+    background-color: #aaaaaa;
   }
 
 

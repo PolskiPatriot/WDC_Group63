@@ -43,6 +43,7 @@ body {
     z-index: 0;
     font-size: 1em;
     font-family: sans-serif;
+    margin-top: 150px;
   }
   #pageTitle{
     position: absolute;

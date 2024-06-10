@@ -18,34 +18,47 @@
     <main>
         <div class="group-Banner">
 
-            <a class="create">New Post</a>
-            <a class="create">New Event</a>
+            <a class="create" href="5.html">New Post</a>
+            <a class="create" href="/editEvent">New Event</a>
         </div>
 
 
         <div class="posts-container">
             <h1>Pinned Posts</h1>
             <div class="pinned-posts">
-
+                <%
+                if (pinnedData.length > 0) {
+                    pinnedData.forEach(function(postData) {
+                        %>
                 <div class="post">
                     <div class="post-header">
                         <div class="post-title">
                             <img src="/images/headerLogo.png" alt="Logo">
-                            <h2>Untitled Post</h2>
+                            <h2> <%= postData.title %> </h2>
                         </div>
 
-                        <p class="post-type" href="#">
-                            Update
-                        </p>
+                        <%
+                                if (!postData.eventID){
+                                %>
+                                    <p class="post-type" href="#">
+                                        Update
+                                    </p>
+                                <%
+                                    } else {
+                                %>
+                                <a href="/5.html">
+                                    <p class="post-type" href="#">
+                                        Event
+                                    </p>
+                                </a>
+                                    <%
+                                 }
+                                 %>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p> <%= postData.content%> </p>
                     <div class="post-footer">
                         <div class="likes-display">
-                            <p>100+</p>
+                            <p><%= postData.likeCount %> </p>
                             <img src="/images/LikesIcon.jpeg" alt="likesIcon">
                         </div>
                         <div class="event-rsvp">
@@ -54,102 +67,86 @@
                         </div>
                     </div>
                 </div>
+                <%
+            })
+        } else {
+        %>
+            <div class="empty">
+                <p> There are no pinned Posts</p>
+            </div>
+                <%
+                    }
+                %>
             </div>
 
 
 
             <h1>Recent Posts</h1>
             <div class="recent-posts">
-
+                <%
+                if (recentData.length > 0) {
+                    recentData.forEach(function(postData) {
+                        %>
                 <div class="post">
                     <div class="post-header">
                         <div class="post-title">
                             <img src="/images/headerLogo.png" alt="Logo">
-                            <h2>Untitled Post</h2>
+                            <h2> <%= postData.title %> </h2>
                         </div>
 
-                        <p class="post-type" href="#">
-                            Event
-                        </p>
+                        <%
+                                if (!postData.EventID) {
+                                %>
+                                    <p class="post-type" href="#">
+                                        Update
+                                    </p>
+                                <%
+                                    } else {
+                                %>
+                                <a href="event?EventID=0x<%= postData.TrueEventID %>">
+                                    <p class="post-type" href="#">
+                                        Event
+                                    </p>
+                                </a>
+                                    <%
+                                 }
+                                 %>
                     </div>
 
-                    <img class="event-image" src="/images/eventImage.png" alt="event Image">
+                    <!--<img class="event-image" src="/images/eventImage.png" alt="event Image">-->
 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p> <%= postData.content %> </p>
 
                     <div class="post-footer">
                         <div class="likes-display">
-                            <p>100+</p>
+                            <p> <%= postData.likeCount %> </p>
                             <img src="/images/LikesIcon.jpeg" alt="likesIcon">
                         </div>
-                        <div class="event-rsvp">
-                            <button type="submit"> Edit</button>
-                            <p> 321 attending </p>
-
-                        </div>
+                        <%
+                                if (postData.EventID) {
+                                %>
+                                <div class="event-rsvp">
+                                    <p> <%= postData.responseCount %> attending </p>
+                                    <button type="submit"> edit</button>
+                                </div>
+                                <%
+                                    }
+                                %>
                     </div>
                 </div>
-
-                <div class="post">
-                    <div class="post-header">
-                        <div class="post-title">
-                            <img src="/images/headerLogo.png" alt="Logo">
-                            <h2>Untitled Post</h2>
-                        </div>
-
-                        <p class="post-type" href="#">
-                            Update
-                        </p>
+                <%
+                    })
+                } else {
+                %>
+                    <div class="empty">
+                        <p> This organisation has no posts</p>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <div class="likes-display">
-                        <p>100+</p>
-                        <img src="/images/LikesIcon.jpeg" alt="likesIcon">
-                    </div>
-                    <div class="event-rsvp">
-                        <button type="submit"> Edit</button>
-
-                    </div>
-                </div>
-
-                <div class="post">
-                    <div class="post-header">
-                        <div class="post-title">
-                            <img src="/images/headerLogo.png" alt="Logo">
-                            <h2>Untitled Post</h2>
-                        </div>
-
-                        <p class="post-type" href="#">
-                            Event
-                        </p>
-                    </div>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-                    <div class="post-footer">
-                        <div class="likes-display">
-                            <p>100+</p>
-                            <img src="/images/LikesIcon.jpeg" alt="likesIcon">
-                        </div>
-                        <div class="event-rsvp">
-                            <button type="submit"> Edit</button>
-                        </div>
-                    </div>
-                </div>
+                    <%if (recentData.length >3) { %>
+                    <a class="extend-list">See More</a>
+                <%
+                    }}
+                %>
             </div>
-            <a class="extend-list">See More</a>
         </div>
 
 
