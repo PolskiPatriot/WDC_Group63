@@ -63,7 +63,7 @@
             console.log('Given Name: ' + responsePayload.given_name);
             console.log('Family Name: ' + responsePayload.family_name);
             console.log("Email: " + responsePayload.email);
-            fetch('/google-signup', {
+            fetch('/SignUp/google-signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -103,7 +103,7 @@
                 return;
             }
 
-            fetch('/signup', {
+            fetch('/SignUp/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

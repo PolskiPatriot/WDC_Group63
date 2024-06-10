@@ -48,7 +48,7 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            fetch('/login', {
+            fetch('/Signin/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -78,7 +78,7 @@
             console.log('Given Name: ' + responsePayload.given_name);
             console.log('Family Name: ' + responsePayload.family_name);
             console.log("Email: " + responsePayload.email);
-            fetch('/google-login', {
+            fetch('/Signin/google-login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
