@@ -18,35 +18,94 @@
     <div class= "banner"></div>
       <div class="event-container">
         <div class="event-details">
-          <h2>Group Name</h2>
+          <h2><%= groupData.orgName %></h2>
           <div class="event-info">
-            <p class="event-title">UNTITLED EVENT</p>
-            <p class="event-time">SUNDAY 8am - 10pm</p>
-            <p class="event-location">Group Location</p>
-            <p class="event-date">8th - 9th Feb</p>
+            <p class="event-title"><%= postData.title %></p>
+            <p class="event-time">
+              <% if (postData.startDate.getHours() % 12 < 10) { %>
+                <% if (postData.startDate.getMinutes() < 10) { %>
+                  0<%= postData.startDate.getHours() % 12 %>:0<%= postData.startDate.getMinutes() %>
+                  <% } else { %>
+                    0<%= postData.startDate.getHours() % 12 %>:<%= postData.startDate.getMinutes() %>
+                  <% } %>
+
+              <% } else { %>
+                <% if (postData.startDate.getMinutes() < 10) { %>
+                  <%= postData.startDate.getHours() % 12 %>:0<%= postData.startDate.getMinutes() %>
+                <% } else { %>
+                  <%= postData.startDate.getHours() % 12 %>:<%= postData.startDate.getMinutes() %>
+                <% } %>
+              <% } %>
+
+              <% if (postData.startDate.getHours() > 12) { %>
+                pm
+              <% } else { %>
+                am
+                <% } %>
+
+              -
+              <% if (postData.endDate.getHours() % 12 < 10) { %>
+                <% if (postData.endDate.getMinutes() < 10) { %>
+                  0<%= postData.endDate.getHours() % 12 %>:0<%= postData.endDate.getMinutes() %>
+                  <% } else {
+                   %>
+                   0<%= postData.endDate.getHours() % 12 %>:<%= postData.endDate.getMinutes() %>
+                   <% } %>
+
+             <% } else {
+              %>
+              <% if (postData.endDate.getMinutes() < 10) { %>
+                <%= postData.endDate.getHours() % 12 %>:0<%= postData.endDate.getMinutes() %>
+                <% } else {
+                 %>
+                 <%= postData.endDate.getHours() % 12 %>:<%= postData.endDate.getMinutes() %>
+                 <% } %>
+              <% } %>
+
+              <% if (postData.endDate.getHours() > 12) { %>
+                pm
+              <% } else { %>
+                am
+                <% } %>
+
+            </p>
+            <p class="event-location"><%= postData.location %></p>
+            <p class="event-date">
+              <%= postData.startDate.toLocaleString('default', {weekday: 'long'}) %>
+              <%= postData.startDate.getDate() %><% switch (postData.startDate.getDate() % 10) {
+                case 1: %>st <% break;
+                case 2: %>nd <% break;
+                case 3: %>rd <% break;
+                default: %>th  <% break; %>
+            <% } %>
+            <%= postData.startDate.toLocaleString('default', {month: 'long'}) %>
+
+            </p>
           </div>
           <div class="event-buttons">
             <button class="dotted-button" type="button">RSVP</button>
-            <span class="attendees">321 attending</span>
+            <span class="attendees"><%= postData.responseCount %> attending</span>
           </div>
         </div>
         <div class="details-container">
           <div class="details">
             <h3>Details</h3>
-            <p class="responded">321 Responded</p>
-            <p class="address">Address: Address</p>
-            <p class="duration">Duration: 10 hrs</p>
+            <p class="responded"><%= postData.responseCount %> Responded</p>
+            <p class="address">Address: <%= postData.location %></p>
+            <p class="duration">Duration: <%= postData.startDate.getHours() - postData.endDate.getHours()%> hrs</p>
             <p class="privacy">Public</p>
           </div>
+          <div class="notes-container">
             <h3>Notes:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dui augue, posuere et finibus et, elementum sed est. Nulla lectus erat, malesuada vel consectetur sit amet, pulvinar non justo. Integer porttitor, elit et euismod euismod, mauris neque lobortis mi, sed rhoncus diam urna nec nulla. Ges graesus velit tempor mi dignissim varius.</p>
-        </div>
+            <p> <%= postData.content %></p>
+          </div>
+          </div>
       </div>
     <div class="group-info">
-      <h2>Group name</h2>
-      <p class="members">12312 Members</p>
+      <h2><%= groupData.orgName %></h2>
+      <p class="members"><%= groupData.memberCount %> Members</p>
       <p class="about">About</p>
-      <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dui augue, posuere et finibus et, elementum sed est. Nulla lectus erat, malesuada vel consectetur sit.</p>
+      <p class="description"><%= groupData.aboutOrg %> </p>
       <button class="dotted-button" type="button">Join</button>
     </div>
   </main>

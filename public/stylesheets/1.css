@@ -43,7 +43,6 @@ ul {
 
 .post {
   background-color: white;
-  flex-grow: auto;
   display: block;
   border-radius: 20px;
   padding: 10px;

@@ -1,72 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users</title>
     <link rel="stylesheet" href="/stylesheets/19.css">
     <link rel="stylesheet" href="/stylesheets/header.css">
+    <link rel="stylesheet" href="/stylesheets/settingsSidebar.css">
+    <script src="js/19.js"></script>
 </head>
 
 <body>
+    <iframe class="headerIframe" title="header" name="header" id="header" src="header.html" width="100%"
+        height="120px"></iframe>
+    <iframe class="headerIframe" title="dropdown" name="dropdown" id="dropdown" src="dropdown.html" width="315px"
+        height="460px"></iframe>
+    <main id="col">
+        <iframe class="sidebarIframe" title="settingsSidebar" name="settingsSidebar" id="settingsSidebar"
+            src="settingsSidebar.html" width="320px" height="380px"></iframe>
+        <h1 id="pageTitle">Pending Organisations</h1>
+        <div id="organisation-container">
+            <form class="search">
+                <input type="text" placeholder="Search">
+            </form>
 
-    <iframe class="headerIframe" title="header" name="header" id="header" src="header.html" width="100%" height="120px"></iframe>
-    <iframe class="headerIframe" title="dropdown" name="dropdown" id="dropdown" src="dropdown.html" width="315px" height="460px"></iframe>
-
-
-    <div class="links-list">
-
-        <ul class="list">
-        <li><a href="/15.html">My Profile</a></li>
-        <li><a href="/16.html">Contact Details</a></li>
-        <li><a href="/17.html">Terms and Conditions</a></li>
-        <li><a href="/18.html">Organisations</a></li>
-        <li><a href="#" style="color:black">Pending Organisations</a></li>
-        <li><a href="/21.html">Create Organisation</a></li>
-        <li><a href="#">Delete Profile</a></li>
-        </ul>
-    </div>
-
-    <div class="organisation-header">
-        <h1>Pending Organisations</h1>
-        <div class="search">
-            <input type="text" placeholder="Search">
         </div>
-    </div>
-    <div class="organisation-container">
-
-        <div class="organisation">
-            <img src="/images/groupLogo.png" alt="logo">
-            <span>Organisation Name</span>
-            <a>Deny</a>
-            <a>Verify</a>
-        </div>
-        <div class="organisation">
-            <img src="/images/groupLogo.png" alt="logo">
-            <span>Organisation Name</span>
-            <a>Deny</a>
-            <a>Verify</a>
-        </div>
-        <div class="organisation">
-            <img src="/images/groupLogo.png" alt="logo">
-            <span>Organisation Name</span>
-            <a>Deny</a>
-            <a>Verify</a>
-        </div>
-        <div class="organisation">
-            <img src="/images/groupLogo.png" alt="logo">
-            <span>Organisation Name</span>
-            <a>Deny</a>
-            <a>Verify</a>
-        </div>
-        <div class="organisation">
-            <img src="/images/groupLogo.png" alt="logo">
-            <span>Organisation Name</span>
-            <a>Deny</a>
-            <a>Verify</a>
-        </div>
-
-    </div>
-
+        <script>load()</script>
+    </main>
 </body>
+
 </html>

@@ -1,0 +1,58 @@
+#links-list {
+    font-size: 6.5vw;
+    font-family: sans-serif;
+    align-items: center;
+    display: flex;
+}
+
+.list {
+    list-style: none;
+    padding-left: 1vw;
+}
+
+#links-list a {
+    color: rgb(82, 82, 82);
+}
+
+#links-list a:hover {
+    color: black;
+}
+
+#links-list li {
+    margin-top: 1em;
+    margin-left: 1em;
+}
+
+.sidebarIframe {
+    border-width: 0px;
+    align-self: center;
+    width: 320px;
+}
+
+#col {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    margin: 0;
+}
+
+#profileDelete {
+    background-color: transparent;
+    border: 0px;
+    font-size: 6.5vw;
+    padding: 0px;
+    color: rgb(82, 82, 82);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+#profileDelete:hover {
+    color: black;
+    cursor: pointer;
+}
+
+#pageTitle{
+  position: absolute;
+  left: 1vw;
+  top: 11vh;
+  font-size: 5em;
+}
