@@ -12,6 +12,10 @@ var viewEventRouter = require('./routes/5');
 var editEventRouter = require('./routes/6');
 var editPostRouter = require('./routes/7');
 var viewMyOrgsRouter = require('./routes/9');
+var signinRouter = require('./routes/10');
+var signupRouter = require('./routes/13');
+var myProfile = require('./routes/15');
+var contactDetails = require('./routes/16');
 var viewAdminOrgsRouter = require('./routes/18');
 var viewPendingOrgsRouter = require('./routes/19');
 var viewBranchOrgsRouter = require('./routes/20');
@@ -50,10 +54,13 @@ app.use('/Event', viewEventRouter);
 app.use('/editEvent', editEventRouter);
 app.use('/editPost', editPostRouter);
 app.use('/viewMyOrgs', viewMyOrgsRouter);
+app.use('/Signin', signinRouter);
+app.use('/SignUp', signupRouter);
+app.use('/myProfile', myProfile);
+app.use('/contactDetails', contactDetails);
 app.use('/viewAdminOrgs',viewAdminOrgsRouter);
 app.use('/viewPendingOrgs', viewPendingOrgsRouter);
 app.use('/viewBranchOrgs', viewBranchOrgsRouter);
 app.use('/createNewOrg', createNewOrgRouter);
 
 module.exports = app;
-
