@@ -1,59 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users</title>
     <link rel="stylesheet" href="/stylesheets/18.css">
     <link rel="stylesheet" href="/stylesheets/header.css">
+    <link rel="stylesheet" href="/stylesheets/settingsSidebar.css">
+    <script src="js/18.js"></script>
 </head>
 
 <body>
 
-    <iframe class="headerIframe" title="header" name="header" id="header" src="header.html" width="100%" height="120px"></iframe>
-    <iframe class="headerIframe" title="dropdown" name="dropdown" id="dropdown" src="dropdown.html" width="315px" height="460px"></iframe>
+    <iframe class="headerIframe" title="header" name="header" id="header" src="header.html" width="100%"
+        height="120px"></iframe>
+    <iframe class="headerIframe" title="dropdown" name="dropdown" id="dropdown" src="dropdown.html" width="315px"
+        height="460px"></iframe>
 
-    <div class="links-list">
-
-        <ul class="list">
-        <li><a href="/15.html">My Profile</a></li>
-        <li><a href="/16.html">Contact Details</a></li>
-        <li><a href="/17.html">Terms and Conditions</a></li>
-        <li><a href="/19.html" style="color:black">Organisations</a></li>
-        <li><a href="/21.html">Create Organisation</a></li>
-        <li><a href="#">Delete Profile</a></li>
-        </ul>
-    </div>
-
-    <div class="organisation-container">
-        <h1>Organisations</h1>
-
-        <div class="organisation">
-            <img src="/images/groupLogo.png" alt="logo">
-            <span>Organisation Name</span>
-            <a>Manage Branches</a>
+    <main id="col">
+        <iframe class="sidebarIframe" title="settingsSidebar" name="settingsSidebar" id="settingsSidebar"
+            src="settingsSidebar.html" width="320px" height="380px"></iframe>
+        <h1 id="pageTitle">Organisations</h1>
+        <div id="organisation-container">
         </div>
-        <div class="organisation">
-            <img src="/images/groupLogo.png" alt="logo">
-            <span>Organisation Name</span>
-            <a>Manage Branches</a>
-        </div>
-        <div class="organisation">
-            <img src="/images/groupLogo.png" alt="logo">
-            <span>Organisation Name</span>
-            <a>Manage Branches</a>
-        </div>
-        <div class="organisation">
-            <img src="/images/groupLogo.png" alt="logo">
-            <span>Organisation Name</span>
-            <a>Manage Branches</a>
-        </div>
-        <div class="organisation">
-            <img src="/images/groupLogo.png" alt="logo">
-            <span>Organisation Name</span>
-            <a>Manage Branches</a>
-        </div>
-
-    </div>
+    </main>
+    <script>load()</script>
 </body>
+
 </html>

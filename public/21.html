@@ -7,6 +7,7 @@
     <title>Users</title>
     <link rel="stylesheet" href="/stylesheets/21.css">
     <link rel="stylesheet" href="/stylesheets/header.css">
+    <link rel="stylesheet" href="/stylesheets/settingsSidebar.css">
 
 </head>
 
@@ -15,41 +16,34 @@
         height="120px"></iframe>
     <iframe class="headerIframe" title="dropdown" name="dropdown" id="dropdown" src="dropdown.html" width="315px"
         height="460px"></iframe>
-    <div class="links-list">
-        <ul class="list">
-            <li><a href="/15.html">My Profile</a></li>
-            <li><a href="/16.html">Contact Details</a></li>
-            <li><a href="/17.html">Terms and Conditions</a></li>
-            <li><a href="/18.html">Organisations</a></li>
-            <li><a href="#" style="color:black">Create Organisation</a></li>
-            <li><a href="#">Delete Profile</a></li>
-        </ul>
-    </div>
-    <div class="addForm" style="z-index: 1;">
-        <h1 style="text-align: left; margin-left: 1vw;">Create Organisation</h1>
-        <div class="subAddForm">
-            <div id="uploadImageDiv">
-                <label id="imageTag">Upload Image</label><button type="button" id="addImage"></button>
+    <main id="col">
+        <iframe class="sidebarIframe" title="settingsSidebar" name="settingsSidebar" id="settingsSidebar"
+            src="settingsSidebar.html" width="320px" height="380px"></iframe>
+        <h1 id="pageTitle">Create Organisation</h1>
+        <div class="addForm" style="z-index: 1;">
+            <div class="subAddForm">
+                <div id="uploadImageDiv">
+                    <label id="imageTag">Upload Image</label><button type="button" id="addImage"></button>
+                </div>
+                <p>Name</p>
+                <input type="text" id="orgName" name="orgName" placeholder="Enter Organisation Name" style>
+                <p>About</p>
+                <textarea class="organisationCreateText"
+                    placeholder="Here is your about page! Feel free to type anything..." rows="10"></textarea><br>
+                <button type="button" class="OK">OK</button>
+                <button type="button" class="CANCEL">CANCEL</button>
+
             </div>
-            <p>Name</p>
-            <input type="text" id="orgName" name="orgName" placeholder="Enter Organisation Name" style>
-            <p>About</p>
-            <textarea class="organisationCreateText"
-                placeholder="Here is your about page! Feel free to type anything..."></textarea><br>
-            <button type="button" class="OK">OK</button>
-            <button type="button" class="CANCEL">CANCEL</button>
-
         </div>
-    </div>
 
-    <div class="deleteConfirmation" style="z-index: 2;">
-        <span>Are you sure you want to delete your account?</span>
-        <div id="confirmationButton">
-            <button type="button" class="OK">OK</button>
-            <button type="button" class="CANCEL">CANCEL</button>
+        <div class="deleteConfirmation" style="z-index: 2;">
+            <span>Are you sure you want to delete your account?</span>
+            <div id="confirmationButton">
+                <button type="button" class="OK">OK</button>
+                <button type="button" class="CANCEL">CANCEL</button>
+            </div>
         </div>
-    </div>
-
+    </main>
 </body>
 
 </html>
