@@ -16,26 +16,37 @@
     <div class= "banner"></div>
 
     <div class="event-container">
-      <div class="event-details">
-        <h2 class="details-title">New Post</h2>
-        <div class="searchBox">
-            <input type="text" class="pill-textbox" placeholder="Post Title...">
+      <form method="POST" id="eventForm" action="editPost/0xB4C1790B18B711EF9D3B0242AC110002">
+
+        <div class="title-container">
+          <h2 class="details-title">New Post</h2>
+          <div class="searchBox">
+              <input required name="title" type="text" class="pill-textbox" placeholder="Post Title...">
+          </div>
+          <p></p>
         </div>
-        <div class="notesTitle">
-          <p>Info: </p>
+
+        <div class="notes-container">
+          <h2>Info: </h2>
+          <textarea name="content" placeholder="Enter your text here" required maxlength="240" ></textarea>
         </div>
-        <div class="notes">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dui augue, posuere et finibus et, elementum sed est. Nulla lectus erat, malesuada vel consectetur sit amet, pulvinar non justo. Integer porttitor, elit et euismod euismod, mauris neque lobortis mi, sed rhoncus diam urna nec nulla. Cras egestas velit tempor mi dignissim varius.</p>
+
+
+        <div class="visibility-toggle">
+          <p>Public  <input type="radio" name="answer" value="0"></p>
+          <p>Private <input type="radio" name="answer" value="1" checked></p>
+          <p>Pinned <input type="checkbox" name="pinned"> </p>
         </div>
 
 
         <div class="event-buttons">
-          <button class="dotted-button" type="button">RSVP</button>
-          <span class="attendees">321 attending</span>
+          <button class="delete" type="submit">Delete</button>
 
+          <button class="post" type="submit">Post</button>
+          <button class="cancel" type="submit">Cancel</button>
         </div>
-      </div>
-      </div>
+      </form>
+    </div>
   </main>
 </body>
 </html>

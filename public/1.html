@@ -56,50 +56,58 @@
                 <a href="#" class="seeMore">See More</a>
             </div>
             <div class="column" id="middleColumn">
+
+                <%
+                if (recentData.length > 0) {
+                    recentData.forEach(function(postData) {
+                        %>
                 <div class="post">
-                    <img src="https://i.imgur.com/ZWJboJH.png" alt="a person carrying empty plastic bottles" />
-                    <div class="postTitle"><span class="smallCircle"></span>Untitled title</div>
-                    <div class="postType">Event</div>
-                    <p class="postContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dui augue,
-                        posuere et
-                        finibus et,
-                        elementum sed est. Nulla lectus erat, malesuada vel consectetur sit amet, pulvinar non justo.
-                        Integer porttitor, elit et euismod euismod</p>
+                    <!--<img src="https://i.imgur.com/ZWJboJH.png" alt="a person carrying empty plastic bottles" /> -->
+                    <div class="postTitle"><span class="smallCircle"></span> <%= postData.title %> </div>
+
+                    <%
+                                if (!postData.EventID) {
+                                %>
+                                <div class="postType">Update</div>
+                                <%
+                                    } else {
+                                %>
+
+                                <div class="postType">Event</div>
+                                    <%
+                                 }
+                                 %>
+
+                    <p class="postContent"> <%= postData.content %> </p>
+
+                    <%
+                    if (postData.EventID) {
+                    %>
                     <button type="button" class="eventRSVP">RSVP</button>
-                    <div class="eventAttendees">321 attending</div>
-                    <div class="postLikes">
-                        100+
-                        <img src="/images/LikesIcon.jpeg" alt="likesIcon">
-                    </div>
-                </div>
-                <div class="post">
-                    <div class="postTitle"><span class="smallCircle"></span>Untitled title</div>
-                    <div class="postType">Update</div>
-                    <p class="postContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dui augue,
-                        posuere et
-                        finibus et,
-                        elementum sed est. Nulla lectus erat, malesuada vel consectetur sit amet, pulvinar non justo.
-                        Integer porttitor, elit et euismod euismod</p>
+                    <div class="eventAttendees"><%= postData.responseCount %> attending</div>
+                    <%
+                        }
+                    %>
 
                     <div class="postLikes">
-                        100+
+                        <%= postData.likeCount %>
                         <img src="/images/LikesIcon.jpeg" alt="likesIcon">
                     </div>
                 </div>
-                <div class="post">
-                    <div class="postTitle"><span class="smallCircle"></span>Untitled title</div>
-                    <div class="postType">Post</div>
-                    <p class="postContent">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dui augue,
-                        posuere et
-                        finibus et,
-                        elementum sed est. Nulla lectus erat, malesuada vel consectetur sit amet, pulvinar non justo.
-                        Integer porttitor, elit et euismod euismod</p>
+                <%
+            })
+        } else {
+        %>
+            <div class="empty">
+                <p> This organisation has no posts</p>
+            </div>
+            <%if (recentData.length >3) { %>
+            <a class="extend-list">See More</a>
+        <%
+            }}
+        %>
 
-                    <div class="postLikes">
-                        100+
-                        <img src="/images/LikesIcon.jpeg" alt="likesIcon">
-                    </div>
-                </div>
+
             </div>
             <div class="column" id="rightColumn">
                 <h1 class="heading">Quick Links</h1>
