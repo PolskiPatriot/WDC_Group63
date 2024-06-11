@@ -4,6 +4,8 @@ const crypto = require('crypto');
 const argon2 = require('argon2');
 const { generateFromEmail } = require("unique-username-generator");
 var router = express.Router();
+const { OAuth2Client } = require('google-auth-library');
+const client = new OAuth2Client('119246077266-568pi1sojct64fdrvn10enalph5aqgg3.apps.googleusercontent.com');
 
 /* GET home page. */
 router.get('/', function (req, res) {
