@@ -26,7 +26,7 @@ router.post('/google-login', async (req, res) => {
         req.pool.getConnection((error, connection) => {
             if (error) {
                 console.error('Error getting connection from pool: ' + error);
-                return res.status(500).send('Error getting connection from pool');
+                return res.status(500).json({ success: false, message: 'Error getting connection from pool' });
             }
 
             connection.query(query, [payload.email], (err, results) => {
@@ -34,24 +34,23 @@ router.post('/google-login', async (req, res) => {
 
                 if (err) {
                     console.error('Error fetching data: ' + err);
-                    return res.status(500).send('Error fetching data');
+                    return res.status(500).json({ success: false, message: 'Error fetching data' });
                 }
 
                 if (results.length === 0) {
-                    return res.status(401).send('User not found');
+                    return res.status(401).json({ success: false, message: 'User not found' });
                 }
 
                 const userId = results[0].UserID;
                 res.cookie('userID', userId, { httpOnly: true, maxAge: 900000 });
-                res.status(200).send('Login successful');
+                res.status(200).json({ success: true, message: 'Login successful' });
             });
         });
     } catch (error) {
         console.error('Error verifying token: ' + error);
-        res.status(500).send('Error verifying token');
+        res.status(500).json({ success: false, message: 'Error verifying token' });
     }
 });
-
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const query = 'SELECT UserID, password FROM Users WHERE email = ?';
