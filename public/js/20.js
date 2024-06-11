@@ -33,6 +33,7 @@ function load() {
             }
         }
     };
-    xhttp.open('GET', '/viewBranchOrgs/getContent', true);
+    const mainOrgTarget = new URLSearchParams(window.location.search);
+    xhttp.open('GET', '/viewBranchOrgs/getContent?'+mainOrgTarget, true);
     xhttp.send();
 }

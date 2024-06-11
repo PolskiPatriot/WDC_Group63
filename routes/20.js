@@ -10,13 +10,15 @@ router.get('/', function (req, res, next) {
 
 // receive request
 router.get('/getContent', function (req, res) {
+
   req.pool.getConnection((error, connection) => {
     if (error) {
       res.send(500);
     }
     // ADD CHECK FOR ADMIN HERE
-    var query = "SELECT orgName FROM BranchOrg WHERE MainOrgID = (SELECT MainOrgID FROM MainOrg WHERE orgName = 'RSPCA') ORDER BY orgName ASC;";
-    connection.query(query, function (err, groupInfo) {
+  var mainOrgName = req.query.orgName;
+    var query = "SELECT orgName FROM BranchOrg WHERE MainOrgID = (SELECT MainOrgID FROM MainOrg WHERE orgName = ?) ORDER BY orgName ASC;"; // temp solution need to add url parameter
+    connection.query(query, [mainOrgName], function (err, groupInfo) {
       connection.release();
       if (err) {
         res.sendStatus(500);
@@ -26,5 +28,6 @@ router.get('/getContent', function (req, res) {
     });
   });
 });
+
 
 module.exports = router;
