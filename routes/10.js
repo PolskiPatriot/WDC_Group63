@@ -42,7 +42,7 @@ router.post('/google-login', async (req, res) => {
                 }
 
                 const userId = results[0].UserID;
-                res.cookie('userID', userId, { httpOnly: true, maxAge: 900000 });
+                res.cookie('userID', userId.toString('hex'), { httpOnly: true, maxAge: 900000 });
                 res.status(200).json({ success: true, message: 'Login successful' });
             });
         });
@@ -51,6 +51,7 @@ router.post('/google-login', async (req, res) => {
         res.status(500).json({ success: false, message: 'Error verifying token' });
     }
 });
+
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const query = 'SELECT UserID, password FROM Users WHERE email = ?';
