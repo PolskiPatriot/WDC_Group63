@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const { send } = require('process');
 var router = express.Router();
 
 /* GET home page. */
@@ -9,20 +10,22 @@ router.get('/', function (req, res, next) {
 
 
 // receive request
-router.get('/getContent', function (req, res) {
+router.post('/createOrg', function (req, res) {
+  var orgName = req.body.orgName;
+  var orgAbout = req.body.orgAbout;
+
   req.pool.getConnection((error, connection) => {
     if (error) {
       res.send(500);
     }
-    // ADD CHECK FOR ADMIN HERE
-    var query = "SELECT orgName FROM BranchOrg ORDER BY orgName ASC";
-    connection.query(query, function (err, groupInfo) {
+    var query = "INSERT INTO MainOrg VALUES (UNHEX(REPLACE(UUID(), '-','')), ?, ?, 0, NULL, 1)";
+    connection.query(query, [orgName, orgAbout], function (err, success) {
       connection.release();
       if (err) {
         res.sendStatus(500);
         return;
       }
-      res.send(groupInfo);
+      res.send('success');
     });
   });
 });

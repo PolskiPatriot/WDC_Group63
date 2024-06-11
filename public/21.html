@@ -20,29 +20,26 @@
         <iframe class="sidebarIframe" title="settingsSidebar" name="settingsSidebar" id="settingsSidebar"
             src="settingsSidebar.html" width="320px" height="380px"></iframe>
         <h1 id="pageTitle">Create Organisation</h1>
-        <div class="addForm" style="z-index: 1;">
-            <div class="subAddForm">
+        <form class="addForm" action="/createNewOrg/createOrg" method="POST">
                 <div id="uploadImageDiv">
                     <label id="imageTag">Upload Image</label><button type="button" id="addImage"></button>
                 </div>
                 <p>Name</p>
-                <input type="text" id="orgName" name="orgName" placeholder="Enter Organisation Name" style>
+                <input type="text" id="orgName" name="orgName" placeholder="Enter Organisation Name">
                 <p>About</p>
-                <textarea class="organisationCreateText"
-                    placeholder="Here is your about page! Feel free to type anything..." rows="10"></textarea><br>
-                <button type="button" class="OK">OK</button>
-                <button type="button" class="CANCEL">CANCEL</button>
+                <textarea class="organisationCreateText" name="orgAbout"
+                    placeholder="Insert info about your organisation here!" rows="10"></textarea><br>
+                <button type="submit" class="OK">OK</button>
+                <button type="reset" class="CANCEL">CANCEL</button>
+        </form>
 
-            </div>
-        </div>
-
-        <div class="deleteConfirmation" style="z-index: 2;">
+        <!-- <div class="deleteConfirmation" style="z-index: 2;">
             <span>Are you sure you want to delete your account?</span>
             <div id="confirmationButton">
                 <button type="button" class="OK">OK</button>
                 <button type="button" class="CANCEL">CANCEL</button>
             </div>
-        </div>
+        </div> -->
     </main>
 </body>
 
