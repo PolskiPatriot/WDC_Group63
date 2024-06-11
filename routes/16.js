@@ -12,84 +12,63 @@ router.get('/', function (req, res, next) {
   res.sendFile(path.join(__dirname, '../public', '10.html'));
 });
 
-router.post('/google-login', async (req, res) => {
-    const { token } = req.body;
-    try {
-        const ticket = await client.verifyIdToken({
-            idToken: token,
-            audience: '119246077266-568pi1sojct64fdrvn10enalph5aqgg3.apps.googleusercontent.com'
-        });
-        const payload = ticket.getPayload();
-
-        const query = 'SELECT UserID FROM Users WHERE email = ?';
-
-        req.pool.getConnection((error, connection) => {
-            if (error) {
-                console.error('Error getting connection from pool: ' + error);
-                return res.status(500).send('Error getting connection from pool');
-            }
-
-            connection.query(query, [payload.email], (err, results) => {
-                connection.release();
-
-                if (err) {
-                    console.error('Error fetching data: ' + err);
-                    return res.status(500).send('Error fetching data');
-                }
-
-                if (results.length === 0) {
-                    return res.status(401).send('User not found');
-                }
-
-                const userId = results[0].UserID;
-                res.cookie('userID', userId, { httpOnly: true, maxAge: 900000 });
-                res.status(200).send('Login successful');
-            });
-        });
-    } catch (error) {
-        console.error('Error verifying token: ' + error);
-        res.status(500).send('Error verifying token');
+router.get('/contact-details', (req, res) => {
+    const userId = req.cookies.userID;
+    if (!userId) {
+        return res.status(401).send({ message: 'Error' });
     }
-});
-
-router.post('/login', async (req, res) => {
-    const { email, password } = req.body;
-    const query = 'SELECT UserID, password FROM Users WHERE email = ?';
 
     req.pool.getConnection((error, connection) => {
         if (error) {
             console.error('Error getting connection from pool: ' + error);
-            return res.status(500).send({ success: false, message: 'Error getting connection from pool' });
+            return res.status(500).send('Error getting connection from pool');
         }
 
-        connection.query(query, [email], async (err, results) => {
+        const query = 'SELECT givenName, familyName, email, phonenumber FROM Users WHERE UserID = UNHEX(?)';
+        connection.query(query, [userId], (err, results) => {
             connection.release();
 
             if (err) {
                 console.error('Error fetching data: ' + err);
-                return res.status(500).send({ success: false, message: 'Error fetching data' });
+                return res.status(500).send({ err });
             }
 
             if (results.length === 0) {
-                return res.status(401).send({ success: false, message: 'Invalid email or password' });
+                return res.status(404).send({ message: 'No user found' });
             }
 
-            const storedPassword = results[0].password;
-            const userId = results[0].UserID;
-
-            try {
-                if (await argon2.verify(storedPassword, password)) {
-                    res.cookie('userID', userId.toString('hex'), { httpOnly: true, maxAge: 900000 });
-                    return res.status(200).send({ success: true, message: 'Login successful' });
-                } else {
-                    return res.status(401).send({ success: false, message: 'Invalid email or password' });
-                }
-            } catch (err) {
-                console.error('Error verifying password: ' + err);
-                return res.status(500).send({ success: false, message: 'Error verifying password' });
-            }
+            const { givenName, familyName, email, phonenumber } = results[0];
+            res.status(200).send({ givenName, familyName, email, phonenumber });
         });
     });
 });
+
+router.post('/update-contact-details', (req, res) => {
+    const userId = req.cookies.userID;
+    const { firstName, lastName, email, phonenumber } = req.body;
+
+    if (!userId) {
+        return res.status(401).send({ message: 'Unauthorized' });
+    }
+    const phoneBinary = Buffer.from(phonenumber, 'utf8'); // I got this from https://stackoverflow.com/questions/25223776/node-buffers-from-utf8-to-binary
+
+
+    const query = 'UPDATE Users SET givenName = ?, familyName = ?, email = ?, phonenumber = ? WHERE UserID = UNHEX(?)';
+    req.pool.getConnection((error, connection) => {
+        if (error) {
+            console.error('Error getting connection from pool: ' + error);
+            return res.status(500).send('Error getting connection from pool');
+        }
+        connection.query(query, [firstName, lastName, email, phoneBinary, userId], (err) => {
+            if (err) {
+                console.error('Error updating data: ' + err);
+                return res.status(500).send({ message: 'Error updating data' });
+            }
+            res.status(200).send({ message: 'Contact details updated successfully' });
+        });
+    });
+});
+
+
 
 module.exports = router;
