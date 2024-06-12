@@ -22,12 +22,26 @@
             src="settingsSidebar.html" width="320px" height="380px"></iframe>
         <h1 id="pageTitle">Branch Organisations</h1>
         <div id="org-button-container">
+            <button onclick="showNewBranchOrg()" type="button" id="addTable"></button>
             <div id="organisation-container">
                 <form class="search">
                     <input type="text" placeholder="Search">
                 </form>
             </div>
-            <button type="button" id="addTable"></button>
+            <form id="addForm" class="hidden">
+                <div id="uploadImageDiv">
+                    <label id="imageTag">Upload Image</label><button type="button" id="addImage"></button>
+                </div>
+                <p>Name</p>
+                <input type="text" id="orgName" name="orgName" placeholder="Enter Organisation Name">
+                <p>Region</p>
+                <input type="text" id="orgRegion" name="orgName" placeholder="Enter Organisation Region">
+                <p>About</p>
+                <textarea id="organisationCreateText" name="orgAbout"
+                    placeholder="Insert info about your organisation here!" rows="6"></textarea><br>
+                <button onclick="makeNewBranchOrg()" type="button" class="OK">OK</button>
+                <button type="reset" class="CANCEL">RESET</button>
+            </form>
         </div>
     </main>
     <script>load()</script>
