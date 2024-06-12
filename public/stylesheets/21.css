@@ -3,36 +3,11 @@ body {
     overflow: auto;
 }
 
-.links-list {
-    font-size: 1.2vw;
-    margin-top: 30vh;
-    margin-right: 5vw;
-    width: 15vw;
-    float: left;
-}
-
-.list {
-    list-style: none;
-    padding-left: 1vw;
-}
-
-.links-list a {
-    color: rgb(82, 82, 82);
-}
-
-.links-list a:hover {
-    color: black;
-}
-
-.links-list li {
-    margin-top: 1em;
-}
-
 .addForm {
     font-size: 1.5em;
     box-sizing: content-box;
     width: 37em;
-    height: 27em;
+    height: 18em;
     position: relative;
     overflow: auto;
     border: 0.2vw solid black;
@@ -40,7 +15,9 @@ body {
     background-color: white;
     left: 0%;
     z-index: 0;
+    margin: auto;
     margin-top: 279px;
+    padding: 20px;
 }
 
 .organisationCreateText {
@@ -52,6 +29,7 @@ body {
     background-color: #f8f8f8;
     font-size: 16px;
     resize: none;
+    margin-bottom: 10px;
 }
 
 .subAddForm {
