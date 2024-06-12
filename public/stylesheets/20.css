@@ -65,101 +65,108 @@ body {
     margin-top: 120px;
 }
 
-.addForm {
-    font-size: 1.5vw;
-    top: 1vw;
+
+#addForm {
+    font-size: 1.5em;
     box-sizing: content-box;
-    width: 40vw;
-    height: 35vw;
-    position: relative;
-    overflow: auto;
+    width: 37em;
+    height: 22em;
+    position: absolute;
     border: 0.2vw solid black;
-    border-radius: 2vw;
+    border-radius: 20px;
     background-color: white;
-    left: 35%;
-    z-index: 1;
+    padding: 20px;
+    margin: auto;
+    align-self: center;
+    top: 30%;
 }
 
-.organisationCreateText {
-    width: 80%;
-    height: 15vw;
+#organisationCreateText {
+    width: 90%;
     padding: 12px 20px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
     background-color: #f8f8f8;
-    overflow-y: scroll;
     font-size: 16px;
+    resize: none;
+    margin-bottom: 10px;
 }
 
 .subAddForm {
-    margin-left: 5vw;
-    font-size: 1.2vw;
+    margin-left: 3.5em;
+    font-size: 0.9em;
 }
 
 #orgName {
     border-style: solid black;
     padding-left: 1vw;
-    font-size: 1vw;
+    font-size: 1em;
     border-radius: 1vw;
     margin-top: 0px;
 }
 
-#OK {
-    border-style: solid green;
-    border-color: #04AA6D;
-    padding-left: 2vw;
-    padding-right: 2vw;
-    font-size: 1vw;
+#orgRegion {
+    border-style: solid black;
+    padding-left: 1vw;
+    font-size: 1em;
     border-radius: 1vw;
+    margin-top: 0px;
 }
 
-#CANCEL {
+.OK {
+    border-style: solid green;
+    border-color: #04AA6D;
+    padding-left: 2em;
+    padding-right: 2em;
+    font-size: 1em;
+    border-radius: 1em;
+}
+
+.CANCEL {
     border-style: solid #990000;
     border-color: red;
-    padding-left: 1vw;
-    padding-right: 1vw;
-    font-size: 1vw;
-    border-radius: 1vw;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 1em;
+    border-radius: 1em;
 }
 
 #addImage {
     border-style: none;
-    position: absolute;
-    height: 2vw;
-    width: 2vw;
+    height: 3em;
+    width: 3em;
+    margin-left: 0.5em;
     background-image: url("/images/addImage.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    top: 9.5vw;
-    margin-left: 26vw;
-    background-color: transparent;
 }
 
-#imageTag {
+#uploadImageDiv {
     position: absolute;
-    top: 9.7vw;
-    margin-left: 18vw;
-}
-
-#addTable {
-    border-style: none;
-    position: re;
-    height: 2vw;
-    width: 2vw;
-    background-image: url("/images/AddIcon.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    background-color: transparent;
-    align-self: center;
-}
-
-#dropdown {
-    margin-top: 120px;
+    top: 2.5em;
+    left: 14.5em;
+    display: flex;
+    margin-left: 14em;
+    align-items: center;
 }
 
 #org-button-container {
     display: flex;
     flex-direction: column;
     margin-top: 220px;
+}
+
+#addTable {
+    border-style: none;
+    background-image: url("/images/AddIcon.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: transparent;
+    align-self: center;
+    padding: 20px;
+}
+
+.hidden {
+    display: none;
 }
