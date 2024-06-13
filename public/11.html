@@ -29,7 +29,7 @@
     <script>
         document.getElementById('emailForm').addEventListener('submit', function(event) {
             const email = document.getElementById('email').value;
-            fetch('/getEmail', {
+            fetch('routes/getEmail', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
