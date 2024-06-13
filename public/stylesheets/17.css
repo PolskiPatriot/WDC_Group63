@@ -1,28 +1,33 @@
 body {
-    font-family: 14px, "Helvetica", sans-serif;
-  }
+  font-family: 14px, "Helvetica", sans-serif;
+}
 
 .Terms {
-    font-size: 1.5vw;
-    top:8vw;
-    box-sizing: content-box;
-    width: 40vw;
-    height: auto;
-    position:relative;
-    overflow: auto;
-    padding-left: 1em;
-    padding-right: 1em;
-    border-radius: 2vw;
-    background-color:   white;
-    left: 0%;
-    z-index: 0;
-    font-size: 1em;
-    font-family: sans-serif;
-    margin-top: 150px;
-  }
-  #pageTitle{
-    position: absolute;
-    left: 1vw;
-    top: 11vh;
-    font-size: 5em;
-  }
+  font-size: 1.5vw;
+  top: 8vw;
+  box-sizing: content-box;
+  width: 40vw;
+  height: auto;
+  position: relative;
+  overflow: auto;
+  padding-left: 1em;
+  padding-right: 1em;
+  border-radius: 2vw;
+  background-color: white;
+  left: 0%;
+  z-index: 0;
+  font-size: 1em;
+  font-family: sans-serif;
+  margin-top: 150px;
+}
+
+#pageTitle {
+  position: absolute;
+  left: 1vw;
+  top: 11vh;
+  font-size: 5em;
+}
+
+#dropdown {
+  margin-top: 120px;
+}

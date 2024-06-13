@@ -61,3 +61,7 @@ body {
     cursor: pointer;
     color: white;
 }
+
+#dropdown {
+    margin-top: 120px;
+}

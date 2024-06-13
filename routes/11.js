@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
@@ -10,8 +11,11 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+router.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, '../public', '11.html'));
+});
 
-router.post('/getEmail', function(req, res) {
+router.post('/getEmail', function (req, res) {
     const email = req.body.email;
 
     req.pool.getConnection((error, connection) => {
@@ -21,7 +25,7 @@ router.post('/getEmail', function(req, res) {
         }
 
         const query = "SELECT * FROM Users WHERE email = ?";
-        connection.query(query, [email], function(err, results) {
+        connection.query(query, [email], function (err, results) {
             connection.release();
             if (err) {
                 res.sendStatus(500);
@@ -33,7 +37,7 @@ router.post('/getEmail', function(req, res) {
 });
 
 
-router.post('/sendEmail', function(req, res) {
+router.post('/sendEmail', function (req, res) {
     const email = req.body.email;
 
     const mailOptions = {
@@ -43,7 +47,7 @@ router.post('/sendEmail', function(req, res) {
         text: 'This is a test email sent from a Node.js application using Nodemailer.'
     };
 
-    transporter.sendMail(mailOptions, function(error, info) {
+    transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             res.status(500).send('Error sending email');
         } else {

@@ -9,7 +9,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.sendFile(path.join(__dirname, '../public', '10.html'));
+  res.sendFile(path.join(__dirname, '../public', '16.html'));
 });
 
 router.get('/contact-details', (req, res) => {
