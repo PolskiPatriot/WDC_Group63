@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const { send } = require('process');
 var router = express.Router();
 
 /* GET home page. */
