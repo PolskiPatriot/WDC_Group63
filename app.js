@@ -22,6 +22,8 @@ var viewPendingOrgsRouter = require('./routes/19');
 var viewBranchOrgsRouter = require('./routes/20');
 var createNewOrgRouter = require('./routes/21');
 
+var dropdownRouter = require('./routes/dropdown');
+
 // database initialisation
 var sql = require('mysql');
 var databasePool = sql.createPool({
@@ -36,7 +38,7 @@ app.set('views', path.join(__dirname, '/public'));
 app.set('view engine', 'html');
 
 // declare database
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     req.pool = databasePool;
     next();
 });
@@ -60,9 +62,11 @@ app.use('/Signin', signinRouter);
 app.use('/SignUp', signupRouter);
 app.use('/myProfile', myProfile);
 app.use('/contactDetails', contactDetails);
-app.use('/viewAdminOrgs',viewAdminOrgsRouter);
+app.use('/viewAdminOrgs', viewAdminOrgsRouter);
 app.use('/viewPendingOrgs', viewPendingOrgsRouter);
 app.use('/viewBranchOrgs', viewBranchOrgsRouter);
 app.use('/createNewOrg', createNewOrgRouter);
+
+app.use('/dropdown', dropdownRouter);
 
 module.exports = app;
