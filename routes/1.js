@@ -31,7 +31,6 @@ router.get('/', function(req, res, next) {
 
 	connection.query(queries.join(';'), function(err, results) {
 		if (err) throw err;
-		console.log(results);
 		res.render(path.join(__dirname, '../public', '1.html'), {
 
 			recentData:results
