@@ -26,6 +26,27 @@
         <div class="column" id="rightColumn">
         </div>
     </div>
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', function(event) {
+            const email = document.getElementById('email').value;
+            fetch('/getEmail', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: email })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                alert('Request sent');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to send');
+            });});
+    </script>
+
 </body>
 
 </html>
