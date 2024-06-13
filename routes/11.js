@@ -1,7 +1,17 @@
 const express = require('express');
 const router = express.Router();
+const nodemailer = require('nodemailer');
 
-router.post('/', function(req, res) {
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'your-email@gmail.com',
+        pass: 'your-email-password'
+    }
+});
+
+
+router.post('/getEmail', function(req, res) {
     const email = req.body.email;
 
     req.pool.getConnection((error, connection) => {
@@ -22,4 +32,25 @@ router.post('/', function(req, res) {
     });
 });
 
+
+router.post('/sendEmail', function(req, res) {
+    const email = req.body.email;
+
+    const mailOptions = {
+        from: 'your-email@gmail.com',
+        to: email,
+        subject: 'Test Email from Node.js',
+        text: 'This is a test email sent from a Node.js application using Nodemailer.'
+    };
+
+    transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+            console.log(error);
+            res.status(500).send('Error sending email');
+        } else {
+            console.log('Email sent: ' + info.response);
+            res.status(200).send('Email sent successfully');
+        }
+    });
+});
 module.exports = router;
