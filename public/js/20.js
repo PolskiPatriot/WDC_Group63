@@ -54,7 +54,7 @@ function deleteOrg(orgName) {
 
 function manageUsers() {
     // redirect to manageUsers of the group
-    window.location.replace("");
+    window.location.href;
 }
 
 function showNewBranchOrg() {
@@ -68,8 +68,21 @@ function makeNewBranchOrg() {
     var orgData = { 'mainOrg': mainOrg.get('orgName'), 'orgName': document.getElementById('orgName').value, 'orgRegion': document.getElementById('orgRegion').value, 'orgAbout': document.getElementById('organisationCreateText').value };
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById('addForm').reset();
-            window.location.reload();
+            switch (this.response) {
+                case "relog":
+                    window.location.href = "/Signin";
+                    break;
+                case "success":
+                    document.getElementById("warning").classList.add("hidden");
+                    document.getElementById('addForm').reset();
+                    window.location.reload();
+                    break;
+                case "exists":
+                    document.getElementById("warning").classList.remove("hidden");
+                    break;
+                default:
+                    break;
+            }
         }
     };
     xhttp.open('POST', '/viewBranchOrgs/createBranchOrg', true);
