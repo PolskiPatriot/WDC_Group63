@@ -13,8 +13,6 @@ function fetchEventsForMonth(month, year, callback) {
             if (this.status == 200) {
                 const response = JSON.parse(this.responseText);
                 callback(0, response);
-            } else {
-                callback(this.status, 0);
             }
         }
     };

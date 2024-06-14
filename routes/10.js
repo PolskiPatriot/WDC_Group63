@@ -11,6 +11,8 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
     if (!(typeof req.cookies.userID === 'defined')) {
         res.redirect('/');
+    } else {
+        res.sendFile(path.join(__dirname, '../public', '10.html'));
     }
 });
 

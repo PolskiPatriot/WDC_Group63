@@ -11,6 +11,8 @@ const client = new OAuth2Client('119246077266-568pi1sojct64fdrvn10enalph5aqgg3.a
 router.get('/', function (req, res, next) {
     if (!(typeof req.cookies.userID === 'defined')) {
         res.redirect('/');
+    } else {
+        res.sendFile(path.join(__dirname, '../public', '13.html'));
     }
 });
 
