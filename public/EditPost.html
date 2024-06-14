@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>untitled - Create Update Page</title>
+  <title>untitled - Edit Post Page</title>
   <link rel="stylesheet" href="/stylesheets/7.css">
   <link rel="stylesheet" href="/stylesheets/header.css">
+  <script src="/js/posts.js"></script>
 </head>
 
 <body id="content">
@@ -22,28 +23,29 @@
         <div class="title-container">
           <h2 class="details-title">New Post</h2>
           <div class="searchBox">
-              <input required name="title" type="text" class="pill-textbox" placeholder="Post Title...">
+              <input required name="title" type="text" class="pill-textbox" placeholder="Post Title..." value="<%=EventInfo[0].title%>">
           </div>
           <p></p>
         </div>
 
         <div class="notes-container">
           <h2>Info: </h2>
-          <textarea name="content" placeholder="Enter your text here" required maxlength="240" ></textarea>
+          <textarea name="content" placeholder="Enter your text here" required maxlength="240" ><%=EventInfo[0].content%></textarea>
         </div>
 
 
         <div class="visibility-toggle">
-          <p>Public  <input type="radio" name="answer" value="0"></p>
-          <p>Private <input type="radio" name="answer" value="1" checked></p>
-          <p>Pinned <input type="checkbox" name="pinned"> </p>
+          <p>Public  <input type="radio" name="answer" value="0" <%if(EventInfo[0].pinned) { %>  <%} else { %> checked <% } %> <%if(EventInfo[0].pinned) { %> checked <%} %>></p>
+          <p>Private <input type="radio" name="answer" value="1" <%if(EventInfo[0].pinned) { %> checked <%} %>></p>
+          <p>Pinned <input type="checkbox" name="pinned" <%if(EventInfo[0].pinned) { %> checked <%} %> > </p>
         </div>
 
 
         <div class="event-buttons">
+            <button class="delete" type="button" onclick="deletePost('<%=EventInfo[0].TruePostID%>', '<%=OrgID[0].TrueOrgID%>')">Delete</button>
 
           <button class="post" type="submit">Post</button>
-          <button class="cancel" type="submit" onclick="window.location.replace('/groupManager?id=0x<%=OrgID[0].TrueOrgID%>');">Cancel</button>
+          <button class="cancel" type="button" onclick="window.location.replace('/groupManager?id=0x<%=OrgID[0].TrueOrgID%>');">Cancel</button>
         </div>
       </form>
     </div>

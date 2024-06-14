@@ -78,6 +78,13 @@ body {
     border: 0px;
   }
 
+  .event-time input {
+    width: 175px;
+  }
+
+  .event-date input {
+    width: 150px;
+  }
   .event-title input::placeholder, .event-time input::placeholder, .event-location input::placeholder, .event-date input::placeholder, .event-length input::placeholder{
     color:lightgray;
   }
@@ -88,7 +95,7 @@ body {
   }
 
   .visibility-toggle input {
-    margin-left:0.5em;  
+    margin-left:0.5em;
     -ms-transform: scale(1.5);
     -webkit-transform: scale(1.5) ;
     transform: scale(1.5);

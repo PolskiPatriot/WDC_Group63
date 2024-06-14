@@ -5,6 +5,8 @@
     <title>untitled - Home Page</title>
     <link rel="stylesheet" href="/stylesheets/header.css">
     <link rel="stylesheet" href="/stylesheets/1.css">
+    <script src="/js/posts.js">
+    </script>
 </head>
 
 <body id="content">
@@ -17,43 +19,38 @@
             <div class="column" id="leftColumn">
                 <h1 class="heading">Your Communities</h1>
                 <ul>
-                    <li class="postContent groupContent">
-                        <a href="/group">
-                            <div class="smallCircle blue"></div>Group 1
-                        </a>
-                    </li>
-                    <li class="postContent groupContent">
-                        <a href="/groupManager">
-                            <div class="smallCircle blue"></div>Group 2
-                        </a>
-                    </li>
-                    <li class="postContent groupContent">
-                        <a href="#">
-                            <div class="smallCircle blue"></div>Group 3
-                        </a>
-                    </li>
+                    <% if(userLevel != 99) { %>
+                        <% if (YourBranches.length > 0) {
+                            YourBranches.forEach(function(BranchData) { %>
+                                <li class="postContent groupContent">
+                                    <a href="/groupManager?id=0x<%= BranchData.TrueOrgID %>">
+                                        <div class="smallCircle blue"></div><%= BranchData.orgName %>
+
+                                    </a>
+                                </li>
+                            <% }) } else { %>
+                                Join Communities To See Them Here
+                          <% } } else { %>
+                            Log In to see Your Communities
+                        <% } %>
                 </ul>
-                <a href="#" class="seeMore">See More</a>
+
 
                 <h1 class="heading">Popular</h1>
                 <ul>
-                    <li class="postContent groupContent">
-                        <a href="#">
-                            <div class="smallCircle blue"></div>Group 1
-                        </a>
-                    </li>
-                    <li class="postContent groupContent">
-                        <a href="#">
-                            <div class="smallCircle blue"></div>Group 2
-                        </a>
-                    </li>
-                    <li class="postContent groupContent">
-                        <a href="#">
-                            <div class="smallCircle blue"></div>Group 3
-                        </a>
-                    </li>
+
+                    <% if (PopularBranches.length > 0) {
+                        PopularBranches.forEach(function(BranchData) { %>
+                            <li class="postContent groupContent">
+                                <a href="/groupManager?id=0x<%= BranchData.TrueOrgID %>">
+                                    <div class="smallCircle blue"></div><%= BranchData.orgName %>
+
+                                </a>
+                            </li>
+                        <% }) } %>
+
                 </ul>
-                <a href="#" class="seeMore">See More</a>
+
             </div>
             <div class="column" id="middleColumn">
 
@@ -73,7 +70,13 @@
                                     } else {
                                 %>
 
-                                <div class="postType">Event</div>
+                                <div class="postType">
+                                    <a href="event?EventID=0x<%= postData.TrueEventID %>">
+                                        <p class="post-type" href="#">
+                                            Event
+                                        </p>
+                                    </a>
+                                </div>
                                     <%
                                  }
                                  %>
@@ -83,29 +86,39 @@
                     <%
                     if (postData.EventID) {
                     %>
-                    <button type="button" class="eventRSVP">RSVP</button>
-                    <div class="eventAttendees"><%= postData.responseCount %> attending</div>
+
+
+
+                    <button type="button" class="eventRSVP" onclick="rsvp('0x<%= postData.TrueEventID %>')" id="rsvpButton0x<%=postData.TrueEventID%>"><% if (joinHistory[postData.TrueEventID] == 1) { %>
+                        Attending
+                    <% } else { %>
+                        RSVP
+                    <% } %></button>
+                    <div class="eventAttendees"><p id="responseCount0x<%=postData.TrueEventID%>" class="<% if (joinHistory[postData.TrueEventID] == 1) { %> rsvped <% } %>"
+                        > <%= postData.responseCount %> Attending </p></div>
                     <%
                         }
                     %>
 
                     <div class="postLikes">
+                        <p id="likeCount0x<%=postData.TruePostID%>">
                         <%= postData.likeCount %>
-                        <img src="/images/LikesIcon.jpeg" alt="likesIcon">
+                        </p>
+                        <button type="button" onclick="like('0x<%= postData.TruePostID %>')">
+                            <img src="/images/LikesIcon.jpeg" alt="likesIcon">
+                        </button>
                     </div>
                 </div>
                 <%
             })
-        } else {
-        %>
-            <div class="empty">
-                <p> This organisation has no posts</p>
+        } else { %>
+            <div class="column" id="middleColumn">
+                <div class="empty">
+                    <h1>There are no Posts</h1>
+                    <p>Join a community to see events and updates</p>
+                </div>
             </div>
-            <%if (recentData.length >3) { %>
-            <a class="extend-list">See More</a>
-        <%
-            }}
-        %>
+       <% } %>
 
 
             </div>
@@ -113,13 +126,13 @@
                 <h1 class="heading">Quick Links</h1>
                 <div class="quickLink">
                     <ul class="quickLinkContent">
-                        <li><a href="#">
+                        <li><a href="14.html">
                                 Calender</a>
                         </li>
-                        <li><a href="#">
+                        <li><a href="/Upcoming.html">
                                 Events</a>
                         </li>
-                        <li><a href="#">
+                        <li><a href="viewMyOrgs">
                                 Groups</a>
                         </li>
                     </ul>

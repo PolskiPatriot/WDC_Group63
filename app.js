@@ -11,6 +11,7 @@ var viewUserRouter = require('./routes/4');
 var viewEventRouter = require('./routes/5');
 var editEventRouter = require('./routes/6');
 var editPostRouter = require('./routes/7');
+var upcomingEventsRouter = require('./routes/8');
 var viewMyOrgsRouter = require('./routes/9');
 var signinRouter = require('./routes/10');
 var signupRouter = require('./routes/13');
@@ -20,6 +21,7 @@ var viewAdminOrgsRouter = require('./routes/18');
 var viewPendingOrgsRouter = require('./routes/19');
 var viewBranchOrgsRouter = require('./routes/20');
 var createNewOrgRouter = require('./routes/21');
+var postsRouter = require('./routes/posts');
 
 // database initialisation
 var sql = require('mysql');
@@ -53,6 +55,7 @@ app.use('/Users', viewUserRouter);
 app.use('/Event', viewEventRouter);
 app.use('/editEvent', editEventRouter);
 app.use('/editPost', editPostRouter);
+app.use('/Upcoming', upcomingEventsRouter);
 app.use('/viewMyOrgs', viewMyOrgsRouter);
 app.use('/Signin', signinRouter);
 app.use('/SignUp', signupRouter);
@@ -62,5 +65,6 @@ app.use('/viewAdminOrgs',viewAdminOrgsRouter);
 app.use('/viewPendingOrgs', viewPendingOrgsRouter);
 app.use('/viewBranchOrgs', viewBranchOrgsRouter);
 app.use('/createNewOrg', createNewOrgRouter);
+app.use('/posts', postsRouter);
 
 module.exports = app;
