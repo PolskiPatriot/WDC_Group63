@@ -35,8 +35,8 @@ router.post('/createOrg', function (req, res) {
       if (error) {
         res.send(500);
       }
-      query = "INSERT INTO MainOrg VALUES (UNHEX('" + UUID + "'), ?, ?, 0, NULL, 1)";
-      connection.query(query, [orgName, orgAbout], function (err, success) {
+      query = "INSERT INTO MainOrg VALUES (UNHEX(?), ?, ?, 0, NULL, 1)";
+      connection.query(query, [UUID, orgName, orgAbout], function (err, success) {
         connection.release();
         if (err) {
           res.sendStatus(500);
@@ -49,8 +49,8 @@ router.post('/createOrg', function (req, res) {
       if (error) {
         res.send(500);
       }
-      query = "INSERT INTO GroupJoin VALUES (UNHEX(REPLACE(UUID(), '-','')), UNHEX('" + UUID + "'), UNHEX('" + req.cookies.userID + "'), 3)";
-      connection.query(query, [orgName, orgAbout], function (err, success) {
+      query = "INSERT INTO GroupJoin VALUES (UNHEX(REPLACE(UUID(), '-','')), UNHEX(?), UNHEX(?), 4)";
+      connection.query(query, [UUID, req.cookies.userID], function (err, success) {
         connection.release();
         if (err) {
           res.sendStatus(500);

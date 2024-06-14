@@ -78,8 +78,8 @@ router.post('/createBranchOrg', (req, res) => {
         var mainUUID = mainGroupUUID[0].UUID;
 
         // check if org already exists
-        query = "SELECT orgName FROM BranchOrg WHERE MainOrgID = UNHEX('" + mainUUID + "')";
-        connection.query(query, [orgName], function (err, exists) {
+        query = "SELECT orgName FROM BranchOrg WHERE MainOrgID = UNHEX(?)";
+        connection.query(query, [mainUUID], function (err, exists) {
           if (err) {
             res.sendStatus(500);
             return;
@@ -96,19 +96,21 @@ router.post('/createBranchOrg', (req, res) => {
                 return;
               }
               var UUID = groupUUID[0].UUID;
-              var query = "INSERT INTO BranchOrg VALUES (UNHEX('" + UUID + "'), ?, ?, 0, NULL, ?, UNHEX('" + mainUUID + "'))";
-              connection.query(query, [orgName, orgAbout, orgRegion], function (err, success) {
+              var query = "INSERT INTO BranchOrg VALUES (UNHEX('" + UUID + "'), ?, ?, 0, NULL, ?, UNHEX(?))";
+              connection.query(query, [orgName, orgAbout, orgRegion, mainUUID], function (err, success) {
                 if (err) {
                   res.sendStatus(500);
                   return;
                 }
-                var query = "INSERT INTO GroupJoin VALUES (UNHEX(REPLACE(UUID(), '-','')), UNHEX('" + UUID + "'), UNHEX('" + req.cookies.userID + "'), 3)";
-                connection.query(query, function (err, success) {
+                var query = "INSERT INTO GroupJoin VALUES (UNHEX(REPLACE(UUID(), '-','')), UNHEX(?), UNHEX(?), 4)";
+                connection.query(query, [UUID, req.cookies.userID], function (err, success) {
                   connection.release();
                   if (err) {
+                    console.log(err);
                     res.sendStatus(500);
                     return;
                   }
+                  console.log(success);
                   res.send("success");
                   return;
                 });
