@@ -8,7 +8,7 @@ router.get('/', function (req, res) {
 		res.sendFile(path.join(__dirname, '../public', '20.html'));
 		return;
 	} else {
-		res.redirect('back');
+		res.redirect('/');
 		return;
 	}
 });
@@ -23,7 +23,7 @@ router.get('/getContent', function (req, res) {
     }
     // ADD CHECK FOR ADMIN HERE
     var mainOrgName = req.query.orgName;
-    var query = "SELECT orgName FROM BranchOrg WHERE MainOrgID = (SELECT MainOrgID FROM MainOrg WHERE orgName = ?) ORDER BY orgName ASC;";
+    var query = "SELECT orgName, orgRegion FROM BranchOrg WHERE MainOrgID = (SELECT MainOrgID FROM MainOrg WHERE orgName = ?) ORDER BY orgName ASC;";
     connection.query(query, [mainOrgName], function (err, groupInfo) {
       connection.release();
       if (err) {
@@ -39,14 +39,11 @@ router.get('/getContent', function (req, res) {
 router.get('/deleteOrg', function (req, res) {
   var orgName = req.query.orgName;
 
-  // need to be a SUPER ULTRA MEGA ADMIN
   req.pool.getConnection((error, connection) => {
     if (error) {
       res.sendStatus(500);
     }
-    // ADD CHECK FOR SUPER ULTRA MEGA ADMIN HERE
     var query = "DELETE FROM BranchOrg WHERE orgName = ?";
-    // console.log(query);
     connection.query(query, [orgName], function (err, groupInfo) {
       connection.release();
       if (err) {

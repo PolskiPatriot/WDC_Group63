@@ -9,15 +9,26 @@ function load() {
                 // setup group elements
                 const groupEl = document.createElement('div');
                 groupEl.classList.add('organisation');
+                groupEl.append(res[i].orgName);
+
                 const iconEl = document.createElement('img');
                 iconEl.src = "/images/groupLogo.png";
                 iconEl.alt = "orgLogo";
-                var orgNameEl = document.createTextNode(res[i].orgName);
+                groupEl.appendChild(iconEl);
 
+
+                if (res[i].orgRegion !== "(Main)") {
+                    const DeleteEl = document.createElement('button');
+                    DeleteEl.onclick = function () { deleteOrg(res[i].orgName); };
+                    DeleteEl.type = "button";
+                    DeleteEl.append("Delete");
+                    groupEl.appendChild(DeleteEl);
+                }
 
                 const formEl = document.createElement('form');
                 formEl.action = "/viewUsers";
                 formEl.method = "GET";
+                groupEl.appendChild(formEl);
 
                 const ManageUsersEl = document.createElement('button');
                 ManageUsersEl.type = "submit";
@@ -26,18 +37,8 @@ function load() {
                 ManageUsersEl.append("Manage Users");
                 formEl.appendChild(ManageUsersEl);
 
-                const DeleteEl = document.createElement('button');
-                DeleteEl.onclick = function () { deleteOrg(res[i].orgName); };
-                DeleteEl.type = "button";
-                DeleteEl.append("Delete");
 
-                // construct group
-                groupEl.appendChild(iconEl);
-                groupEl.appendChild(orgNameEl);
-                groupEl.appendChild(DeleteEl);
-                groupEl.appendChild(formEl);
 
-                // append group
                 parent.appendChild(groupEl);
             }
         }
