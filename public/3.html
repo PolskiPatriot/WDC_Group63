@@ -232,14 +232,14 @@
             <br>
             <div class="member-count">
                 <% if (userLevel != 0) { %>
-                    <a href="/Users"> <%= OrgData[0].memberCount %> Members</a>
+                    <a href="/viewUsers?orgName=<%= OrgData[0].orgName %>"> <%= OrgData[0].memberCount %> Members</a>
                 <% } else { %>
                     <a href="javascript:{}"> <%= OrgData[0].memberCount %> Members</a>
                 <% } %>
             </div>
             <div class="about-text">
                 <h2> About</h2>
-                <% if (userLevel != 0) { %>
+                <% if (userLevel > 0) { %>
                     <span class="edits"> edit </span>
                 <% } %>
             </div>
