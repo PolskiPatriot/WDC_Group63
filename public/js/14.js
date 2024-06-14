@@ -36,7 +36,7 @@ function getColorClass(eventID) {
 
 function createButton(text, className, eventID) {
     const anchor = document.createElement('a');
-    anchor.href = `/event?EventID=${eventID}`; 
+    anchor.href = `/event?EventID=${eventID}`;
     const button = document.createElement('button');
     button.type = 'button';
     button.className = className;
