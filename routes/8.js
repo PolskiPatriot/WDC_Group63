@@ -19,11 +19,9 @@ router.get('/getContent', function (req, res) {
     connection.query(query, function (err, eventInfo) {
       connection.release();
       if (err) {
-        console.log(err)
         res.sendStatus(500);
         return;
       }
-      console.log(eventInfo)
       res.send(eventInfo);
     });
   });
