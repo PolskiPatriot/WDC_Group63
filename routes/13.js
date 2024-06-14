@@ -1,20 +1,8 @@
 const express = require('express');
 const path = require('path');
 const crypto = require('crypto');
-const argon2 = require('argon2');
-const { generateFromEmail } = require("unique-username-generator");
-var router = express.Router();
 const { OAuth2Client } = require('google-auth-library');
 const client = new OAuth2Client('119246077266-568pi1sojct64fdrvn10enalph5aqgg3.apps.googleusercontent.com');
-
-/* GET home page. */
-router.get('/', function (req, res, next) {
-    if (!(typeof req.cookies.userID === 'defined')) {
-        res.redirect('/');
-    } else {
-        res.sendFile(path.join(__dirname, '../public', '13.html'));
-    }
-});
 
 router.post('/google-signup', async (req, res) => {
     const { token } = req.body;
@@ -25,16 +13,13 @@ router.post('/google-signup', async (req, res) => {
         });
         const payload = ticket.getPayload();
         const userId = crypto.randomBytes(16);
-        const username = generateFromEmail(payload.email, 3);
         const query = 'INSERT INTO Users (UserID, givenName, familyName, email) VALUES (?, ?, ?, ?)';
-        console.log('USERID inserting data: ' + payload.given_name);
         req.pool.getConnection((error, connection) => {
             if (error) {
                 return res.status(500).send('Error getting connection');
             }
             connection.query(query, [userId, payload.given_name, payload.family_name, payload.email], (err, results) => {
                 connection.release();
-
                 if (err) {
                     return res.status(500).send('Error inserting data');
                 }
@@ -43,7 +28,7 @@ router.post('/google-signup', async (req, res) => {
             });
         });
     } catch (error) {
-        res.status(500);
+        res.status(500).send('Error verifying token');
     }
 });
 
