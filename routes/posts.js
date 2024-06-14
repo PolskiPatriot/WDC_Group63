@@ -159,9 +159,14 @@ router.get('/join', function(req, res, next) {
 		}
 	});
 
+	if (!req.cookies.userID){
+		res.redirect('/Signin');
+	}
+
 	var queries = ['INSERT INTO GroupJoin VALUES(UNHEX(REPLACE(UUID(), "-", "")),  '
 				+"0x" +req.query.OrgID + ", "
-				+req.query.Userid + ", 0)"];
+				+req.query.Userid + ", 0)",
+				'UPDATE BranchOrg SET memberCount=memberCount +1 WHERE OrgID=' +"0x" +req.query.OrgID ];
 
 	connection.query(queries.join(';'), function(err, results) {
 
@@ -182,7 +187,8 @@ router.get('/leave', function(req, res, next) {
 		}
 	});
 
-	var queries = ["DELETE FROM GroupJoin WHERE OrgID=0x"+req.query.OrgID +" AND UserID="+req.query.Userid];
+	var queries = ["DELETE FROM GroupJoin WHERE OrgID=0x"+req.query.OrgID +" AND UserID="+req.query.Userid,
+				'UPDATE BranchOrg SET memberCount=memberCount -1 WHERE OrgID=' +"0x" +req.query.OrgID ];
 
 	connection.query(queries.join(';'), function(err, results) {
 

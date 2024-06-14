@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
 		database: "uDatabase",
 		multipleStatements: true
 	});
+
 	connection.connect((error)=>{
 		if (error) {
 			res.send(500);
@@ -25,13 +26,13 @@ router.get('/', function(req, res, next) {
 		queries=[
 
 				"(SELECT Posts.* ,Events.* , HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID  FROM Posts "
-					+"LEFT JOIN GroupJoin ON GroupJoin.OrgID=Posts.OrgID "
+					+"INNER JOIN GroupJoin ON GroupJoin.OrgID=Posts.OrgID "
 					+"LEFT JOIN Events "
 					+"ON Events.EventID=Posts.EventID "
 					+"WHERE GroupJoin.UserID=0x"+req.cookies.userID +"  "
 				+"UNION ALL "
 				+"SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID FROM Posts "
-					+"LEFT JOIN GroupJoin ON GroupJoin.OrgID=Posts.OrgID "
+					+"INNER JOIN GroupJoin ON GroupJoin.OrgID=Posts.OrgID "
 					+"RIGHT JOIN Events "
 					+"ON Events.EventID=Posts.EventID "
 					+"WHERE Posts.EventID IS NULL AND GroupJoin.UserID=0x"+req.cookies.userID +" "
@@ -41,13 +42,13 @@ router.get('/', function(req, res, next) {
 					+"LEFT JOIN GroupJoin ON GroupJoin.OrgID!=Posts.OrgID "
 					+"LEFT JOIN Events "
 					+"ON Events.EventID=Posts.EventID "
-					+"WHERE Posts.private='false' AND GroupJoin.UserID=0x"+req.cookies.userID +"  "
+					+"WHERE Posts.private='false' AND Posts.OrgID NOT IN(SELECT OrgId From GroupJoin Where GroupJoin.UserID=0x"+req.cookies.userID +") "
 				+"UNION ALL "
 				+"SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID FROM Posts "
 					+"LEFT JOIN GroupJoin ON GroupJoin.OrgID!=Posts.OrgID "
 					+"RIGHT JOIN Events "
 					+"ON Events.EventID=Posts.EventID "
-					+"WHERE Posts.EventID IS NULL AND Posts.private='false' AND GroupJoin.UserID=0x"+req.cookies.userID +" ) "
+					+"WHERE Posts.EventID IS NULL AND Posts.private='false' AND Posts.OrgID NOT IN(SELECT GroupJoin.OrgId From GroupJoin Where GroupJoin.UserID=0x"+req.cookies.userID +") )"
 				,
 				"SELECT HEX(JoinID) AS TrueJoinID, HEX(EventID) AS TrueEventID, HEX(UserID) AS TruePostID From EventJoin WHERE UserID=0x" + req.cookies.userID,
 				"SELECT *,HEX(BranchOrg.OrgID) AS TrueOrgID FROM BranchOrg ORDER BY memberCount ASC LIMIT 3 ",
@@ -65,16 +66,19 @@ router.get('/', function(req, res, next) {
 		+"ORDER BY postDate DESC ",
 		"SELECT *, HEX(EventID) AS TrueEventID FROM EventJoin",
 		"SELECT *, HEX(EventID) AS TrueEventID FROM EventJoin",
-		"SELECT *, HEX(BranchOrg.OrgID) AS TrueOrgID FROM BranchOrg ORDER BY memberCount ASC LIMIT 5 ",
+		"SELECT *,HEX(BranchOrg.OrgID) AS TrueOrgID FROM BranchOrg ORDER BY memberCount ASC LIMIT 5 ",
                 ];
 	}
 
+	console.log(queries);
 	if (req.cookies.userID) {
-		queries.push("SELECT *, HEX(BranchOrg.OrgID) AS TrueOrgID FROM GroupJoin LEFT JOIN BranchOrg ON BranchOrg.OrgID=GroupJoin.OrgID WHERE UserID = UNHEX(?) LIMIT 3" );
+		queries.push("SELECT * ,HEX(BranchOrg.OrgID) AS TrueOrgID FROM GroupJoin LEFT JOIN BranchOrg ON BranchOrg.OrgID=GroupJoin.OrgID WHERE UserID=0x"+req.cookies.userID + " LIMIT 3 " );
 	} else {
 		queries.push("SELECT * FROM GroupJoin");
 	}
-	connection.query(queries.join(';'), [req.cookies.userID], function(err, results) {
+
+		console.log(queries);
+	connection.query(queries.join(';'), function(err, results) {
 		if (err) throw err;
 		//console.log(results);
 		var Joined = {};
@@ -112,9 +116,8 @@ router.get('/', function(req, res, next) {
 			YourBranches:results[4]
 		});
 	});
+
 	connection.end();
 });
-
-
 
 module.exports = router;
