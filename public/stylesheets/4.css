@@ -10,7 +10,6 @@ body {
 .text-header {
   font-size: 1.2vw;
   height:6em;
-  size:auto;
   text-align:left;
   margin-left:2vw;
 }
@@ -44,14 +43,6 @@ div.return {
   margin-left:2vw;
 }
 
-.user-listing {
-  background-color: rgb(250, 229, 221);
-  height: 3em;
-  border-radius: 1.5em;
-  margin-bottom: 0.75em;
-  margin-left: 2vw;
-}
-
 .user-listing span {
   margin: 0;
   padding-top:1em;
@@ -61,7 +52,6 @@ div.return {
 }
 
 div.actions {
-  padding-top: 1em;
   float:right;
   padding-right: 1.5em;
 }
@@ -70,8 +60,29 @@ div.actions {
   background: white;
   border-style: dotted;
   border-width: 0.1em;
-  padding: 0.25em 0.5em 0.25em 0.5em;
-  border-radius: 1em;
+  padding: 1.25em 1.5em;
+  border-radius: 100em;
   margin-left: 1.5em;
 }
 
+.actions button {
+  background: white;
+  border-style: dotted;
+  border-width: 0.1em;
+  border-color: black;
+  padding: 1.25em 1.5em;
+  border-radius: 100em;
+  margin-left: 1.5em;
+  font-size: 1em;
+}
+.singleUser {
+  align-items: center;
+  padding: auto;
+  height: 5em;
+  background-color: rgb(250, 229, 221);
+  border-radius: 100em;
+  margin-bottom: 0.75em;
+  margin-left: 2vw;
+  padding: 0px 0px 0px 20px;
+  line-height: 5em;
+}
