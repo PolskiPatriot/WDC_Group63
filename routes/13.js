@@ -9,7 +9,13 @@ const client = new OAuth2Client('119246077266-568pi1sojct64fdrvn10enalph5aqgg3.a
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '../public', '13.html'));
+    if (req.level == 0) {
+        res.sendFile(path.join(__dirname, '../public', '13.html'));
+        return;
+    } else {
+        res.redirect('back');
+        return;
+    }
 });
 
 router.post('/google-signup', async (req, res) => {

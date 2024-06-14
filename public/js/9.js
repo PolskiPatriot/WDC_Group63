@@ -16,7 +16,7 @@ function load() {
                 const orgNameEl = document.createElement('span');
                 orgNameEl.append(res[i].orgName);
                 const aboutEl = document.createElement('p');
-                aboutEl.appendChild(res[i].aboutOrg);
+                aboutEl.append(res[i].aboutOrg);
 
                 const buttonEl = document.createElement('button');
                 buttonEl.classList.add('group-button');

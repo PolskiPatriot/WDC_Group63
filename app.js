@@ -51,6 +51,53 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// check for valid userID
+app.use(function (req, res, next) {
+    if (!(typeof req.cookies.userID === 'undefined')) {
+        req.pool.getConnection((error, connection) => {
+            if (error) {
+                res.send(500);
+            }
+            var query = "SELECT UserID FROM Users WHERE UserID = UNHEX(?)";
+            connection.query(query, [req.cookies.userID], function (err, cookieValidity) {
+                connection.release();
+                if (err) {
+                    res.sendStatus(500);
+                    return;
+                }
+                if (typeof cookieValidity[0] === 'undefined') {
+                    res.clearCookie("userID");
+                }
+            });
+        });
+    }
+    next();
+});
+
+// serve content based on permission level
+app.use(function (req, res, next) {
+    if (!(typeof req.cookies.userID === 'undefined')) {
+        req.pool.getConnection((error, connection) => {
+            if (error) {
+                res.send(500);
+            }
+            var query = "SELECT UserLevel FROM GroupJoin WHERE UserID = UNHEX(?) ORDER BY UserLevel DESC LIMIT 1";
+            connection.query(query, [req.cookies.userID], function (err, UserLevel) {
+                connection.release();
+                if (err) {
+                    res.sendStatus(500);
+                    return;
+                }
+                req.level = UserLevel[0].UserLevel;
+                next();
+            });
+        });
+    } else {
+        req.level = 0;
+        next();
+    }
+});
+
 app.use('/', mainFeedRouter);
 app.use('/group', groupRouter);
 app.use('/groupManager', groupManagerRouter);

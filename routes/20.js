@@ -3,9 +3,14 @@ const path = require('path');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  // need to be AN ADMIN
-  res.sendFile(path.join(__dirname, '../public', '20.html'));
+router.get('/', function (req, res) {
+	if (req.level > 2) {
+		res.sendFile(path.join(__dirname, '../public', '20.html'));
+		return;
+	} else {
+		res.redirect('back');
+		return;
+	}
 });
 
 

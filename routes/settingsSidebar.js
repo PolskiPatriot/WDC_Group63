@@ -16,8 +16,8 @@ router.get('/getContent', function (req, res, next) {
             if (error) {
                 res.send(500);
             }
-            var query = "SELECT UserLevel FROM GroupJoin WHERE UserID = UNHEX('" + req.cookies.userID + "') ORDER BY UserLevel DESC LIMIT 1";
-            connection.query(query, function (err, UserLevel) {
+            var query = "SELECT UserLevel FROM GroupJoin WHERE UserID = UNHEX(?) ORDER BY UserLevel DESC LIMIT 1";
+            connection.query(query, [req.cookies.userID], function (err, UserLevel) {
                 connection.release();
                 if (err) {
                     res.sendStatus(500);

@@ -13,11 +13,11 @@ function load() {
                     document.getElementById('viewAdminOrgs').style.display = 'none';
                     document.getElementById('viewPendingOrgs').style.display = 'none';
                     break;
-                case '2':
                 case '3':
+                case '4':
                     document.getElementById('viewPendingOrgs').style.display = 'none';
                     break;
-                case '4':
+                case '5':
                     break;
                 default:
                     document.getElementById('links-list').style.display = 'none';

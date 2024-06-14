@@ -4,8 +4,14 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  // need to be a User
-  res.sendFile(path.join(__dirname, '../public', '21.html'));
+
+  if (req.level > 0) {
+    res.sendFile(path.join(__dirname, '../public', '21.html'));
+    return;
+  } else {
+    res.redirect('back');
+    return;
+  }
 });
 
 

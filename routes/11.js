@@ -12,7 +12,13 @@ const transporter = nodemailer.createTransport({
 });
 
 router.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '../public', '11.html'));
+    if (req.level == 0) {
+        res.sendFile(path.join(__dirname, '../public', '11.html'));
+        return;
+    } else {
+        res.redirect('back');
+        return;
+    }
 });
 
 router.post('/getEmail', function (req, res) {

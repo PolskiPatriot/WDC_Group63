@@ -42,11 +42,19 @@ router.get('/', function(req, res, next) {
 	connection.query(queries.join(';'), function(err, results) {
 		if (err) throw err;
 		console.log(results[1][0]);
-		res.render(path.join(__dirname, '../public', '3.html'), {
 
-			pinnedData:results[0],
-			recentData:results[1]
-		});
+
+		if (req.level == 0) {
+			res.render(path.join(__dirname, '../public', '3.html'), {
+
+				pinnedData:results[0],
+				recentData:results[1]
+			});
+			return;
+		} else {
+			res.redirect('back');
+			return;
+		}
 	});
 
 	connection.end();
