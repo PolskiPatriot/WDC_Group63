@@ -36,6 +36,12 @@ ul {
   text-align: center;
 }
 
+.empty {
+  margin-top: 5em;
+  text-align: center;
+  align-content: center;
+}
+
 .heading {
   font-size: 2.5em;
   display: block;
@@ -53,7 +59,6 @@ ul {
 }
 
 img {
-  width: 98%;
   height: 300px;
   object-fit: cover;
   margin: 0px 20px 20px 20px;
@@ -89,6 +94,15 @@ img {
   line-height: 70px;
   vertical-align: top;
   float: right;
+}
+
+.postType a {
+  text-decoration: none;
+  color:black;
+}
+
+.postType p {
+  margin-top: 0;
 }
 
 .postContent {
@@ -146,6 +160,10 @@ img {
   float: right;
 }
 
+.eventAttendees p {
+  margin-top:0;
+}
+
 .eventRSVP {
   height: 50px;
   margin: 0px 5px 0px 0px;
@@ -187,6 +205,19 @@ img {
   height:53.2px;
   display: inline;
   object-fit: scale-down;
+}
+
+.postLikes p {
+  margin-top: 0;
+}
+
+.postLikes button {
+  padding:0;
+  border-radius: 21px;
+  margin-top:6.5px;
+  border-width: 0;
+  border-style: solid;
+
 }
 
 div .likes-display {

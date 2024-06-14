@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>untitled - View Event</title>
+  <title>untitled - View Event Page</title>
   <link rel="stylesheet" href="/stylesheets/5.css">
   <link rel="stylesheet" href="/stylesheets/header.css">
+  <script src="/js/posts.js"></script>
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 </head>
 
@@ -85,16 +86,28 @@
             </p>
           </div>
           <div class="event-buttons">
-            <button class="dotted-button" type="button">RSVP</button>
-            <span class="attendees"><%= postData.responseCount %> attending</span>
+          <div class="rsvpButton">
+            <button class="dotted-button" type="button" onclick="rsvp('0x<%= postData.TrueEventID %>')" id="rsvpButton0x<%=postData.TrueEventID%>" >
+              <% if (joinedBool) { %>
+                Attending
+            <% } else { %>
+                RSVP
+            <% } %>
+            </button>
+            </div>
+            <div class="attendees">
+              <p id="responseCount0x<%=postData.TrueEventID%>" class="<% if (joinedBool) { %> rsvped <% } %>" ><%= postData.responseCount %> attending</p>
+            </div>
+
           </div>
         </div>
         <div class="details-container">
           <div class="details">
             <h3>Details</h3>
-            <p class="responded"><%= postData.responseCount %> Responded</p>
+
             <p class="address">Address: <%= postData.location %></p>
-            <p class="duration">Duration: <%= postData.startDate.getHours() - postData.endDate.getHours()%> hrs</p>
+
+            <p class="duration">Duration: <%= postData.endDate.getHours() - postData.startDate.getHours()%> hrs</p>
             <p class="privacy">Public</p>
           </div>
           <div class="notes-container">
@@ -108,7 +121,13 @@
       <p class="members"><%= groupData.memberCount %> Members</p>
       <p class="about">About</p>
       <p class="description"><%= groupData.aboutOrg %> </p>
-      <button class="dotted-button" type="button">Join</button>
+
+      <button class="dotted-button <% if (JoinedOrgBool) { %> Joined <% } %>" type="button" id="joinButton" onclick="joinOrg('<%= groupData.TrueOrgID %>', '0x<%=userID%>')">
+        <% if (JoinedOrgBool) { %>
+        Joined
+    <% } else { %>
+        Join
+    <% } %></button>
     </div>
   </main>
 </body>

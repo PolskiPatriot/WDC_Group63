@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>untitled - Edit Post</title>
+  <title>untitled - Create Update Page</title>
   <link rel="stylesheet" href="/stylesheets/7.css">
   <link rel="stylesheet" href="/stylesheets/header.css">
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
@@ -18,7 +18,8 @@
     <div class= "banner"></div>
 
     <div class="event-container">
-      <form method="POST" id="eventForm" action="editPost/0xB4C1790B18B711EF9D3B0242AC110002">
+
+      <form method="POST" id="eventForm" action="editPost?id=<%=OrgID[0].TrueOrgID%>">
 
         <div class="title-container">
           <h2 class="details-title">New Post</h2>
@@ -42,10 +43,9 @@
 
 
         <div class="event-buttons">
-          <button class="delete" type="submit">Delete</button>
 
           <button class="post" type="submit">Post</button>
-          <button class="cancel" type="submit">Cancel</button>
+          <button class="cancel" type="submit" onclick="window.location.replace('/groupManager?id=0x<%=OrgID[0].TrueOrgID%>');">Cancel</button>
         </div>
       </form>
     </div>

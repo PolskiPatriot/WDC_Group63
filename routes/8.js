@@ -1,30 +1,25 @@
-const express = require('express');
+var express = require('express');
 const path = require('path');
-const { isModuleNamespaceObject } = require('util/types');
+const mysql = require('mysql');
+const { error } = require('console');
+
+
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-  res.sendFile(path.join(__dirname, '../public', '8.html'));
-});
+router.get('/', function(req, res, next) {
+    const connection = mysql.createConnection({
+          host: "localhost",
+          database: "uDatabase",
+          multipleStatements: true
+      });
+      connection.connect((error)=>{
+          if (error) {
+              console.error("error ", error);
+          }
+      });
 
+      var queries;
 
-// receive request
-router.get('/getContent', function (req, res) {
-  req.pool.getConnection((error, connection) => {
-    if (error) {
-      res.send(500);
-    }
-    var query = "SELECT hex(EventID), startDate, endDate, location, responseCount, eventName FROM Events ORDER BY responseCount desc";
-    connection.query(query, function (err, eventInfo) {
-      connection.release();
-      if (err) {
-        res.sendStatus(500);
-        return;
-      }
-      res.send(eventInfo);
-    });
-  });
 });
 
 module.exports = router;
