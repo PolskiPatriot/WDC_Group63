@@ -2,14 +2,6 @@ var express = require('express');
 var router = express.Router();
 const path = require('path');
 
-router.get('/', function (req, res, next) {
-    if (!(typeof req.cookies.userID === 'undefined')) {
-        res.redirect('/');
-    } else {
-        res.sendFile(path.join(__dirname, '../public', '14.html'));
-    }
-});
-
 router.get('/getEventsForMonth', function(req, res, next) {
     var userID = req.cookies.userID;
     var month = req.query.month;
@@ -44,5 +36,3 @@ router.get('/getEventsForMonth', function(req, res, next) {
         });
     });
 });
-
-module.exports = router;

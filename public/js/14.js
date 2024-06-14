@@ -13,12 +13,15 @@ function fetchEventsForMonth(month, year, callback) {
             if (this.status == 200) {
                 const response = JSON.parse(this.responseText);
                 callback(0, response);
+            } else {
+                callback(this.status, 0);
             }
         }
     };
     xhttp.open("GET", `/userEvents/getEventsForMonth?month=${month + 1}&year=${year}`, true);
     xhttp.send();
 }
+
 function getColorClass(eventID) {
     for (let i = 0; i < eventColors.length; i++) {
         if (eventColors[i].id === eventID) {
@@ -30,9 +33,9 @@ function getColorClass(eventID) {
     colorIndex++;
     return colorClass;
 }
-function createButton(text, className, trueEventID) {
+
+function createButton(text, className, eventID) {
     const anchor = document.createElement('a');
-    anchor.href = `/event?EventID=${trueEventID}`;
     const button = document.createElement('button');
     button.type = 'button';
     button.className = className;
@@ -40,6 +43,7 @@ function createButton(text, className, trueEventID) {
     anchor.appendChild(button);
     return anchor;
 }
+
 function createItem(day, events, displayedEvents) {
     const itemDiv = document.createElement('div');
     itemDiv.className = 'item';
@@ -59,7 +63,7 @@ function createItem(day, events, displayedEvents) {
         for (let i = 0; i < dayEvents.length; i++) {
             const event = dayEvents[i];
             const colorClass = getColorClass(event.EventID);
-            const button = createButton('Event at ' + event.location + ' from ' + new Date(event.startDate).toLocaleDateString() + ' to ' + new Date(event.endDate).toLocaleDateString(), colorClass, event.TrueEventID);
+            const button = createButton('Event at ' + event.location + ' from ' + new Date(event.startDate).toLocaleDateString() + ' to ' + new Date(event.endDate).toLocaleDateString(), colorClass, event.EventID);
             interiorDiv.appendChild(button);
             if (!displayedEvents.has(event.EventID)) {
                 const subDivButton = button.cloneNode(true);
@@ -71,6 +75,7 @@ function createItem(day, events, displayedEvents) {
     itemDiv.appendChild(interiorDiv);
     return itemDiv;
 }
+
 function createItems() {
     const daysContainer = document.getElementById('daysContainer');
     const subDivHeadingsButtons = document.getElementById('subDivHeadingsButtons');
@@ -92,4 +97,5 @@ function createItems() {
         }
     });
 }
+
 document.addEventListener('DOMContentLoaded', createItems);
