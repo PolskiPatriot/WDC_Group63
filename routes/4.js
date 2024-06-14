@@ -5,7 +5,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  if (req.level > 2) {
+  if (req.level > 1) {
     res.sendFile(path.join(__dirname, '../public', '4.html'));
     return;
   } else {
