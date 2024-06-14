@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/stylesheets/4.css">
     <link rel="stylesheet" href="/stylesheets/header.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <script src="js/4.js"></script>
 </head>
 
 <body>
@@ -24,17 +25,12 @@
                 <a href="/groupManager">Return</a>
             </div>
         </div>
-        <p class="member-count">Number of Members: 123</p>
+        <div class="member-count">Number of Members:<span id="count"></span></div>
         <br>
-        <div class="user-listing">
-            <span>First name &nbsp; &nbsp; Last name</span>
-            <div class="actions">
-                <a>Promote</a>
-                <a>Demote</a>
-                <a>Kick</a>
-            </div>
+        <div id="user-listing">
         </div>
     </main>
+    <script>load()</script>
 </body>
 
 </html>
