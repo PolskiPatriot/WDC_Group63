@@ -21,7 +21,6 @@ function fetchEventsForMonth(month, year, callback) {
     xhttp.open("GET", `/userEvents/getEventsForMonth?month=${month + 1}&year=${year}`, true);
     xhttp.send();
 }
-
 function getColorClass(eventID) {
     for (let i = 0; i < eventColors.length; i++) {
         if (eventColors[i].id === eventID) {
@@ -33,7 +32,6 @@ function getColorClass(eventID) {
     colorIndex++;
     return colorClass;
 }
-
 function createButton(text, className, trueEventID) {
     const anchor = document.createElement('a');
     anchor.href = `/event?EventID=${trueEventID}`;
@@ -44,7 +42,6 @@ function createButton(text, className, trueEventID) {
     anchor.appendChild(button);
     return anchor;
 }
-
 function createItem(day, events, displayedEvents) {
     const itemDiv = document.createElement('div');
     itemDiv.className = 'item';
@@ -76,7 +73,6 @@ function createItem(day, events, displayedEvents) {
     itemDiv.appendChild(interiorDiv);
     return itemDiv;
 }
-
 function createItems() {
     const daysContainer = document.getElementById('daysContainer');
     const subDivHeadingsButtons = document.getElementById('subDivHeadingsButtons');
@@ -98,5 +94,4 @@ function createItems() {
         }
     });
 }
-
 document.addEventListener('DOMContentLoaded', createItems);
