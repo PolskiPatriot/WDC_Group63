@@ -55,7 +55,7 @@ app.use('/', mainFeedRouter);
 app.use('/group', groupRouter);
 app.use('/groupManager', groupManagerRouter);
 app.use('/Email', EmailRouter);
-app.use('/Users', viewUserRouter);
+app.use('/viewUsers', viewUserRouter);
 app.use('/Event', viewEventRouter);
 app.use('/editEvent', editEventRouter);
 app.use('/editPost', editPostRouter);
