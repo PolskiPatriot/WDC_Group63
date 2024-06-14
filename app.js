@@ -10,8 +10,7 @@ var viewUserRouter = require('./routes/4');
 var viewEventRouter = require('./routes/5');
 var editEventRouter = require('./routes/6');
 var editPostRouter = require('./routes/7');
-var upcomingEventsRouter = require('./routes/8');
-// var viewEventsRouter = require('./routes/8');
+var viewEventsRouter = require('./routes/8');
 var viewMyOrgsRouter = require('./routes/9');
 var signinRouter = require('./routes/10');
 var EmailRouter = require('./routes/11');
@@ -98,7 +97,8 @@ app.use(function (req, res, next) {
                     next();
                 } else {
                     console.log(UserLevel);
-                    req.level = UserLevel[0].UserLevel + 1;
+                    req.level = UserLevel[0].UserLevel;
+                    if (req.level < 1) req.level = 1;
                     next();
                 }
             });
@@ -115,8 +115,7 @@ app.use('/viewUsers', viewUserRouter);
 app.use('/Event', viewEventRouter);
 app.use('/editEvent', editEventRouter);
 app.use('/editPost', editPostRouter);
-app.use('/Upcoming', upcomingEventsRouter);
-// app.use('/viewEvents', viewEventsRouter);
+app.use('/viewEvents', viewEventsRouter);
 app.use('/viewMyOrgs', viewMyOrgsRouter);
 app.use('/Signin', signinRouter);
 app.use('/Email', EmailRouter);

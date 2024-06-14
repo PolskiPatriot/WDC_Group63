@@ -16,7 +16,7 @@ function load() {
 
                 const eventName = document.createElement('h2');
                 eventCard.classList.add('eventName');
-                var EventName = document.createTextNode(res[i].eventName);
+                var EventName = document.createTextNode(res[i].title);
                 eventName.appendChild(EventName);
 
 

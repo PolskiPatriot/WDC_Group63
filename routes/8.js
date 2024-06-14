@@ -1,25 +1,32 @@
-var express = require('express');
+const express = require('express');
 const path = require('path');
-const mysql = require('mysql');
-const { error } = require('console');
-
-
+const { isModuleNamespaceObject } = require('util/types');
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
-    const connection = mysql.createConnection({
-          host: "localhost",
-          database: "uDatabase",
-          multipleStatements: true
-      });
-      connection.connect((error)=>{
-          if (error) {
-			res.send(500);
-          }
-      });
+/* GET home page. */
+router.get('/', function (req, res, next) {
+  res.sendFile(path.join(__dirname, '../public', '8.html'));
+});
 
-      var queries;
 
+// receive request
+router.get('/getContent', function (req, res) {
+  req.pool.getConnection((error, connection) => {
+    if (error) {
+      res.sendStatus(500);
+    }
+    var query = "SELECT * FROM Events INNER JOIN Posts ON Events.EventID = Posts.EventID";
+    connection.query(query, function (err, eventInfo) {
+      connection.release();
+      if (err) {
+        console.log(err)
+        res.sendStatus(500);
+        return;
+      }
+      console.log(eventInfo)
+      res.send(eventInfo);
+    });
+  });
 });
 
 module.exports = router;
