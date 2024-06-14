@@ -34,9 +34,9 @@ function getColorClass(eventID) {
     return colorClass;
 }
 
-function createButton(text, className, eventID) {
+function createButton(text, className, trueEventID) {
     const anchor = document.createElement('a');
-    anchor.href = `/event?EventID=${eventID}`;
+    anchor.href = `/event?EventID=${trueEventID}`;
     const button = document.createElement('button');
     button.type = 'button';
     button.className = className;
@@ -64,7 +64,7 @@ function createItem(day, events, displayedEvents) {
         for (let i = 0; i < dayEvents.length; i++) {
             const event = dayEvents[i];
             const colorClass = getColorClass(event.EventID);
-            const button = createButton('Event at ' + event.location + ' from ' + new Date(event.startDate).toLocaleDateString() + ' to ' + new Date(event.endDate).toLocaleDateString(), colorClass, event.EventID);
+            const button = createButton('Event at ' + event.location + ' from ' + new Date(event.startDate).toLocaleDateString() + ' to ' + new Date(event.endDate).toLocaleDateString(), colorClass, event.TrueEventID);
             interiorDiv.appendChild(button);
             if (!displayedEvents.has(event.EventID)) {
                 const subDivButton = button.cloneNode(true);
