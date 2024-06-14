@@ -14,12 +14,9 @@ function load() {
                 const textEl = document.createElement('div');
                 textEl.classList.add('group-text');
                 const orgNameEl = document.createElement('span');
-                var title = document.createTextNode(res[i].orgName);
-                orgNameEl.appendChild(title);
+                orgNameEl.append(res[i].orgName);
                 const aboutEl = document.createElement('p');
-                var about = document.createTextNode(res[i].aboutOrg);
-                aboutEl.appendChild(about);
-
+                aboutEl.appendChild(res[i].aboutOrg);
 
                 const buttonEl = document.createElement('button');
                 buttonEl.classList.add('group-button');
