@@ -30,16 +30,20 @@ router.get('/', function(req, res, next) {
 
 	if (req.cookies.userID) {
 		queries.push("SELECT * from EventJoin WHERE UserID=0x"+req.cookies.userID +" AND EventID=" + req.query.EventID);
-		queries.push("SELECT UserLevel FROM GroupJoin WHERE OrgID= (SELECT OrgID from Events WHERE EventID=" + req.query.EventID + ') AND UserID=0x'+req.cookies.userID + ' ');
+		queries.push("SELECT UserLevel FROM GroupJoin WHERE OrgID= (SELECT OrgID from Posts WHERE EventID=" + req.query.EventID + ') AND UserID=0x'+req.cookies.userID + ' ');
 
 	} else {
 		queries.push("SELECT * from EventJoin WHERE EventID=" + req.query.EventID);
 	}
 
+
 	var joinedBool = false;
 	var JoinedOrgBool = false;
 	var userID;
+	var userlevel = 0;
+	console.log(queries);
 	connection.query(queries.join(';'), function(err, results) {
+		console.log(results[3]);
 		if (err) throw err;
 		if (req.cookies.userID) {
 			if (results[2].length > 0){
@@ -49,6 +53,7 @@ router.get('/', function(req, res, next) {
 				JoinedOrgBool = true;
 			}
 			userID = req.cookies.userID;
+			userlevel = results[3];
 		} else {
 			userID = 0;
 		}
@@ -57,7 +62,9 @@ router.get('/', function(req, res, next) {
             groupData:results[1][0],
 			joinedBool: joinedBool,
 			JoinedOrgBool: JoinedOrgBool,
-			userID: userID
+			userID: userID,
+			userLevel: userlevel
+
 		});
 	});
 
