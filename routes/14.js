@@ -3,7 +3,7 @@ var router = express.Router();
 const path = require('path');
 
 router.get('/', function (req, res, next) {
-    if (!(typeof req.cookies.userID === 'undefined')) {
+    if ((typeof req.cookies.userID === 'undefined')) {
         res.redirect('/');
     } else {
         res.sendFile(path.join(__dirname, '../public', '14.html'));
