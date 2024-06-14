@@ -41,19 +41,18 @@ body {
 }
 
 .organisation button {
-    height: 6vw;
-    width: 12vw;
+    float: right;
     font-size: 1vw;
     font-weight: bold;
-    float: right;
     border-style: dotted;
     border-width: 0.30em;
     border-color: black;
     background-color: white;
     border-radius: 100px;
-    margin: 0.8vw;
+    margin: 0.8vw 10px;
     text-align: center;
-    padding: 0;
+    width: 6vw;
+    height: 6vw;
 }
 
 .organisation button:hover {
