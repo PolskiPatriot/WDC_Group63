@@ -21,78 +21,55 @@ router.get('/', function (req, res, next) {
 
 router.post('/google-login', async (req, res) => {
     const { token } = req.body;
-    try {
-        const ticket = await client.verifyIdToken({
-            idToken: token,
-            audience: '119246077266-568pi1sojct64fdrvn10enalph5aqgg3.apps.googleusercontent.com'
-        });
-        const payload = ticket.getPayload();
+    const ticket = await client.verifyIdToken({
+        idToken: token,
+        audience: '119246077266-568pi1sojct64fdrvn10enalph5aqgg3.apps.googleusercontent.com'
+    });
+    const payload = ticket.getPayload();
+    const query = 'SELECT UserID FROM Users WHERE email = ?';
+    req.pool.getConnection((error, connection) => {
+        if (error) {
+            return res.status(500);
+        }
+        connection.query(query, [payload.email], (err, results) => {
+            connection.release();
 
-        const query = 'SELECT UserID FROM Users WHERE email = ?';
-
-        req.pool.getConnection((error, connection) => {
-            if (error) {
-                console.error('Error getting connection from pool: ' + error);
-                return res.status(500).json({ success: false, message: 'Error getting connection from pool' });
+            if (err) {
+                return res.status(500).json({ success: false, message: 'Error fetching data' });
             }
 
-            connection.query(query, [payload.email], (err, results) => {
-                connection.release();
-
-                if (err) {
-                    console.error('Error fetching data: ' + err);
-                    return res.status(500).json({ success: false, message: 'Error fetching data' });
-                }
-
-                if (results.length === 0) {
-                    return res.status(401).json({ success: false, message: 'User not found' });
-                }
-
-                const userId = results[0].UserID;
-                res.cookie('userID', userId.toString('hex'), { httpOnly: true, maxAge: 900000 });
-                res.status(200).json({ success: true, message: 'Login successful' });
-            });
+            if (results.length === 0) {
+                return res.status(401).json({ success: false, message: 'User not found' });
+            }
+            const userId = results[0].UserID;
+            res.cookie('userID', userId.toString('hex'), { httpOnly: true, maxAge: 900000 });
+            res.status(200).json({ success: true, message: 'Login successful' });
         });
-    } catch (error) {
-        console.error('Error verifying token: ' + error);
-        res.status(500).json({ success: false, message: 'Error verifying token' });
-    }
+    });
 });
 
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const query = 'SELECT UserID, password FROM Users WHERE email = ?';
-
     req.pool.getConnection((error, connection) => {
         if (error) {
-            console.error('Error getting connection from pool: ' + error);
-            return res.status(500).send({ success: false, message: 'Error getting connection from pool' });
+            return res.status(500);
         }
-
         connection.query(query, [email], async (err, results) => {
             connection.release();
             if (err) {
-                console.error('Error fetching data: ' + err);
-                return res.status(500).send({ success: false, message: 'Error fetching data' });
+                return res.status(500);
             }
-
             if (results.length === 0) {
-                return res.status(401).send({ success: false, message: 'Invalid email or password' });
+                return res.status(401);
             }
-
             const storedPassword = results[0].password;
             const userId = results[0].UserID;
-
-            try {
-                if (await argon2.verify(storedPassword, password)) {
-                    res.cookie('userID', userId.toString('hex'), { httpOnly: true, maxAge: 900000 });
-                    return res.status(200).send({ success: true, message: 'Login successful' });
-                } else {
-                    return res.status(401).send({ success: false, message: 'Invalid email or password' });
-                }
-            } catch (err) {
-                console.error('Error verifying password: ' + err);
-                return res.status(500).send({ success: false, message: 'Error verifying password' });
+            if (await argon2.verify(storedPassword, password)) {
+                res.cookie('userID', userId.toString('hex'), { httpOnly: true, maxAge: 900000 });
+                return res.status(200).send({ success: true, message: 'Login successful' });
+            } else {
+                return res.status(401).send({ success: false, message: 'Invalid email or password' });
             }
         });
     });

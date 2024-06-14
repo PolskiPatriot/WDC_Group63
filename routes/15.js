@@ -18,28 +18,20 @@ router.get('/username', (req, res) => {
     if (!userId) {
         return res.status(401).send({ message: 'Error' });
     }
-    console.log('USERID FOR USERNAME: ' + userId);
-
     req.pool.getConnection((error, connection) => {
         if (error) {
-            console.error('Error getting connection from pool: ' + error);
             return res.status(500).send({ message: 'Error getting connection from pool' });
         }
-
         const query = 'SELECT givenName, About FROM Users WHERE UserID = UNHEX(?)';
         connection.query(query, [userId], (err, results) => {
             connection.release();
-
             if (err) {
-                console.error('Error fetching data: ' + err);
                 return res.status(500).send({ err });
             }
-
             if (results.length === 0) {
                 return res.status(404).send({ message: 'User not found' });
             }
-
-            const username = results[0].givenName;
+            const username = results[0].givenName || 'No Username!';
             const about = results[0].About || 'Your about content is empty!';
             res.status(200).send({ username, about });
         });
@@ -49,11 +41,9 @@ router.get('/username', (req, res) => {
 router.post('/update-profile', (req, res) => {
     const userId = req.cookies.userID;
     const { field, value } = req.body;
-
     if (!userId) {
         return res.status(401).send({ message: 'Unauthorized' });
     }
-
     let query;
     if (field === 'username') {
         query = 'UPDATE Users SET givenName = ? WHERE UserID = UNHEX(?)';
@@ -62,18 +52,13 @@ router.post('/update-profile', (req, res) => {
     } else {
         return res.status(400).send({ message: 'Invalid field' });
     }
-
     req.pool.getConnection((error, connection) => {
         if (error) {
-            console.error('Error getting connection from pool: ' + error);
-            return res.status(500).send({ message: 'Error getting connection from pool' });
+            return res.status(500);
         }
-
         connection.query(query, [value, userId], (err) => {
             connection.release();
-
             if (err) {
-                console.error('Error updating data: ' + err);
                 return res.status(500).send({ message: 'Error updating data' });
             }
             res.status(200).send({ message: 'Profile updated successfully' });

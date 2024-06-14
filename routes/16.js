@@ -23,26 +23,19 @@ router.get('/contact-details', (req, res) => {
     if (!userId) {
         return res.status(401).send({ message: 'Error' });
     }
-
     req.pool.getConnection((error, connection) => {
         if (error) {
-            console.error('Error getting connection from pool: ' + error);
-            return res.status(500).send('Error getting connection from pool');
+            return res.status(500);
         }
-
         const query = 'SELECT givenName, familyName, email, phonenumber FROM Users WHERE UserID = UNHEX(?)';
         connection.query(query, [userId], (err, results) => {
             connection.release();
-
             if (err) {
-                console.error('Error fetching data: ' + err);
                 return res.status(500).send({ err });
             }
-
             if (results.length === 0) {
                 return res.status(404).send({ message: 'No user found' });
             }
-
             const { givenName, familyName, email, phonenumber } = results[0];
             res.status(200).send({ givenName, familyName, email, phonenumber });
         });
@@ -52,25 +45,20 @@ router.get('/contact-details', (req, res) => {
 router.post('/update-contact-details', (req, res) => {
     const userId = req.cookies.userID;
     const { firstName, lastName, email, phonenumber } = req.body;
-
     if (!userId) {
         return res.status(401).send({ message: 'Unauthorized' });
     }
     const phoneBinary = Buffer.from(phonenumber, 'utf8'); // I got this from https://stackoverflow.com/questions/25223776/node-buffers-from-utf8-to-binary
-
-
     const query = 'UPDATE Users SET givenName = ?, familyName = ?, email = ?, phonenumber = ? WHERE UserID = UNHEX(?)';
     req.pool.getConnection((error, connection) => {
         if (error) {
-            console.error('Error getting connection from pool: ' + error);
-            return res.status(500).send('Error getting connection from pool');
+            return res.status(500);
         }
         connection.query(query, [firstName, lastName, email, phoneBinary, userId], (err) => {
             if (err) {
-                console.error('Error updating data: ' + err);
                 return res.status(500).send({ message: 'Error updating data' });
             }
-            res.status(200).send({ message: 'Contact details updated successfully' });
+            res.status(200).send({ message: 'Contact details updated' });
         });
     });
 });

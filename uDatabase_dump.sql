@@ -42,7 +42,7 @@ CREATE TABLE `BranchOrg` (
 
 LOCK TABLES `BranchOrg` WRITE;
 /*!40000 ALTER TABLE `BranchOrg` DISABLE KEYS */;
-INSERT INTO `BranchOrg` VALUES (_binary 'ÔøΩÔøΩyÔøΩ\ÔøΩ;BÔøΩ\0','RSPCA Brazil','RSPCA Brazil is also about animal good',1234,'/images/banners/RSPCA.png','Brazil',_binary '\ÔøΩ\ÔøΩÔøΩ\ÔøΩ;BÔøΩ\0');
+INSERT INTO `BranchOrg` VALUES (_binary '¥¡y∑\Ôù;B¨\0','RSPCA Brazil','RSPCA Brazil is also about animal good',1234,'/images/banners/RSPCA.png','Brazil',_binary '\ \ı∂\Ôù;B¨\0');
 /*!40000 ALTER TABLE `BranchOrg` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,7 +61,7 @@ CREATE TABLE `EventJoin` (
   KEY `EventID` (`EventID`),
   KEY `UserID` (`UserID`),
   CONSTRAINT `EventJoin_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Events` (`EventID`),
-  CONSTRAINT `EventJoin_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `Users` (`UserID`)
+  CONSTRAINT `EventJoin_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `Users` (`UserID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -71,7 +71,6 @@ CREATE TABLE `EventJoin` (
 
 LOCK TABLES `EventJoin` WRITE;
 /*!40000 ALTER TABLE `EventJoin` DISABLE KEYS */;
-INSERT INTO `EventJoin` VALUES (_binary '_R\ÔøΩ2ÔøΩ\ÔøΩ;BÔøΩ\0',_binary 'ÔøΩÔøΩ\ÔøΩ\ÔøΩÔøΩ\ÔøΩ;BÔøΩ\0',_binary 'E\ÔøΩrÔøΩ\ÔøΩ;BÔøΩ\0');
 /*!40000 ALTER TABLE `EventJoin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,7 +97,6 @@ CREATE TABLE `Events` (
 
 LOCK TABLES `Events` WRITE;
 /*!40000 ALTER TABLE `Events` DISABLE KEYS */;
-INSERT INTO `Events` VALUES (_binary 'ÔøΩÔøΩ\ÔøΩ\ÔøΩÔøΩ\ÔøΩ;BÔøΩ\0','2024-05-23 04:00:21','2024-05-23 04:00:21','Not Brazil',0);
 /*!40000 ALTER TABLE `Events` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +116,7 @@ CREATE TABLE `GroupJoin` (
   KEY `OrgID` (`OrgID`),
   KEY `UserID` (`UserID`),
   CONSTRAINT `GroupJoin_ibfk_1` FOREIGN KEY (`OrgID`) REFERENCES `BranchOrg` (`OrgID`),
-  CONSTRAINT `GroupJoin_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `Users` (`UserID`)
+  CONSTRAINT `GroupJoin_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `Users` (`UserID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -128,7 +126,6 @@ CREATE TABLE `GroupJoin` (
 
 LOCK TABLES `GroupJoin` WRITE;
 /*!40000 ALTER TABLE `GroupJoin` DISABLE KEYS */;
-INSERT INTO `GroupJoin` VALUES (_binary 'DÔøΩÔøΩ\ÔøΩ;BÔøΩ\0',_binary 'ÔøΩÔøΩyÔøΩ\ÔøΩ;BÔøΩ\0',_binary 'E\ÔøΩrÔøΩ\ÔøΩ;BÔøΩ\0',0);
 /*!40000 ALTER TABLE `GroupJoin` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,7 +153,7 @@ CREATE TABLE `MainOrg` (
 
 LOCK TABLES `MainOrg` WRITE;
 /*!40000 ALTER TABLE `MainOrg` DISABLE KEYS */;
-INSERT INTO `MainOrg` VALUES (_binary '\ÔøΩ\ÔøΩÔøΩ\ÔøΩ;BÔøΩ\0','RSPCA','RSPCA is about animal good',1234,'/images/banners/RSPCA.png',2);
+INSERT INTO `MainOrg` VALUES (_binary '\ \ı∂\Ôù;B¨\0','RSPCA','RSPCA is about animal good',1234,'/images/banners/RSPCA.png',2);
 /*!40000 ALTER TABLE `MainOrg` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +189,6 @@ CREATE TABLE `Posts` (
 
 LOCK TABLES `Posts` WRITE;
 /*!40000 ALTER TABLE `Posts` DISABLE KEYS */;
-INSERT INTO `Posts` VALUES (_binary 'ÔøΩZﬂÜÔøΩ\ÔøΩ;BÔøΩ\0',_binary 'ÔøΩÔøΩ\ÔøΩ\ÔøΩÔøΩ\ÔøΩ;BÔøΩ\0',_binary 'ÔøΩÔøΩyÔøΩ\ÔøΩ;BÔøΩ\0',NULL,0,0,'Eventwan','This is a test event dont actually attend please','2024-05-23 04:05:49',0);
 /*!40000 ALTER TABLE `Posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,10 +203,11 @@ CREATE TABLE `Users` (
   `UserID` binary(16) NOT NULL,
   `givenName` varchar(20) DEFAULT NULL,
   `familyName` varchar(30) DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL,
   `email` varchar(40) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `About` varchar(10000) DEFAULT NULL,
-  `phonenumber` binary(16) DEFAULT NULL,
+  `phonenumber` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`UserID`),
   UNIQUE KEY `uniqueEmail` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -222,7 +219,6 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (_binary '\rÔøΩ7=\0ÔøΩNÔøΩÔøΩ\ÔøΩÀ≥vÔøΩr:','111111','111111','112','$argon2id$v=19$m=65536,t=3,p=4$PIE+7MUGLU0DahYy5AyNEQ$vKbsKNL+uwBm6VEUT8hHLnFLp7Z26P/ayCUX2cZhpdQ',NULL,NULL),(_binary 'ÔøΩ_^ÔøΩÔøΩ\nÔøΩÔøΩ\ÔøΩ\ÔøΩ\ÔøΩ\ÔøΩ\ÔøΩ','12we2321','12','12','$argon2id$v=19$m=65536,t=3,p=4$UYiOqMEnm54X/g+qGjpd3g$zqvR/aW7OQEi6XUrSXHy3zgBlHIN3dnqSKPdfr2vMjs','Your about content is empty!3213',NULL),(_binary 'ÔøΩ\'ÃøÔøΩ\Z\ÔøΩQÔøΩ?IÔøΩ\ÔøΩ\ÔøΩ','132','122','122','$argon2id$v=19$m=65536,t=3,p=4$LO/WDi9cdzsvzlhn4BuoNg$hgdRE+Q51K0HaiLh4kojRGpyL7HomSEoD4vhj+ECuC8',NULL,NULL),(_binary 'ÔøΩ\ÔøΩÔøΩÔøΩ\ÔøΩ\ÔøΩfNÔøΩ\ÔøΩUL','1234','1234','123','$argon2id$v=19$m=65536,t=3,p=4$f1CT2jXaKvQFHCIFRTQ1FA$A3KdcrEeUh0Dc6yl2Pa5TS8TF3SCSojNPOcLpiabdfU','Your about content is empty!',_binary '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0'),(_binary 'œ´\ÔøΩ\ÔøΩq\ÔøΩ\ÔøΩn\0dÔøΩw»û','12','12','1111','$argon2id$v=19$m=65536,t=3,p=4$cP6VKNcZO9gEYpPsHNrydg$v5b9HWicAiLHqQpD1rycDOSfFsrLQKOUMKOsqIJZJ6o',NULL,NULL),(_binary 'Ôã≥\ÔøΩfÔøΩc\ÔøΩPicÔøΩÔøΩ','12','12','3333','$argon2id$v=19$m=65536,t=3,p=4$KepCKznj8eWEoYnKSHHGjw$GqhvLEWEs0MVcK3Nyoi9dtLRWbXVCAiBsl8gt/NLbLU',NULL,NULL),(_binary '\ÔøΩ\ÔøΩp\ÔøΩzÔøΩx\ÔøΩ\ÔøΩGÔøΩ$‘†','12331','21212','1222212','$argon2id$v=19$m=65536,t=3,p=4$nhgmDS18jwArF0O5LQTRbQ$B3iYEMtv5OQ6f3Ob9Z4yjaLs8xZLSxZTqEzzOOR34WY',NULL,_binary '121213\0\0\0\0\0\0\0\0\0\0');
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -235,13 +231,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-10  5:10:41
-
-
-ALTER TABLE `EventJoin`
-DROP FOREIGN KEY `DropEvent`,
-ADD CONSTRAINT `DropEvent` FOREIGN KEY (`UserID`) REFERENCES `Users` (`UserID`) ON DELETE CASCADE;
-
-ALTER TABLE `GroupJoin`
-DROP FOREIGN KEY `DropGroup`,
-ADD CONSTRAINT `DropGroup` FOREIGN KEY (`UserID`) REFERENCES `Users` (`UserID`) ON DELETE CASCADE;
+-- Dump completed on 2024-06-14  9:11:22

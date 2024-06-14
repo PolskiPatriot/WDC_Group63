@@ -24,4 +24,3 @@ router.get('/loginStatus', function (req, res) {
 });
 
 module.exports = router;
-

@@ -2,14 +2,8 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const nodemailer = require('nodemailer');
-
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'your-email@gmail.com',
-        pass: 'your-email-password'
-    }
-});
+const crypto = require('crypto');
+const argon2 = require('argon2');
 
 router.get('/', function (req, res) {
     if (req.level == 0) {
@@ -21,44 +15,41 @@ router.get('/', function (req, res) {
     }
 });
 
-router.post('/getEmail', function (req, res) {
+const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+        user: 'untitledmediaservice@gmail.com',
+        pass: ' cuhd eeuy kawm tqlm'
+    }
+});
+
+router.post('/sendEmail', function(req, res) {
     const email = req.body.email;
-
-    req.pool.getConnection((error, connection) => {
+    req.pool.query('SELECT * FROM Users WHERE email = ? AND password IS NOT NULL', [email], function(error, results) {
         if (error) {
-            res.sendStatus(500);
-            return;
+            return res.status(500).json({ success: false, message: 'Database query error' });
         }
-
-        const query = "SELECT * FROM Users WHERE email = ?";
-        connection.query(query, [email], function (err, results) {
-            connection.release();
-            if (err) {
-                res.sendStatus(500);
-                return;
+        if (results.length === 0) {
+            return res.status(404).json({ success: false, message: 'Email not found OR Email is associated to existing Google Account' });
+        }
+        const resetPassword = crypto.randomBytes(32).toString('hex');
+        res.cookie('resetCookie', `${email}:${resetPassword}`, { httpOnly: true, secure: true, sameSite: 'Strict' });
+        const mailOptions = {
+            from: 'wdc63transporter@gmail.com',
+            to: email,
+            subject: 'Backup Password Reset',
+            text: `Please use the following code to reset your password: ` +resetPassword
+        };
+        transporter.sendMail(mailOptions, function(error, info) {
+            if (error) {
+                return res.status(500).json({ success: false, message: 'Error sending email' });
+            } else {
+                return res.status(200).json({ success: true, message: 'Email sent' });
             }
-            res.json(results);
         });
     });
 });
 
-
-router.post('/sendEmail', function (req, res) {
-    const email = req.body.email;
-
-    const mailOptions = {
-        from: 'your-email@gmail.com',
-        to: email,
-        subject: 'Test Email from Node.js',
-        text: 'This is a test email sent from a Node.js application using Nodemailer.'
-    };
-
-    transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-            res.status(500).send('Error sending email');
-        } else {
-            res.status(200).send('Email sent');
-        }
-    });
-});
 module.exports = router;
