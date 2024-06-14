@@ -39,7 +39,6 @@ router.get('/getEventsForMonth', function(req, res, next) {
             if (error) {
                 return next(error);
             }
-
             res.json(results);
         });
     });
