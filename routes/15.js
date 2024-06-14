@@ -4,7 +4,13 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '../public', '15.html'));
+    if (req.level > 0) {
+      res.sendFile(path.join(__dirname, '../public', '15.html'));
+      return;
+    } else {
+      res.redirect('back');
+      return;
+    }
 });
 
 router.get('/username', (req, res) => {
