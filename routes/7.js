@@ -16,8 +16,6 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/:id', function (req, res) {
-	console.log("test");
-	console.log(Object.keys(req.body));
 	const connection = mysql.createConnection({
 		host: "localhost",
 		database: "uDatabase",
@@ -26,7 +24,7 @@ router.post('/:id', function (req, res) {
 
 	connection.connect((error) => {
 		if (error) {
-			console.error("error ", error);
+			res.send(500);
 		}
 	});
 	let postTime = new Date;

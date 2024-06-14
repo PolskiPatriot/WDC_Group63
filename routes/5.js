@@ -14,10 +14,9 @@ router.get('/', function(req, res, next) {
 
 	connection.connect((error)=>{
 		if (error) {
-			console.error("error ", error);
+			res.send(500);
 		}
 	});
-    console.log(req.query.EventID);
 	var queries=["SELECT * FROM Posts "
 				+"INNER JOIN Events "
 				+"ON Events.EventID=Posts.EventID "
@@ -30,7 +29,6 @@ router.get('/', function(req, res, next) {
 
 	connection.query(queries.join(';'), function(err, results) {
 		if (err) throw err;
-        console.log(results);
 		res.render(path.join(__dirname, '../public', '5.html'), {
 
 			postData:results[0][0],

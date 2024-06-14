@@ -110,11 +110,9 @@ router.post('/createBranchOrg', (req, res) => {
                 connection.query(query, [UUID, req.cookies.userID], function (err, success) {
                   connection.release();
                   if (err) {
-                    console.log(err);
                     res.sendStatus(500);
                     return;
                   }
-                  console.log(success);
                   res.send("success");
                   return;
                 });

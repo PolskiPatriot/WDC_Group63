@@ -12,6 +12,7 @@ router.get('/', function(req, res) {
         res.redirect('back');
         return;
     }
+});
 
 router.post('/confirmReset', async function(req, res) {
     const { resetCode, newPassword } = req.body;

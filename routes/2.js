@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
 
 	connection.connect((error)=>{
 		if (error) {
-			console.error("error ", error);
+			res.send(500);
 		}
 	});
 	var queries=["SELECT * FROM Posts "
@@ -41,7 +41,6 @@ router.get('/', function(req, res, next) {
 
 	connection.query(queries.join(';'), function(err, results) {
 		if (err) throw err;
-		console.log(results[1]);
 		res.render(path.join(__dirname, '../public', '2.html'), {
 
 			pinnedData:results[0],

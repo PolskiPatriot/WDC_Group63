@@ -36,7 +36,6 @@ router.get('/getContent', function (req, res) {
           return;
         }
         userList[0].memberCount = memberCount;
-        console.log(userList);
         res.send(userList);
         return;
       });
@@ -73,7 +72,6 @@ router.post('/manageUser', function (req, res) {
         res.sendStatus(500);
         return;
       }
-      console.log(success);
       res.send(success);
       return;
     });

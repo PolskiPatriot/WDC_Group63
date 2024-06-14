@@ -10,7 +10,7 @@ function logOut() {
         if (this.readyState == 4 && this.status == 200) {
             if (!(this.response == "already logged out")) {
                 alert("Logout successful");
-                parent.location.reload();
+                window.parent.location.href = '/';
             }
         }
     };
