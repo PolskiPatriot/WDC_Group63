@@ -14,7 +14,7 @@ function fetchEventsForMonth(month, year, callback) {
                 const response = JSON.parse(this.responseText);
                 callback(0, response);
             } else {
-                callback(this.status, null);
+                callback(this.status, 0);
             }
         }
     };
