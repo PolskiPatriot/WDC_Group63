@@ -19,6 +19,7 @@ function load() {
                 aboutEl.append(res[i].aboutOrg);
 
                 const buttonEl = document.createElement('button');
+                buttonEl.onclick = function () { leaveOrg(res[i].orgName); };
                 buttonEl.classList.add('group-button');
                 buttonEl.type = "button";
                 buttonEl.append("Leave");
@@ -36,5 +37,17 @@ function load() {
         }
     };
     xhttp.open('GET', '/viewMyOrgs/getContent', true);
+    xhttp.send();
+}
+
+function leaveOrg(orgName) {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            window.location.reload();
+        }
+    };
+    xhttp.open('GET', '/viewMyOrgs/leaveOrg?orgName=' + encodeURIComponent(orgName), true);
     xhttp.send();
 }
