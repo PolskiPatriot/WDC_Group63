@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/stylesheets/header.css">
     <link rel="stylesheet" href="/stylesheets/settingsSidebar.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <script src="js/21.js"></script>
 
 </head>
 
@@ -21,23 +22,16 @@
         <iframe class="sidebarIframe" title="settingsSidebar" name="settingsSidebar" id="settingsSidebar"
             src="settingsSidebar.html" width="320px" height="380px"></iframe>
         <h1 id="pageTitle">Create Organisation</h1>
-        <form class="addForm" action="/createNewOrg/createOrg" method="POST">
+        <form id="addForm">
+            <div id="warning" class="hidden">Org Already Exists!</div>
             <p>Name</p>
             <input type="text" id="orgName" name="orgName" placeholder="Enter Organisation Name">
             <p>About</p>
-            <textarea class="organisationCreateText" name="orgAbout"
+            <textarea id="organisationCreateText" name="orgAbout"
                 placeholder="Insert info about your organisation here!" rows="6"></textarea><br>
-            <button type="submit" class="OK">OK</button>
+            <button onclick="makeNewOrg()" type="button" class="OK">OK</button>
             <button type="reset" class="CANCEL">RESET</button>
         </form>
-
-        <!-- <div class="deleteConfirmation" style="z-index: 2;">
-            <span>Are you sure you want to delete your account?</span>
-            <div id="confirmationButton">
-                <button type="button" class="OK">OK</button>
-                <button type="button" class="CANCEL">CANCEL</button>
-            </div>
-        </div> -->
     </main>
 </body>
 
