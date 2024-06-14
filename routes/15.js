@@ -54,7 +54,7 @@ router.post('/update-profile', (req, res) => {
     }
     req.pool.getConnection((error, connection) => {
         if (error) {
-            return res.status(500);
+            return res.status(500).send({ message: 'Error getting connection from pool' });
         }
         connection.query(query, [value, userId], (err) => {
             connection.release();

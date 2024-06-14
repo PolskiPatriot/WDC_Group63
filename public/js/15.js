@@ -47,7 +47,7 @@ function edit(name) {
             }
         };
         xhttp.send(JSON.stringify({
-            typechanged: name,
+            field: name,
             value: input.value
         }));
     };
