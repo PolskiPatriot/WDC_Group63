@@ -4,8 +4,13 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  // need to be a SUPER ULTRA MEGA ADMIN
-  res.sendFile(path.join(__dirname, '../public', '19.html'));
+	if (req.level > 4) {
+		res.sendFile(path.join(__dirname, '../public', '19.html'));
+		return;
+	} else {
+		res.redirect('back');
+		return;
+	}
 });
 
 

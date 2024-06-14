@@ -5,11 +5,13 @@ const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 const argon2 = require('argon2');
 
-router.get('/', function (req, res, next) {
-    if (!(typeof req.cookies.userID === 'undefined')) {
-        res.redirect('/');
-    } else {
+router.get('/', function (req, res) {
+    if (req.level == 0) {
         res.sendFile(path.join(__dirname, '../public', '11.html'));
+        return;
+    } else {
+        res.redirect('back');
+        return;
     }
 });
 

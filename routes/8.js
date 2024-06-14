@@ -1,16 +1,11 @@
 const express = require('express');
 const path = require('path');
+const { isModuleNamespaceObject } = require('util/types');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-	if (req.level > 2) {
-		res.sendFile(path.join(__dirname, '../public', '18.html'));
-		return;
-	} else {
-		res.redirect('back');
-		return;
-	}
+  res.sendFile(path.join(__dirname, '../public', '8.html'));
 });
 
 
@@ -20,21 +15,16 @@ router.get('/getContent', function (req, res) {
     if (error) {
       res.send(500);
     }
-    // ADD CHECK FOR ADMIN HERE
-    var query = "SELECT orgName FROM MainOrg ORDER BY orgName ASC";
-    connection.query(query, function (err, groupInfo) {
+    var query = "SELECT hex(EventID), startDate, endDate, location, responseCount, eventName FROM Events ORDER BY responseCount desc";
+    connection.query(query, function (err, eventInfo) {
       connection.release();
       if (err) {
         res.sendStatus(500);
         return;
       }
-      res.send(groupInfo);
+      res.send(eventInfo);
     });
   });
-});
-
-router.get('/viewBranches', function (req, res) {
-  res.redirect(path.join('..', 'viewBranchOrgs'));
 });
 
 module.exports = router;

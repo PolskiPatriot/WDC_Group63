@@ -4,15 +4,18 @@ const crypto = require('crypto');
 const argon2 = require('argon2');
 const { generateFromEmail } = require("unique-username-generator");
 const { OAuth2Client } = require('google-auth-library');
+const e = require('express');
 const client = new OAuth2Client('119246077266-568pi1sojct64fdrvn10enalph5aqgg3.apps.googleusercontent.com');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    if (!(typeof req.cookies.userID === 'defined')) {
-        res.redirect('/');
-    } else {
+    if (req.level == 0) {
         res.sendFile(path.join(__dirname, '../public', '10.html'));
+        return;
+    } else {
+        res.redirect('back');
+        return;
     }
 });
 

@@ -3,13 +3,15 @@ const router = express.Router();
 const path = require('path');
 const argon2 = require('argon2');
 
-router.get('/', function (req, res, next) {
-    if (!(typeof req.cookies.userID === 'undefined')) {
-        res.redirect('/');
-    } else {
+
+router.get('/', function(req, res) {
+    if (req.level == 0) {
         res.sendFile(path.join(__dirname, '../public', '12.html'));
+        return;
+    } else {
+        res.redirect('back');
+        return;
     }
-});
 
 router.post('/confirmReset', async function(req, res) {
     const { resetCode, newPassword } = req.body;

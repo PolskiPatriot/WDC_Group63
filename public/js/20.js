@@ -14,10 +14,17 @@ function load() {
                 iconEl.alt = "orgLogo";
                 var orgNameEl = document.createTextNode(res[i].orgName);
 
+
+                const formEl = document.createElement('form');
+                formEl.action = "/viewUsers";
+                formEl.method = "GET";
+
                 const ManageUsersEl = document.createElement('button');
-                ManageUsersEl.onclick = function () { manageUsers(res[i].orgName); };
-                ManageUsersEl.type = "button";
+                ManageUsersEl.type = "submit";
+                ManageUsersEl.name = "orgName";
+                ManageUsersEl.value = (res[i].orgName);
                 ManageUsersEl.append("Manage Users");
+                formEl.appendChild(ManageUsersEl);
 
                 const DeleteEl = document.createElement('button');
                 DeleteEl.onclick = function () { deleteOrg(res[i].orgName); };
@@ -28,7 +35,7 @@ function load() {
                 groupEl.appendChild(iconEl);
                 groupEl.appendChild(orgNameEl);
                 groupEl.appendChild(DeleteEl);
-                groupEl.appendChild(ManageUsersEl);
+                groupEl.appendChild(formEl);
 
                 // append group
                 parent.appendChild(groupEl);
@@ -54,7 +61,7 @@ function deleteOrg(orgName) {
 
 function manageUsers() {
     // redirect to manageUsers of the group
-    window.location.replace("");
+    window.location.href;
 }
 
 function showNewBranchOrg() {
@@ -68,8 +75,21 @@ function makeNewBranchOrg() {
     var orgData = { 'mainOrg': mainOrg.get('orgName'), 'orgName': document.getElementById('orgName').value, 'orgRegion': document.getElementById('orgRegion').value, 'orgAbout': document.getElementById('organisationCreateText').value };
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById('addForm').reset();
-            window.location.reload();
+            switch (this.response) {
+                case "relog":
+                    window.location.href = "/Signin";
+                    break;
+                case "success":
+                    document.getElementById("warning").classList.add("hidden");
+                    document.getElementById('addForm').reset();
+                    window.location.reload();
+                    break;
+                case "exists":
+                    document.getElementById("warning").classList.remove("hidden");
+                    break;
+                default:
+                    break;
+            }
         }
     };
     xhttp.open('POST', '/viewBranchOrgs/createBranchOrg', true);

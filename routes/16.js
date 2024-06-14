@@ -9,10 +9,12 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    if (!(typeof req.cookies.userID === 'undefined')) {
-        res.redirect('/');
+    if (req.level > 0) {
+      res.sendFile(path.join(__dirname, '../public', '16.html'));
+      return;
     } else {
-        res.sendFile(path.join(__dirname, '../public', '16.html'));
+      res.redirect('back');
+      return;
     }
 });
 

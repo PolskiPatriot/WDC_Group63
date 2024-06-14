@@ -5,11 +5,17 @@ const { error, time } = require('console');
 var router = express.Router();
 
 /* GET event edit page. */
-router.get('/', function(req, res, next) {
-  res.render(path.join(__dirname, '../public', '7.html'));
+router.get('/', function (req, res, next) {
+	if (req.level > 2) {
+		res.sendFile(path.join(__dirname, '../public', '7.html'));
+		return;
+	} else {
+		res.redirect('back');
+		return;
+	}
 });
 
-router.post('/:id', function(req, res) {
+router.post('/:id', function (req, res) {
 	console.log("test");
 	console.log(Object.keys(req.body));
 	const connection = mysql.createConnection({
@@ -18,7 +24,7 @@ router.post('/:id', function(req, res) {
 		multipleStatements: true
 	});
 
-	connection.connect((error)=>{
+	connection.connect((error) => {
 		if (error) {
 			console.error("error ", error);
 		}
@@ -33,18 +39,18 @@ router.post('/:id', function(req, res) {
 	if (req.body.answer != "0") visibility = 1;
 
 	var queries = ['INSERT INTO Posts VALUES(UNHEX(REPLACE(UUID(), "-", "")), '
-					+ ' NULL,'
-					+ ' (SELECT OrgID from BranchOrg where orgID="' + req.params.id + '"),'
-					+ ' NULL, '
-					+ '"' + visibility + '", '
-					+ '"' + pinned + '", '
-					+ '"' + req.body.title + '", '
-					+ '"' + req.body.content + '", '
-					+ '"' + postTime + '", '
-					+ '"0")'
-				];
+		+ ' NULL,'
+		+ ' (SELECT OrgID from BranchOrg where orgID="' + req.params.id + '"),'
+		+ ' NULL, '
+		+ '"' + visibility + '", '
+		+ '"' + pinned + '", '
+		+ '"' + req.body.title + '", '
+		+ '"' + req.body.content + '", '
+		+ '"' + postTime + '", '
+		+ '"0")'
+	];
 
-	connection.query(queries.join(';'), function(err, results) {
+	connection.query(queries.join(';'), function (err, results) {
 		if (err) throw err;
 
 	});

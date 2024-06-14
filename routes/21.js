@@ -1,12 +1,17 @@
 const express = require('express');
 const path = require('path');
-const { send } = require('process');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  // need to be a User
-  res.sendFile(path.join(__dirname, '../public', '19.html'));
+
+  if (req.level > 0) {
+    res.sendFile(path.join(__dirname, '../public', '21.html'));
+    return;
+  } else {
+    res.redirect('back');
+    return;
+  }
 });
 
 
@@ -36,8 +41,8 @@ router.post('/createOrg', function (req, res) {
       if (error) {
         res.send(500);
       }
-      query = "INSERT INTO MainOrg VALUES (UNHEX('" + UUID + "'), ?, ?, 0, NULL, 1)";
-      connection.query(query, [orgName, orgAbout], function (err, success) {
+      query = "INSERT INTO MainOrg VALUES (UNHEX(?), ?, ?, 0, NULL, 1)";
+      connection.query(query, [UUID, orgName, orgAbout], function (err, success) {
         connection.release();
         if (err) {
           res.sendStatus(500);
@@ -50,8 +55,8 @@ router.post('/createOrg', function (req, res) {
       if (error) {
         res.send(500);
       }
-      query = "INSERT INTO GroupJoin VALUES (UNHEX(REPLACE(UUID(), '-','')), UNHEX('" + UUID + "'), UNHEX('" + req.cookies.userID + "'), 3)";
-      connection.query(query, [orgName, orgAbout], function (err, success) {
+      query = "INSERT INTO GroupJoin VALUES (UNHEX(REPLACE(UUID(), '-','')), UNHEX(?), UNHEX(?), 4)";
+      connection.query(query, [UUID, req.cookies.userID], function (err, success) {
         connection.release();
         if (err) {
           res.sendStatus(500);

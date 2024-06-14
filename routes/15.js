@@ -3,11 +3,13 @@ const path = require('path');
 const router = express.Router();
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-    if (!(typeof req.cookies.userID === 'undefined')) {
-        res.redirect('/');
+router.get('/', (req, res, next) => {
+    if (req.level > 0) {
+      res.sendFile(path.join(__dirname, '../public', '15.html'));
+      return;
     } else {
-        res.sendFile(path.join(__dirname, '../public', '15.html'));
+      res.redirect('back');
+      return;
     }
 });
 

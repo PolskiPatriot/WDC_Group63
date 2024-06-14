@@ -8,11 +8,13 @@ const { OAuth2Client } = require('google-auth-library');
 const client = new OAuth2Client('119246077266-568pi1sojct64fdrvn10enalph5aqgg3.apps.googleusercontent.com');
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-    if (!(typeof req.cookies.userID === 'defined')) {
-        res.redirect('/');
-    } else {
+router.get('/', function (req, res) {
+    if (req.level == 0) {
         res.sendFile(path.join(__dirname, '../public', '13.html'));
+        return;
+    } else {
+        res.redirect('back');
+        return;
     }
 });
 

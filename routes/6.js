@@ -5,11 +5,17 @@ const { error, time } = require('console');
 var router = express.Router();
 
 /* GET event edit page. */
-router.get('/', function(req, res, next) {
-  res.render(path.join(__dirname, '../public', '6.html'));
+router.get('/', function (req, res, next) {
+	if (req.level > 2) {
+		res.sendFile(path.join(__dirname, '../public', '6.html'));
+		return;
+	} else {
+		res.redirect('back');
+		return;
+	}
 });
 
-router.post('/:id', function(req, res) {
+router.post('/:id', function (req, res) {
 	console.log("test");
 	console.log(Object.keys(req.body));
 	const connection = mysql.createConnection({
@@ -18,7 +24,7 @@ router.post('/:id', function(req, res) {
 		multipleStatements: true
 	});
 
-	connection.connect((error)=>{
+	connection.connect((error) => {
 		if (error) {
 			console.error("error ", error);
 		}
@@ -29,7 +35,7 @@ router.post('/:id', function(req, res) {
 
 	let time = new Date(req.body.date + " " + req.body.time);
 	let endTime = time;
-	endTime.setHours(time.getHours()+ parseInt(req.body.duration));
+	endTime.setHours(time.getHours() + parseInt(req.body.duration));
 	time = time.toISOString().slice(0, 19).replace("T", ' ');
 	endTime = endTime.toISOString().slice(0, 19).replace("T", ' ');
 
@@ -40,22 +46,22 @@ router.post('/:id', function(req, res) {
 	let visibility = 0;
 	if (req.body.answer != "0") visibility = 1;
 
-	var queries = [ 'INSERT INTO Events VALUES(UNHEX(REPLACE(UUID(), "-", "")), '
-					+ '"' + time + '", '
-					+ '"' + endTime + '", '
-					+ '"' + req.body.address + '", '
-					+ '"0")'
-					,'INSERT INTO Posts VALUES(UNHEX(REPLACE(UUID(), "-", "")), '
-					+ ' (SELECT EventID from Events limit 1),'
-					+ ' (SELECT OrgID from BranchOrg where orgID="' + req.params.id + '"),'
-					+ ' NULL, '
-					+ '"' + visibility + '", '
-					+ '"' + pinned + '", '
-					+ '"' + req.body.title + '", '
-					+ '"' + req.body.content + '", '
-					+ '"' + postTime + '", '
-					+ '"0")'
-				];
+	var queries = ['INSERT INTO Events VALUES(UNHEX(REPLACE(UUID(), "-", "")), '
+		+ '"' + time + '", '
+		+ '"' + endTime + '", '
+		+ '"' + req.body.address + '", '
+		+ '"0")'
+		, 'INSERT INTO Posts VALUES(UNHEX(REPLACE(UUID(), "-", "")), '
+		+ ' (SELECT EventID from Events limit 1),'
+		+ ' (SELECT OrgID from BranchOrg where orgID="' + req.params.id + '"),'
+		+ ' NULL, '
+		+ '"' + visibility + '", '
+		+ '"' + pinned + '", '
+		+ '"' + req.body.title + '", '
+		+ '"' + req.body.content + '", '
+		+ '"' + postTime + '", '
+	+ '"0")'
+	];
 
 	/*connection.query(queries.join(';'), function(err, results) {
 		if (err) throw err;

@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users</title>
+    <title>untitled - View Branch Organisations</title>
     <link rel="stylesheet" href="/stylesheets/20.css">
     <link rel="stylesheet" href="/stylesheets/header.css">
     <link rel="stylesheet" href="/stylesheets/settingsSidebar.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <script src="js/20.js"></script>
 
 </head>
@@ -15,8 +16,8 @@
 <body>
     <iframe class="headerIframe" title="header" name="header" id="header" src="header.html" width="100%"
         height="120px"></iframe>
-    <iframe class="headerIframe" title="dropdown" name="dropdown" id="dropdown" src="dropdown.html" width="315px"
-        height="460px"></iframe>
+        <iframe class="headerIframe" title="dropdown" name="dropdown" id="dropdown" src="dropdown.html" width="315px"
+            height="260px"></iframe>
     <main id="col">
         <iframe class="sidebarIframe" title="settingsSidebar" name="settingsSidebar" id="settingsSidebar"
             src="settingsSidebar.html" width="320px" height="380px"></iframe>
@@ -29,9 +30,7 @@
                 </form>
             </div>
             <form id="addForm" class="hidden">
-                <div id="uploadImageDiv">
-                    <label id="imageTag">Upload Image</label><button type="button" id="addImage"></button>
-                </div>
+                    <div id="warning" class="hidden">Branch Already Exists!</div>
                 <p>Name</p>
                 <input type="text" id="orgName" name="orgName" placeholder="Enter Organisation Name">
                 <p>Region</p>
