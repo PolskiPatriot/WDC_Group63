@@ -7,7 +7,7 @@ var router = express.Router();
 
 /* GET event edit page. */
 router.get('/', function(req, res, next) {
-
+	console.log(req.query);
 	const connection = mysql.createConnection({
 		host: "localhost",
 		database: "uDatabase",
@@ -22,14 +22,17 @@ router.get('/', function(req, res, next) {
 
 	var queries=["SELECT HEX(OrgID) AS TrueOrgID from BranchOrg WHERE OrgID=0x"+req.query.id];
 
-	if (req.query.eventID) {
+	if (req.query.EventID) {
+		console.log("eventTrue");
 		queries.push("SELECT *, HEX(PostID) AS TruePostID FROM Posts WHERE PostID="+req.query.EventID);
 	} else {
+		console.log("eventTrue");
 		queries.push ("SELECT * FROM Posts");
 	}
 
-
+	console.log(req.query.EventID);
 	connection.query(queries.join(';'), function(err, results) {
+		console.log(results);
 		if (err) throw err;
 
 		if (req.query.EventID) {

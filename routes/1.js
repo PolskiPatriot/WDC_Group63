@@ -39,13 +39,13 @@ router.get('/', function(req, res, next) {
 				+"ORDER BY PostDate DESC) ",
 
 				"(SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID FROM Posts "
-					+"LEFT JOIN GroupJoin ON GroupJoin.OrgID!=Posts.OrgID "
+					+"LEFT JOIN GroupJoin ON GroupJoin.OrgID=Posts.OrgID "
 					+"LEFT JOIN Events "
 					+"ON Events.EventID=Posts.EventID "
 					+"WHERE Posts.private='false' AND Posts.OrgID NOT IN(SELECT OrgId From GroupJoin Where GroupJoin.UserID=0x"+req.cookies.userID +") "
 				+"UNION ALL "
 				+"SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID FROM Posts "
-					+"LEFT JOIN GroupJoin ON GroupJoin.OrgID!=Posts.OrgID "
+					+"LEFT JOIN GroupJoin ON GroupJoin.OrgID=Posts.OrgID "
 					+"RIGHT JOIN Events "
 					+"ON Events.EventID=Posts.EventID "
 					+"WHERE Posts.EventID IS NULL AND Posts.private='false' AND Posts.OrgID NOT IN(SELECT GroupJoin.OrgId From GroupJoin Where GroupJoin.UserID=0x"+req.cookies.userID +") )"
