@@ -23,8 +23,13 @@ router.get('/getContent', function (req, res, next) {
                     res.sendStatus(500);
                     return;
                 }
-                res.send(JSON.stringify(UserLevel[0].UserLevel));
-                return;
+
+                if (typeof UserLevel[0] === 'undefined') {
+                    res.send('1');
+                } else {
+                    res.send(JSON.stringify(UserLevel[0].UserLevel));
+                    return;
+                }
             });
         });
     }

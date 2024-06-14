@@ -10,6 +10,8 @@ function load() {
                     document.getElementById('links-list').style.display = 'none';
                     break;
                 case '1':
+                    document.getElementById('viewAdminOrgs').style.display = 'none';
+                    document.getElementById('viewPendingOrgs').style.display = 'none';
                     break;
                 case '2':
                 case '3':
