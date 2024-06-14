@@ -9,7 +9,7 @@ router.get('/', function (req, res, next) {
     res.sendFile(path.join(__dirname, '../public', '21.html'));
     return;
   } else {
-    res.redirect('back');
+		res.redirect('/');
     return;
   }
 });
@@ -59,8 +59,8 @@ router.post('/createOrg', function (req, res) {
                 return;
               }
               var branchID = branchUUID[0].UUID;
-              query = "INSERT INTO BranchOrg VALUES (UNHEX(?), ?, NULL, 1, NULL, ?, UNHEX(?))";
-              connection.query(query, [branchID, orgName, orgAbout, UUID], function (err, success) {
+              query = "INSERT INTO BranchOrg VALUES (UNHEX(?), ?, ?, 1, NULL, '(Main)', UNHEX(?))";
+              connection.query(query, [branchID, orgName+' (Main)', orgAbout, UUID], function (err, success) {
                 if (err) {
                   res.sendStatus(500);
                   return;
@@ -73,7 +73,7 @@ router.post('/createOrg', function (req, res) {
                     res.sendStatus(500);
                     return;
                   }
-                  res.redirect('back');
+                  res.send("success");
                 });
               });
             });

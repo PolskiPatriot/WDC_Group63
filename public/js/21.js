@@ -11,7 +11,7 @@ function makeNewOrg() {
                 case "success":
                     document.getElementById("warning").classList.add("hidden");
                     document.getElementById('addForm').reset();
-                    window.location.reload();
+                    window.location.replace('/viewAdminOrgs');
                     break;
                 case "exists":
                     document.getElementById("warning").classList.remove("hidden");
