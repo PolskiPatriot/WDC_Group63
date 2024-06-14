@@ -33,7 +33,7 @@
           <p class="event-location">Event Location: <input class="address-input" placeholder="Address" type="text" name="address" value="<%=EventInfo[0].location%>"></p>
 
           <p class="event-date">Event Date: <input class="date-input" type="date" name="date" value="<%= EventInfo[0].startDate.getFullYear() %>-<%if (EventInfo[0].startDate.getMonth()+1 < 10) {%>0<%}%><%= EventInfo[0].startDate.getMonth()+1 %>-<%if (EventInfo[0].startDate.getDate() < 10) {%>0<%}%><%= EventInfo[0].startDate.getDate() %>"></p>
-          <p class="event-length">Event Duration: <input class="duration-input" placeholder="... Hours" type="number" name="duration" value="<%= EventInfo[0].endDate.getHours() - EventInfo[0].startDate.getHours() %>"></p>
+          <p class="event-length">Event Duration: <input class="duration-input" min="0" placeholder="... Hours" type="number" name="duration" value="<%= (EventInfo[0].endDate.getTime() - EventInfo[0].startDate.getTime())/3600000 %>"></p>
           <br>
           <div class="visibility-toggle">
               <p>Public <input type="radio" name="answer" value="0" <%if(EventInfo[0].pinned) { %>  <%} else { %> checked <% } %> <%if(EventInfo[0].pinned) { %> checked <%} %>></p>

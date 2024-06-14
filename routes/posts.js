@@ -16,7 +16,7 @@ router.get("/like", function(req, res, next) {
 
 	connection.connect((error)=>{
 		if (error) {
-			console.error("error ", error);
+			res.send(500);
 		}
 	});
 	var queries=["SELECT likeCount FROM Posts WHERE PostID="+req.query.id,

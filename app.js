@@ -5,7 +5,6 @@ var logger = require('morgan');
 
 
 var mainFeedRouter = require('./routes/1');
-var groupRouter = require('./routes/2');
 var groupManagerRouter = require('./routes/3');
 var viewUserRouter = require('./routes/4');
 var viewEventRouter = require('./routes/5');
@@ -56,7 +55,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// check for valid userID
+// sanitize (dump) invalid userID
 app.use(function (req, res, next) {
     if (!(typeof req.cookies.userID === 'undefined')) {
         req.pool.getConnection((error, connection) => {
@@ -93,8 +92,15 @@ app.use(function (req, res, next) {
                     res.sendStatus(500);
                     return;
                 }
-                req.level = UserLevel[0].UserLevel;
-                next();
+
+                if (typeof UserLevel[0] === 'undefined') {
+                    req.level = 1;
+                    next();
+                } else {
+                    console.log(UserLevel);
+                    req.level = UserLevel[0].UserLevel + 1;
+                    next();
+                }
             });
         });
     } else {
@@ -104,7 +110,6 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', mainFeedRouter);
-app.use('/group', groupRouter);
 app.use('/groupManager', groupManagerRouter);
 app.use('/viewUsers', viewUserRouter);
 app.use('/Event', viewEventRouter);

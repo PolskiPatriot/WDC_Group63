@@ -100,7 +100,7 @@ router.post('/createBranchOrg', (req, res) => {
                 return;
               }
               var UUID = groupUUID[0].UUID;
-              var query = "INSERT INTO BranchOrg VALUES (UNHEX(?), ?, ?, 0, NULL, ?, UNHEX(?))";
+              var query = "INSERT INTO BranchOrg VALUES (UNHEX(?), ?, ?, 1, NULL, ?, UNHEX(?))";
               connection.query(query, [UUID, orgName, orgAbout, orgRegion, mainUUID], function (err, success) {
                 if (err) {
                   res.sendStatus(500);

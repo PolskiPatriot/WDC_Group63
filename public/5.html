@@ -107,7 +107,7 @@
 
             <p class="address">Address: <%= postData.location %></p>
 
-            <p class="duration">Duration: <%= postData.endDate.getHours() - postData.startDate.getHours()%> hrs</p>
+            <p class="duration">Duration: <%= (postData.endDate.getTime() - postData.startDate.getTime())/3600000 %> hrs</p>
             <p class="privacy">Public</p>
           </div>
           <div class="notes-container">

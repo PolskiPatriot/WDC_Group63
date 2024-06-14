@@ -53,7 +53,6 @@ router.get('/', function(req, res, next) {
 			userID = 0;
 		}
 		res.render(path.join(__dirname, '../public', '5.html'), {
-
 			postData:results[0][0],
             groupData:results[1][0],
 			joinedBool: joinedBool,

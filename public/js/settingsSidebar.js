@@ -1,9 +1,9 @@
-document.getElementById('profileDelete').addEventListener('click', function() {
+document.getElementById('profileDelete').addEventListener('click', function () {
     if (confirm('You sure you want to delete profile?')) {
         var xhttp = new XMLHttpRequest();
         xhttp.open('POST', 'settingsSidebar/delete-profile', true);
         xhttp.setRequestHeader('Content-Type', 'application/json');
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
             if (xhttp.readyState === 4) {
                 if (xhttp.status >= 200 && xhttp.status < 300) {
                     alert(xhttp.responseText);
@@ -25,14 +25,18 @@ function load() {
 
             switch (this.response) {
                 case '0':
+                    console.log("AAA");
                     document.getElementById('links-list').style.display = 'none';
                     break;
                 case '1':
+                case '2':
+                    console.log("BBB");
                     document.getElementById('viewAdminOrgs').style.display = 'none';
                     document.getElementById('viewPendingOrgs').style.display = 'none';
                     break;
                 case '3':
                 case '4':
+                    console.log("CCC");
                     document.getElementById('viewPendingOrgs').style.display = 'none';
                     break;
                 case '5':

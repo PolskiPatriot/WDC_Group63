@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 
 	connection.connect((error)=>{
 		if (error) {
-			console.error("error ", error);
+			res.send(500);
 		}
 	});
 
@@ -38,7 +38,7 @@ router.get('/', function(req, res, next) {
 				EventInfo:results[1]
 			});
 		} else {
-		res.render(path.join(__dirname, '../public', '6.html'), {
+		res.render(path.join(__dirname, '../public', '7.html'), {
 			OrgID: results[0]
 		});
 	}
@@ -56,7 +56,7 @@ router.post('/', function(req, res) {
 
 	connection.connect((error)=>{
 		if (error) {
-			console.error("error ", error);
+			res.send(500);
 		}
 	});
 	let postTime = new Date;

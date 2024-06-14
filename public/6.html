@@ -33,7 +33,7 @@
           <p class="event-time">Event Time: <input class="time-input" type="time" name="time" required min="00:00" max="23:59" step="1"></p>
           <p class="event-location">Event Location: <input class="address-input" placeholder="Address" type="text" name="address" required></p>
           <p class="event-date">Event Date: <input class="date-input" type="date" name="date" required></p>
-          <p class="event-length">Event Duration: <input class="duration-input" placeholder="... Hours" type="number" name="duration" required></p>
+          <p class="event-length">Event Duration: <input min="0" class="duration-input" placeholder="... Hours" type="number" name="duration" required></p>
           <br>
           <div class="visibility-toggle">
               <p>Public <input type="radio" name="answer" value="0"></p>
