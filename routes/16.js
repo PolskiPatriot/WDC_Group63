@@ -10,11 +10,11 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function (req, res, next) {
     if (req.level > 0) {
-      res.sendFile(path.join(__dirname, '../public', '16.html'));
-      return;
+        res.sendFile(path.join(__dirname, '../public', '16.html'));
+        return;
     } else {
-      res.redirect('back');
-      return;
+        res.redirect('/');
+        return;
     }
 });
 

@@ -5,11 +5,11 @@ const router = express.Router();
 /* GET home page. */
 router.get('/', (req, res, next) => {
     if (req.level > 0) {
-      res.sendFile(path.join(__dirname, '../public', '15.html'));
-      return;
+        res.sendFile(path.join(__dirname, '../public', '15.html'));
+        return;
     } else {
-      res.redirect('back');
-      return;
+        res.redirect('/');
+        return;
     }
 });
 

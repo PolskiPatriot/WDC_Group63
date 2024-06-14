@@ -8,7 +8,7 @@ router.get('/', function (req, res, next) {
 		res.sendFile(path.join(__dirname, '../public', '19.html'));
 		return;
 	} else {
-		res.redirect('back');
+		res.redirect('/');
 		return;
 	}
 });
