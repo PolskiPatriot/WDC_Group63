@@ -96,7 +96,6 @@ app.use(function (req, res, next) {
                     req.level = 1;
                     next();
                 } else {
-                    console.log(UserLevel);
                     req.level = UserLevel[0].UserLevel;
                     if (req.level < 1) req.level = 1;
                     next();
