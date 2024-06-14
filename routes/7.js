@@ -6,50 +6,54 @@ const nodemailer = require('nodemailer');
 var router = express.Router();
 
 /* GET event edit page. */
-router.get('/', function(req, res, next) {
-	console.log(req.query);
-	const connection = mysql.createConnection({
-		host: "localhost",
-		database: "uDatabase",
-		multipleStatements: true
-	});
+router.get('/', function (req, res, next) {
+	if (req.level > 1) {
+		console.log(req.query);
+		const connection = mysql.createConnection({
+			host: "localhost",
+			database: "uDatabase",
+			multipleStatements: true
+		});
 
-	connection.connect((error)=>{
-		if (error) {
-			res.send(500);
-		}
-	});
+		connection.connect((error) => {
+			if (error) {
+				res.send(500);
+			}
+		});
 
-	var queries=["SELECT HEX(OrgID) AS TrueOrgID from BranchOrg WHERE OrgID=0x"+req.query.id];
-
-	if (req.query.EventID) {
-		console.log("eventTrue");
-		queries.push("SELECT *, HEX(PostID) AS TruePostID FROM Posts WHERE PostID="+req.query.EventID);
-	} else {
-		console.log("eventTrue");
-		queries.push ("SELECT * FROM Posts");
-	}
-
-	console.log(req.query.EventID);
-	connection.query(queries.join(';'), function(err, results) {
-		console.log(results);
-		if (err) throw err;
+		var queries = ["SELECT HEX(OrgID) AS TrueOrgID from BranchOrg WHERE OrgID=0x" + req.query.id];
 
 		if (req.query.EventID) {
-			res.render(path.join(__dirname, '../public', 'EditPost.html'), {
-				OrgID: results[0],
-				EventInfo:results[1]
-			});
+			console.log("eventTrue");
+			queries.push("SELECT *, HEX(PostID) AS TruePostID FROM Posts WHERE PostID=" + req.query.EventID);
 		} else {
-		res.render(path.join(__dirname, '../public', '7.html'), {
-			OrgID: results[0]
-		});
-	}
-	});
+			console.log("eventTrue");
+			queries.push("SELECT * FROM Posts");
+		}
 
+		console.log(req.query.EventID);
+		connection.query(queries.join(';'), function (err, results) {
+			console.log(results);
+			if (err) throw err;
+
+			if (req.query.EventID) {
+				res.render(path.join(__dirname, '../public', 'EditPost.html'), {
+					OrgID: results[0],
+					EventInfo: results[1]
+				});
+			} else {
+				res.render(path.join(__dirname, '../public', '7.html'), {
+					OrgID: results[0]
+				});
+			}
+		});
+	} else {
+		res.redirect('/');
+		return;
+	}
 });
 
-router.post('/', function(req, res) {
+router.post('/', function (req, res) {
 
 	const connection = mysql.createConnection({
 		host: "localhost",
@@ -57,7 +61,7 @@ router.post('/', function(req, res) {
 		multipleStatements: true
 	});
 
-	connection.connect((error)=>{
+	connection.connect((error) => {
 		if (error) {
 			res.send(500);
 		}
@@ -73,30 +77,31 @@ router.post('/', function(req, res) {
 
 	var queries;
 	if (req.query.EventID) {
-		queries=['UPDATE Posts SET '
-				+ 'private="' + visibility + '", '
-				+ 'pinned="' + pinned + '", '
-				+ 'title="' + req.body.title + '", '
-				+ 'content="' + req.body.content + '" '
-				+ 'WHERE PostID=0x'+req.query.EventID];
+		queries = ['UPDATE Posts SET '
+			+ 'private="' + visibility + '", '
+			+ 'pinned="' + pinned + '", '
+			+ 'title="' + req.body.title + '", '
+			+ 'content="' + req.body.content + '" '
+			+ 'WHERE PostID=0x' + req.query.EventID];
 
 	} else {
 		queries = ['INSERT INTO Posts VALUES(UNHEX(REPLACE(UUID(), "-", "")), '
-					+ ' NULL,'
-					+ ' (SELECT OrgID from BranchOrg where orgID=0x' + req.query.id + '),'
-					+ ' NULL, '
-					+ '"' + visibility + '", '
-					+ '"' + pinned + '", '
-					+ '"' + req.body.title + '", '
-					+ '"' + req.body.content + '", '
-					+ '"' + postTime + '", '
-					+ '"0")',
-					"SELECT * FROM Posts",
-					'SELECT email FROM GroupJoin RIGHT JOIN Users ON GroupJoin.UserID=Users.UserID WHERE GroupJoin.OrgID=0x' + req.query.id,
-					'SELECT * FROM BranchOrg WHERE OrgId=0x'+req.query.id
-				];}
+			+ ' NULL,'
+			+ ' (SELECT OrgID from BranchOrg where orgID=0x' + req.query.id + '),'
+			+ ' NULL, '
+			+ '"' + visibility + '", '
+			+ '"' + pinned + '", '
+			+ '"' + req.body.title + '", '
+			+ '"' + req.body.content + '", '
+			+ '"' + postTime + '", '
+			+ '"0")',
+			"SELECT * FROM Posts",
+		'SELECT email FROM GroupJoin RIGHT JOIN Users ON GroupJoin.UserID=Users.UserID WHERE GroupJoin.OrgID=0x' + req.query.id,
+		'SELECT * FROM BranchOrg WHERE OrgId=0x' + req.query.id
+		];
+	}
 
-	connection.query(queries.join(';'), function(err, results) {
+	connection.query(queries.join(';'), function (err, results) {
 		if (err) throw err;
 		if (!req.query.EventID) {
 			const transporter = nodemailer.createTransport({
@@ -107,7 +112,7 @@ router.post('/', function(req, res) {
 				}
 			});
 			var emails = [];
-			for (var i = 0; i < results[2].length; i  ++) {
+			for (var i = 0; i < results[2].length; i++) {
 				emails.push(results[2][i].email);
 			}
 			var mailOptions = {
@@ -115,16 +120,16 @@ router.post('/', function(req, res) {
 				to: 'undisclosed: <example@untitled.com>',
 				bcc: emails,
 				subject: results[3][0].orgName + ": " + req.body.title,
-				text: results[3][0].orgName + ' Has Posted a new Update: ' + req.body.title + "\n " +req.body.content + '\n\nThanks, \n The Untitled Team'
+				text: results[3][0].orgName + ' Has Posted a new Update: ' + req.body.title + "\n " + req.body.content + '\n\nThanks, \n The Untitled Team'
 			};
 
-			transporter.sendMail(mailOptions, function(err, info) {
+			transporter.sendMail(mailOptions, function (err, info) {
 				if (err) throw err;
 			});
 		}
 
-	res.redirect('/groupManager?id=0x' + req.query.id);
-	connection.end();
+		res.redirect('/groupManager?id=0x' + req.query.id);
+		connection.end();
 
 	});
 });
