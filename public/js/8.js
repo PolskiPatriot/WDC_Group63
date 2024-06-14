@@ -67,6 +67,7 @@ function load() {
 
 
                 const buttonJoin = document.createElement('button');
+                buttonJoin.onclick = function () { joinEvent(/*event id here*/); };
                 buttonJoin.classList.add('group-button');
                 buttonJoin.type = "button";
                 buttonJoin.append("Attend");
@@ -84,44 +85,21 @@ function load() {
                 eventCard.appendChild(responseW);
                 responseW.appendChild(responseCount);
                 eventCard.appendChild(buttonJoin);
-
-
-
-
-                /*
-                // setup group elements
-                const groupEl = document.createElement('div');
-                groupEl.classList.add('group');
-                const iconEl = document.createElement('div');
-                iconEl.classList.add('group-icon');
-                const textEl = document.createElement('div');
-                textEl.classList.add('group-text');
-                const orgNameEl = document.createElement('span');
-                var title = document.createTextNode(res[i].orgName);
-                orgNameEl.appendChild(title);
-                const aboutEl = document.createElement('p');
-                var about = document.createTextNode(res[i].aboutOrg);
-                aboutEl.appendChild(about);
-
-
-                const buttonEl = document.createElement('button');
-                buttonEl.classList.add('group-button');
-                buttonEl.type = "button";
-                buttonEl.append("Leave");
-
-                // construct group
-                groupEl.appendChild(iconEl);
-                groupEl.appendChild(textEl);
-                textEl.appendChild(orgNameEl);
-                textEl.appendChild(aboutEl);
-                groupEl.appendChild(buttonEl);
-
-                // append group
-                parent.appendChild(groupEl);
-                */
             }
         }
     };
     xhttp.open('GET', '/viewEvents/getContent', true);
+    xhttp.send();
+}
+
+function joinEvent(eventID) {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            window.location.reload();
+        }
+    };
+    xhttp.open('GET', '/viewEvents/joinEvent?eventID=' + encodeURIComponent(eventID), true);
     xhttp.send();
 }
