@@ -16,7 +16,7 @@ function fetchEventsForMonth(month, year, callback) {
             }
         }
     };
-    xhttp.open("GET", `/userEvents/getEventsForMonth?month=${month + 1}&year=${year}`, true);
+    xhttp.open("GET", `/calendar/getEventsForMonth?month=${month + 1}&year=${year}`, true);
     xhttp.send();
 }
 function getColorClass(eventID) {
