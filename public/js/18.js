@@ -14,6 +14,14 @@ function load() {
                 iconEl.alt = "orgLogo";
                 const orgNameEl = document.createTextNode(res[i].orgName);
 
+                if (res[0].superAdmin === 1) {
+                    const DeleteEl = document.createElement('button');
+                    DeleteEl.onclick = function () { deleteOrg(res[i].orgName); };
+                    DeleteEl.type = "button";
+                    DeleteEl.append("Delete");
+                    groupEl.appendChild(DeleteEl);
+                }
+
                 const formEl = document.createElement('form');
                 formEl.action = "/viewBranchOrgs";
                 formEl.method = "GET";
@@ -37,5 +45,17 @@ function load() {
         }
     };
     xhttp.open('GET', '/viewAdminOrgs/getContent', true);
+    xhttp.send();
+}
+
+function deleteOrg(orgName) {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            window.location.reload();
+        }
+    };
+    xhttp.open('GET', '/viewAdminOrgs/deleteOrg?orgName=' + encodeURIComponent(orgName), true);
     xhttp.send();
 }
