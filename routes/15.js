@@ -13,6 +13,7 @@ router.get('/', (req, res, next) => {
     }
 });
 
+
 router.get('/username', (req, res) => {
     const userId = req.cookies.userID;
     if (!userId) {
@@ -40,14 +41,14 @@ router.get('/username', (req, res) => {
 
 router.post('/update-profile', (req, res) => {
     const userId = req.cookies.userID;
-    const { field, value } = req.body;
+    const { typechanged, value } = req.body;
     if (!userId) {
         return res.status(401).send({ message: 'Unauthorized' });
     }
     let query;
-    if (field === 'username') {
+    if (typechanged === 'username') {
         query = 'UPDATE Users SET givenName = ? WHERE UserID = UNHEX(?)';
-    } else if (field === 'descProfile') {
+    } else if (typechanged === 'descProfile') {
         query = 'UPDATE Users SET About = ? WHERE UserID = UNHEX(?)';
     } else {
         return res.status(400).send({ message: 'Invalid field' });
@@ -65,5 +66,4 @@ router.post('/update-profile', (req, res) => {
         });
     });
 });
-
 module.exports = router;
