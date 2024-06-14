@@ -3,14 +3,16 @@ var router = express.Router();
 const path = require('path');
 
 router.get('/', function (req, res, next) {
-    if (typeof req.cookies.userID === 'undefined') {
-        res.redirect('/');
-    } else {
+    if (req.level > 0) {
         res.sendFile(path.join(__dirname, '../public', '14.html'));
+        return;
+    } else {
+        res.redirect('/');
+        return;
     }
 });
 
-router.get('/getEventsForMonth', function(req, res, next) {
+router.get('/getEventsForMonth', function (req, res, next) {
     var userID = req.cookies.userID;
     var month = req.query.month;
     var year = req.query.year;
@@ -19,7 +21,7 @@ router.get('/getEventsForMonth', function(req, res, next) {
         return res.status(401).send('User not authenticated');
     }
 
-    req.pool.getConnection(function(err, connection) {
+    req.pool.getConnection(function (err, connection) {
         if (err) {
             return next(err);
         }
@@ -35,7 +37,7 @@ router.get('/getEventsForMonth', function(req, res, next) {
                 )
         ;
         `;
-        connection.query(query, [userID, startDate, endDate, startDate, endDate], function(error, results) {
+        connection.query(query, [userID, startDate, endDate, startDate, endDate], function (error, results) {
             connection.release();
             if (error) {
                 return next(error);
