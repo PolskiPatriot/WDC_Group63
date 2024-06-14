@@ -22,51 +22,54 @@ router.get('/', function(req, res, next) {
 	var queries;
 	if (req.cookies.userID){
 
-		queries=["((SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID  FROM Posts "
-				+"LEFT JOIN GroupJoin ON GroupJoin.OrgID=Posts.OrgID "
-				+"LEFT JOIN Events "
-                +"ON Events.EventID=Posts.EventID "
-				+"WHERE GroupJoin.UserID=0x"+req.cookies.userID +" )  "
-                +"UNION ALL "
-                +"(SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID FROM Posts "
-                +"LEFT JOIN GroupJoin ON GroupJoin.OrgID=Posts.OrgID "
-				+"RIGHT JOIN Events "
-                +"ON Events.EventID=Posts.EventID "
-                +"WHERE Posts.EventID IS NULL AND GroupJoin.UserID=0x"+req.cookies.userID +") "
-				+"ORDER BY PostDate DESC) "
-				+"Union all "
+		queries=[
 
-				+"((SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID FROM Posts "
+				"(SELECT Posts.* ,Events.* , HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID  FROM Posts "
+					+"LEFT JOIN GroupJoin ON GroupJoin.OrgID=Posts.OrgID "
+					+"LEFT JOIN Events "
+					+"ON Events.EventID=Posts.EventID "
+					+"WHERE GroupJoin.UserID=0x"+req.cookies.userID +"  "
+				+"UNION ALL "
+				+"SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID FROM Posts "
+					+"LEFT JOIN GroupJoin ON GroupJoin.OrgID=Posts.OrgID "
+					+"RIGHT JOIN Events "
+					+"ON Events.EventID=Posts.EventID "
+					+"WHERE Posts.EventID IS NULL AND GroupJoin.UserID=0x"+req.cookies.userID +" "
+				+"ORDER BY PostDate DESC) ",
+				
+				"(SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID FROM Posts "
 					+"LEFT JOIN GroupJoin ON GroupJoin.OrgID!=Posts.OrgID "
 					+"LEFT JOIN Events "
 					+"ON Events.EventID=Posts.EventID "
-					+"WHERE Posts.private='false' AND GroupJoin.UserID=0x"+req.cookies.userID +" )  "
+					+"WHERE Posts.private='false' AND GroupJoin.UserID=0x"+req.cookies.userID +"  "
 				+"UNION ALL "
-				+"(SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID FROM Posts "
+				+"SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID FROM Posts "
 					+"LEFT JOIN GroupJoin ON GroupJoin.OrgID!=Posts.OrgID "
 					+"RIGHT JOIN Events "
 					+"ON Events.EventID=Posts.EventID "
-					+"WHERE Posts.EventID IS NULL AND Posts.private='false' AND GroupJoin.UserID=0x"+req.cookies.userID +" ) ORDER BY PostDate DESC)"
+					+"WHERE Posts.EventID IS NULL AND Posts.private='false' AND GroupJoin.UserID=0x"+req.cookies.userID +" ) "
 				,
 				"SELECT HEX(JoinID) AS TrueJoinID, HEX(EventID) AS TrueEventID, HEX(UserID) AS TruePostID From EventJoin WHERE UserID=0x" + req.cookies.userID,
 				"SELECT *,HEX(BranchOrg.OrgID) AS TrueOrgID FROM BranchOrg ORDER BY memberCount ASC LIMIT 3 ",
                 ];
 	} else {
-		queries=["SELECT *, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID, HEX(OrgID) AS TrueOrgID FROM Posts "
+		queries=["(SELECT *, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID, HEX(OrgID) AS TrueOrgID FROM Posts "
 		+"LEFT JOIN Events "
 		+"ON Events.EventID=Posts.EventID "
-		+"WHERE Posts.private='false' "
+		+"WHERE Posts.private='false') "
 		+"UNION ALL "
-		+"SELECT *, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID, HEX(OrgID) AS TrueOrgID FROM Posts "
+		+"(SELECT *, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID, HEX(OrgID) AS TrueOrgID FROM Posts "
 		+"RIGHT JOIN Events "
 		+"ON Events.EventID=Posts.EventID "
-		+"WHERE Posts.EventID IS NULL AND Posts.private='false'",
+		+"WHERE Posts.EventID IS NULL AND Posts.private='false') "
+		+"ORDER BY postDate DESC ",
+		"SELECT *, HEX(EventID) AS TrueEventID FROM EventJoin",
 		"SELECT *, HEX(EventID) AS TrueEventID FROM EventJoin",
 		"SELECT *,HEX(BranchOrg.OrgID) AS TrueOrgID FROM BranchOrg ORDER BY memberCount ASC LIMIT 5 ",
                 ];
 	}
 
-
+	console.log(queries);
 	if (req.cookies.userID) {
 		queries.push("SELECT * ,HEX(BranchOrg.OrgID) AS TrueOrgID FROM GroupJoin LEFT JOIN BranchOrg ON BranchOrg.OrgID=GroupJoin.OrgID WHERE UserID=0x"+req.cookies.userID + " LIMIT 3 " );
 	} else {
@@ -79,20 +82,23 @@ router.get('/', function(req, res, next) {
 		var Joined = {};
 		var flag = false;
 		var userLevel = 99;
+		var Posts = results[0];
+
 		if (req.cookies.userID) {
+			Posts = Posts.concat(results[1]);
 			userLevel = 0;
-			for (let i = 0; i < results[0].length; i++){ // for all posts selected
+			for (let i = 0; i < Posts.length; i++){ // for all posts selected
 
-				if (results[0][i].EventID) { //if its an event
-					for (let j = 0; j < results[1].length; j++) { // for all events joined
-						if (results[0][i].TrueEventID == results[1][j].TrueEventID){ //if event joined is equal to current event
+				if (Posts[i].EventID) { //if its an event
+					for (let j = 0; j < results[2].length; j++) { // for all events joined
+						if (Posts[i].TrueEventID == results[2][j].TrueEventID){ //if event joined is equal to current event
 
-							Joined[results[0][i].TrueEventID] = '1'; // appened joined [id] : '1'
+							Joined[Posts[i].TrueEventID] = '1'; // appened joined [id] : '1'
 							flag = true;
 						}
 					}
 					if (!flag) {
-						Joined[results[0][i].TrueEventID] = '0';
+						Joined[Posts[i].TrueEventID] = '0';
 					}
 					flag = false;
 				}
@@ -101,11 +107,11 @@ router.get('/', function(req, res, next) {
 
 
 		res.render(path.join(__dirname, '../public', '1.html'), {
-			recentData:results[0],
+			recentData:Posts,
 			joinHistory:Joined,
 			userLevel:userLevel,
-			PopularBranches: results[2],
-			YourBranches:results[3]
+			PopularBranches: results[3],
+			YourBranches:results[4]
 		});
 	});
 	connection.end();
