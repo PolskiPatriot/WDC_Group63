@@ -19,7 +19,7 @@ body {
     padding: 20px;
   }
 
-  .event-grid {
+  #event-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
@@ -54,4 +54,8 @@ body {
     bottom: 10px;
     right: 10px;
     font-size: 14px;
+  }
+
+  .group-button{
+    float: right;
   }

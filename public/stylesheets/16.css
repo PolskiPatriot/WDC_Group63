@@ -2,31 +2,6 @@ body {
   font-family: 14px, "Helvetica", sans-serif;
   overflow: auto; }
 
-.links-list {
-  font-size: 1.2vw;
-  margin-top: 20vh;
-  margin-right: 5vw;
-  width: 15vw;
-  float: left;
-}
-
-.list {
-  list-style: none;
-  padding-left: 1vw;
-}
-
-.links-list a {
-  color: rgb(82, 82, 82);
-}
-
-.links-list a:hover {
-  color: black;
-}
-
-.links-list li {
-  margin-top: 1em;
-}
-
 input{
   margin-bottom: 20px;
   margin-left: 10px;
@@ -75,3 +50,6 @@ label{
   border-radius: 1vw;
 }
 
+#dropdown {
+  margin-top: 120px;
+}

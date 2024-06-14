@@ -2,20 +2,23 @@
 <html lang="en">
 
 <head>
-    <title>Header</title>
+    <title>settingsSidebar</title>
     <link rel="stylesheet" href="/stylesheets/settingsSidebar.css">
+    <script src="js/settingsSidebar.js"></script>
 </head>
 
 <body id="links-list">
     <ul class="list">
-        <li><a target="_parent" href="/15.html">My Profile</a></li>
-        <li><a target="_parent" href="/16.html">Contact Details</a></li>
-        <li><a target="_parent" href="/17.html">Terms and Conditions</a></li>
-        <li><a target="_parent" href="/18.html">Organisations</a></li>
-        <li><a target="_parent" href="/19.html">Pending Organisations</a></li>
-        <li><a target="_parent" href="/21.html">Create Organisation</a></li>
+        <li><a id="myProfile" target="_parent" href="/myProfile">My Profile</a></li>
+        <li><a id="contactDetails" target="_parent" href="/contactDetails">Contact Details</a></li>
+        <li><a id="termsAndConditions" target="_parent" href="/termsAndConditions">Terms and Conditions</a></li>
+        <li><a id="viewAdminOrgs" target="_parent" href="/viewAdminOrgs">Organisations</a></li>
+        <li><a id="viewPendingOrgs" target="_parent" href="/viewPendingOrgs">Pending Organisations</a></li>
+        <li><a id="createNewOrg" target="_parent" href="/createNewOrg">Create Organisation</a></li>
         <li><button id="profileDelete" type="button">Delete Profile</button></li>
     </ul>
+    <script src="js/settingsSidebar.js"></script>
+    <script>load()</script>
 </body>
 
 </html>

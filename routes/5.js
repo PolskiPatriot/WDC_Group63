@@ -14,10 +14,9 @@ router.get('/', function(req, res, next) {
 
 	connection.connect((error)=>{
 		if (error) {
-			console.error("error ", error);
+			res.send(500);
 		}
 	});
-
 	var queries=["SELECT *, HEX(Posts.EventID) AS TrueEventID FROM Posts "
 				+"INNER JOIN Events "
 				+"ON Events.EventID=Posts.EventID "
@@ -53,7 +52,6 @@ router.get('/', function(req, res, next) {
 		} else {
 			userID = 0;
 		}
-
 		res.render(path.join(__dirname, '../public', '5.html'), {
 
 			postData:results[0][0],

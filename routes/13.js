@@ -9,7 +9,13 @@ const client = new OAuth2Client('119246077266-568pi1sojct64fdrvn10enalph5aqgg3.a
 
 /* GET home page. */
 router.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '../public', '13.html'));
+    if (req.level == 0) {
+        res.sendFile(path.join(__dirname, '../public', '13.html'));
+        return;
+    } else {
+        res.redirect('back');
+        return;
+    }
 });
 
 router.post('/google-signup', async (req, res) => {
@@ -20,24 +26,18 @@ router.post('/google-signup', async (req, res) => {
             audience: '119246077266-568pi1sojct64fdrvn10enalph5aqgg3.apps.googleusercontent.com'
         });
         const payload = ticket.getPayload();
-
-
         const userId = crypto.randomBytes(16);
         const username = generateFromEmail(payload.email, 3);
         const query = 'INSERT INTO Users (UserID, givenName, familyName, email) VALUES (?, ?, ?, ?)';
         console.log('USERID inserting data: ' + payload.given_name);
-
         req.pool.getConnection((error, connection) => {
             if (error) {
-                console.error('Error getting connection from pool: ' + error);
-                return res.status(500).send('Error getting connection from pool');
+                return res.status(500).send('Error getting connection');
             }
-
             connection.query(query, [userId, payload.given_name, payload.family_name, payload.email], (err, results) => {
                 connection.release();
 
                 if (err) {
-                    console.error('Error inserting data: ' + err);
                     return res.status(500).send('Error inserting data');
                 }
                 res.cookie('userID', userId.toString('hex'), { httpOnly: true, maxAge: 900000 });
@@ -45,8 +45,7 @@ router.post('/google-signup', async (req, res) => {
             });
         });
     } catch (error) {
-        console.error('Error verifying token: ' + error);
-        res.status(500).send('Error verifying token');
+        res.status(500);
     }
 });
 
@@ -62,15 +61,13 @@ router.post('/signup', async (req, res) => {
 
         req.pool.getConnection((error, connection) => {
             if (error) {
-                console.error('Error getting connection from pool: ' + error);
-                return res.status(500).send('Error getting connection from pool');
+                return res.status(500);
             }
 
             connection.query(query, [userId, firstName, lastName, email, hashedPassword], (err) => {
                 connection.release();
 
                 if (err) {
-                    console.error('Error inserting data: ' + err);
                     return res.status(500).send('Error inserting data');
                 }
                 res.cookie('userID', userId.toString('hex'), { httpOnly: true, maxAge: 900000 });
@@ -78,8 +75,7 @@ router.post('/signup', async (req, res) => {
             });
         });
     } catch (err) {
-        console.error('Error hashing password: ' + err);
-        res.status(500).send('Error with password');
+        res.status(500);
     }
 });
 

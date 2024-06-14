@@ -104,7 +104,7 @@ router.post('/', function(req, res) {
 				}
 			});
 			var emails = [];
-			for (var i = 0; i < results[2].length; i++) {
+			for (var i = 0; i < results[2].length; i  ++) {
 				emails.push(results[2][i].email);
 			}
 			var mailOptions = {

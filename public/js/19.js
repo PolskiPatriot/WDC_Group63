@@ -15,10 +15,12 @@ function load() {
                 var orgNameEl = document.createTextNode(res[i].orgName);
 
                 const DenyEl = document.createElement('button');
+                DenyEl.onclick = function () { denyOrg(res[i].orgName); };
                 DenyEl.type = "button";
                 DenyEl.append("Deny");
 
                 const VerifyEl = document.createElement('button');
+                VerifyEl.onclick = function () { verifyOrg(res[i].orgName); };
                 VerifyEl.type = "button";
                 VerifyEl.append("Verify");
 
@@ -34,5 +36,29 @@ function load() {
         }
     };
     xhttp.open('GET', '/viewPendingOrgs/getContent', true);
+    xhttp.send();
+}
+
+function verifyOrg(orgName) {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            window.location.reload();
+        }
+    };
+    xhttp.open('GET', '/viewPendingOrgs/verifyOrg?orgName=' + encodeURIComponent(orgName), true);
+    xhttp.send();
+}
+
+function denyOrg(orgName) {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            window.location.reload();
+        }
+    };
+    xhttp.open('GET', '/viewPendingOrgs/denyOrg?orgName=' + encodeURIComponent(orgName), true);
     xhttp.send();
 }
