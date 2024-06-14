@@ -1,6 +1,6 @@
 window.onload = function () {
     google.accounts.id.initialize({
-        client_id: '119246077266-568pi1sojct64fdrvn10enalph5aqgg3.apps.googleusercontent.com',
+        client_id: '119246077266-jsdsl8ks1ps352c9rkarvjt66nafidno.apps.googleusercontent.com',
         callback: google_callback
     });
     google.accounts.id.prompt();
@@ -18,7 +18,7 @@ function google_callback(response) {
                 if (xhttp.responseText === "User registered successfully") {
                     window.location.href = '/';
 
-                
+
                 }
             } else {
                 alert("There was an error", xhttp.statusText);
