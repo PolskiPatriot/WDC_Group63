@@ -23,7 +23,7 @@ router.post('/google-login', async (req, res) => {
     const { token } = req.body;
     const ticket = await client.verifyIdToken({
         idToken: token,
-        audience: '119246077266-568pi1sojct64fdrvn10enalph5aqgg3.apps.googleusercontent.com'
+        audience: '119246077266-jsdsl8ks1ps352c9rkarvjt66nafidno.apps.googleusercontent.com'
     });
     const payload = ticket.getPayload();
     const query = 'SELECT UserID FROM Users WHERE email = ?';
