@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users</title>
+    <title>MyProfile</title>
     <link rel="stylesheet" href="/stylesheets/15.css">
     <link rel="stylesheet" href="/stylesheets/header.css">
     <link rel="stylesheet" href="/stylesheets/settingsSidebar.css">
@@ -29,70 +29,7 @@
             </div>
         </div>
     </main>
+    <script src="js/15.js"></script>
 
-    <script>
-        function onload_user() {
-            fetch('/myProfile/username', {
-                method: 'GET',
-                credentials: 'include'
-            })
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                document.getElementById('username').innerText = data.username;
-                document.getElementById('descProfile').innerText = data.about;
-            })
-            .catch(error => {
-                console.error('There was a problem:', error);
-            });
-        }
-
-        function edit(name) {
-            const element = document.getElementById(name);
-            const currentValue = element.innerText;
-            let input;
-
-            if (name === 'username') {
-                input = document.createElement('input');
-                input.type = 'text';
-                input.className = 'edit-input';
-            } else {
-                input = document.createElement('textarea');
-                input.className = 'edit-textarea';
-            }
-
-            input.value = currentValue;
-            input.onblur = function() {
-                element.innerText = input.value;
-                element.style.display = 'block';
-                input.remove();
-                fetch('/myProfile/update-profile', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        field: name,
-                        value: input.value
-                    }),
-                    credentials: 'include'
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.message) {
-                        alert(data.message);
-                    }
-                })
-                .catch(error => {
-                    console.error('There was an error:', error);
-                });
-            };
-
-            element.style.display = 'none';
-            element.parentNode.insertBefore(input, element);
-            input.focus();
-        }
-    </script>
 </body>
 </html>

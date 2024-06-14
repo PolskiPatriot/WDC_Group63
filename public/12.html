@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>untitled - Home Page</title>
+    <title>Reset Password</title>
     <link rel="stylesheet" href="/stylesheets/header.css">
     <link rel="stylesheet" href="/stylesheets/12.css">
 </head>
@@ -10,23 +10,26 @@
 <body id="content">
     <iframe class="headerIframe" title="header" name="header" id="header" src="header.html" width="100%" height="120px"></iframe>
     <iframe class="headerIframe" title="dropdown" name="dropdown" id="dropdown" src="dropdown.html" width="315px" height="460px"></iframe>
-      <div class="row">
+    <div class="row">
         <div class="column" id="leftColumn">
         </div>
         <div class="column" id="middleColumn">
-            <h1>Enter New Password:</h1>
-            <h2>Please enter your new password.</h2>
+            <h1>New Password</h1>
             <div class="textInputs">
-                <input type="text" class="barInput" placeholder="New Password" />
-                <input type="text" class="barInput" placeholder="Confirm Password" />
+                <h2>Please enter your reset code:</h2>
+                <input type="text" class="barInput" id="resetCode" placeholder="SOMECODE" />
+                <h2>Please enter your new password:</h2>
+                <input type="password" class="barInput" id="newPassword" placeholder="New Password" />
             </div>
             <div class="loginButtons">
-                <button type="button" class="inputLogin">CONFIRM</button>
+                <button type="button" class="inputLogin" id="confirmButton">CONFIRM</button>
             </div>
         </div>
         <div class="column" id="rightColumn">
         </div>
     </div>
+    <script src="js/12.js"></script>
+
 </body>
 
 </html>

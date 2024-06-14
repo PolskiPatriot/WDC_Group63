@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users</title>
+    <title>Contact Details</title>
     <link rel="stylesheet" href="/stylesheets/16.css">
     <link rel="stylesheet" href="/stylesheets/header.css">
     <link rel="stylesheet" href="/stylesheets/settingsSidebar.css">
@@ -24,53 +24,11 @@
             <label for="email">Email:</label>
             <input type="text" id="email" name="email" placeholder="example@example.com"><br>
             <label for="phone">Phone Number:</label>
-            <input type="text" id="phonenumber" placeholder="phone"><br>
+            <input type="text" id="phone" placeholder="phone"><br>
             <button type="button" id="SUBMIT" onclick="Update()">SUBMIT</button>
         </div>
     </main>
-    <script>
-        function onload_user() {
-            fetch('/contactDetails/contact-details', {
-                method: 'GET',
-                credentials: 'include'
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('first-name').value = data.givenName;
-                document.getElementById('last-name').value = data.familyName;
-                document.getElementById('email').value = data.email;
-                document.getElementById('phone').value = data.phonenumber;
-            })
-            .catch(error => {
-                console.error('There was an operational problem:', error);
-            });
-        }
-        function Update() {
-            const firstName = document.getElementById('first-name').value;
-            const lastName = document.getElementById('last-name').value;
-            const email = document.getElementById('email').value;
-            const phonenumber = document.getElementById('phonenumber').value;
+    <script src="js/16.js"></script>
 
-            fetch('/contactDetails/update-contact-details', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email,
-                    phonenumber: phonenumber
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message);
-            })
-            .catch(error => {
-                console.error("There was an error", error);
-            });
-        }
-    </script>
 </body>
 </html>

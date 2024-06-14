@@ -13,15 +13,18 @@ var editEventRouter = require('./routes/6');
 var editPostRouter = require('./routes/7');
 var viewMyOrgsRouter = require('./routes/9');
 var EmailRouter = require('./routes/11');
+var EmailResetRouter = require('./routes/12');
 var signinRouter = require('./routes/10');
 var signupRouter = require('./routes/13');
+var userEventsRouter = require('./routes/14');
 var myProfile = require('./routes/15');
 var contactDetails = require('./routes/16');
 var viewAdminOrgsRouter = require('./routes/18');
 var viewPendingOrgsRouter = require('./routes/19');
 var viewBranchOrgsRouter = require('./routes/20');
 var createNewOrgRouter = require('./routes/21');
-
+var dropdownRouter = require('./routes/dropdown');
+var settingsSidebarRouter = require('./routes/settingsSidebar');
 // database initialisation
 var sql = require('mysql');
 var databasePool = sql.createPool({
@@ -64,5 +67,9 @@ app.use('/viewAdminOrgs',viewAdminOrgsRouter);
 app.use('/viewPendingOrgs', viewPendingOrgsRouter);
 app.use('/viewBranchOrgs', viewBranchOrgsRouter);
 app.use('/createNewOrg', createNewOrgRouter);
+app.use('/userEvents', userEventsRouter);
+app.use('/dropdown', dropdownRouter);
+app.use('/emailReset', EmailResetRouter);
+app.use('/settingsSidebar', settingsSidebarRouter);
 
 module.exports = app;
