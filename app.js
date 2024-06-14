@@ -11,6 +11,7 @@ var viewUserRouter = require('./routes/4');
 var viewEventRouter = require('./routes/5');
 var editEventRouter = require('./routes/6');
 var editPostRouter = require('./routes/7');
+var viewEventsRouter = require('./routes/8');
 var viewMyOrgsRouter = require('./routes/9');
 var signinRouter = require('./routes/10');
 var EmailRouter = require('./routes/11');
@@ -116,6 +117,7 @@ app.use('/viewAdminOrgs', viewAdminOrgsRouter);
 app.use('/viewPendingOrgs', viewPendingOrgsRouter);
 app.use('/viewBranchOrgs', viewBranchOrgsRouter);
 app.use('/createNewOrg', createNewOrgRouter);
+app.use('/viewEvents', viewEventsRouter);
 
 app.use('/dropdown', dropdownRouter);
 app.use('/settingsSidebar', settingsSidebarRouter);
