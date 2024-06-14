@@ -55,6 +55,10 @@ body {
     padding: 0;
 }
 
+form {
+    float: right;
+}
+
 .organisation button:hover {
     background-color: grey;
     cursor: pointer;
