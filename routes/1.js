@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
 	var queries;
 	if (req.cookies.userID){
 
-		queries=["(SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID  FROM Posts "
+		queries=["((SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID  FROM Posts "
 				+"LEFT JOIN GroupJoin ON GroupJoin.OrgID=Posts.OrgID "
 				+"LEFT JOIN Events "
                 +"ON Events.EventID=Posts.EventID "
@@ -33,9 +33,10 @@ router.get('/', function(req, res, next) {
 				+"RIGHT JOIN Events "
                 +"ON Events.EventID=Posts.EventID "
                 +"WHERE Posts.EventID IS NULL AND GroupJoin.UserID=0x"+req.cookies.userID +") "
+				+"ORDER BY PostDate DESC) "
 				+"Union all "
 
-				+"(SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID FROM Posts "
+				+"((SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID FROM Posts "
 					+"LEFT JOIN GroupJoin ON GroupJoin.OrgID!=Posts.OrgID "
 					+"LEFT JOIN Events "
 					+"ON Events.EventID=Posts.EventID "
@@ -45,8 +46,8 @@ router.get('/', function(req, res, next) {
 					+"LEFT JOIN GroupJoin ON GroupJoin.OrgID!=Posts.OrgID "
 					+"RIGHT JOIN Events "
 					+"ON Events.EventID=Posts.EventID "
-					+"WHERE Posts.EventID IS NULL AND Posts.private='false' AND GroupJoin.UserID=0x"+req.cookies.userID +" )  "
-				+"ORDER BY PostDate DESC",
+					+"WHERE Posts.EventID IS NULL AND Posts.private='false' AND GroupJoin.UserID=0x"+req.cookies.userID +" ) ORDER BY PostDate DESC)"
+				,
 				"SELECT HEX(JoinID) AS TrueJoinID, HEX(EventID) AS TrueEventID, HEX(UserID) AS TruePostID From EventJoin WHERE UserID=0x" + req.cookies.userID,
 				"SELECT *,HEX(BranchOrg.OrgID) AS TrueOrgID FROM BranchOrg ORDER BY memberCount ASC LIMIT 3 ",
                 ];
@@ -74,7 +75,7 @@ router.get('/', function(req, res, next) {
 
 	connection.query(queries.join(';'), function(err, results) {
 		if (err) throw err;
-
+		//console.log(results);
 		var Joined = {};
 		var flag = false;
 		var userLevel = 99;
