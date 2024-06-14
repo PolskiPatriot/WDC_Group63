@@ -78,13 +78,12 @@ router.post('/createBranchOrg', (req, res) => {
         var mainUUID = mainGroupUUID[0].UUID;
 
         // check if org already exists
-        query = "SELECT orgName FROM BranchOrg WHERE MainOrgID = UNHEX(?)";
-        connection.query(query, [mainUUID], function (err, exists) {
+        query = "SELECT orgName FROM BranchOrg WHERE MainOrgID = UNHEX(?) AND orgName = ?";
+        connection.query(query, [mainUUID, orgName], function (err, exists) {
           if (err) {
             res.sendStatus(500);
             return;
           }
-          console.log(exists);
           if (!(typeof exists[0] === 'undefined')) {
             res.send("exists");
             return;
@@ -96,8 +95,8 @@ router.post('/createBranchOrg', (req, res) => {
                 return;
               }
               var UUID = groupUUID[0].UUID;
-              var query = "INSERT INTO BranchOrg VALUES (UNHEX('" + UUID + "'), ?, ?, 0, NULL, ?, UNHEX(?))";
-              connection.query(query, [orgName, orgAbout, orgRegion, mainUUID], function (err, success) {
+              var query = "INSERT INTO BranchOrg VALUES (UNHEX(?), ?, ?, 0, NULL, ?, UNHEX(?))";
+              connection.query(query, [UUID, orgName, orgAbout, orgRegion, mainUUID], function (err, success) {
                 if (err) {
                   res.sendStatus(500);
                   return;
