@@ -13,6 +13,7 @@ npm install unique-username-generator
 npm install google-auth-library
 
 service mysql start
+mysql
 CREATE DATABASE uDatabase;
 EXIT;
 
@@ -25,7 +26,7 @@ email:  untitledmediaservice@gmail.com
 pass:  cuhd eeuy kawm tqlm
 
 
-To login in:
+To login in:s
 Users:
 Normal:
 Alex Apples
