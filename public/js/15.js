@@ -13,7 +13,6 @@ function onload_user() {
     };
     xhttp.send();
 }
-
 function edit(name) {
     const element = document.getElementById(name);
     const currentValue = element.innerText;
@@ -28,7 +27,22 @@ function edit(name) {
     }
     input.value = currentValue;
     input.onblur = function() {
-        element.innerText = input.value;
+    const newValue = input.value.trim();
+    let isValid = true;
+    let errorMessage = '';
+    if (name === 'username') {
+        if (newValue.length > 20) {
+            isValid = false;
+            errorMessage = 'Username must be under 20 characters.';
+        }
+    } else if (name === 'descProfile') {
+        if (newValue.length > 500) {
+            isValid = false;
+            errorMessage = 'Description cannot exceed 500 characters.';
+        }
+    }
+    if (isValid) {
+        element.innerText = newValue;
         element.style.display = 'block';
         input.remove();
 
@@ -48,8 +62,12 @@ function edit(name) {
         };
         xhttp.send(JSON.stringify({
             field: name,
-            value: input.value
+            value: newValue
         }));
+    } else {
+        alert(errorMessage);
+        input.focus();
+    }
     };
     element.style.display = 'none';
     element.parentNode.insertBefore(input, element);

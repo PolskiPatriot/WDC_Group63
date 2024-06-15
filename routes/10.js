@@ -19,6 +19,7 @@ router.get('/', function (req, res, next) {
     }
 });
 
+// Basic google login
 router.post('/google-login', async (req, res) => {
     const { token } = req.body;
     const ticket = await client.verifyIdToken({
@@ -42,20 +43,21 @@ router.post('/google-login', async (req, res) => {
                 return res.status(401).json({ success: false, message: 'User not found' });
             }
             const userId = results[0].UserID;
-            res.cookie('userID', userId.toString('hex'), { httpOnly: true, maxAge: 900000 });
+            res.cookie('userID', userId.toString('hex'), { httpOnly: true});
             res.status(200).json({ success: true, message: 'Login successful' });
         });
     });
 });
 
-router.post('/login', async (req, res) => {
+// Basic login
+router.post('/login', (req, res) => {
     const { email, password } = req.body;
     const query = 'SELECT UserID, password FROM Users WHERE email = ?';
     req.pool.getConnection((error, connection) => {
         if (error) {
             return res.status(500);
         }
-        connection.query(query, [email], async (err, results) => {
+        connection.query(query, [email], (err, results) => {
             connection.release();
             if (err) {
                 return res.status(500);
@@ -65,8 +67,8 @@ router.post('/login', async (req, res) => {
             }
             const storedPassword = results[0].password;
             const userId = results[0].UserID;
-            if (await argon2.verify(storedPassword, password)) {
-                res.cookie('userID', userId.toString('hex'), { httpOnly: true, maxAge: 900000 });
+            if (argon2.verify(storedPassword, password)) {
+                res.cookie('userID', userId.toString('hex'), { httpOnly: true});
                 return res.status(200).send({ success: true, message: 'Login successful' });
             } else {
                 return res.status(401).send({ success: false, message: 'Invalid email or password' });

@@ -6,13 +6,12 @@ const router = express.Router();
 router.get('/', (req, res, next) => {
     if (req.level > 0) {
         res.sendFile(path.join(__dirname, '../public', '15.html'));
-        return;
     } else {
         res.redirect('/');
-        return;
     }
 });
 
+// Get username and about
 router.get('/username', (req, res) => {
     const userId = req.cookies.userID;
     if (!userId) {
@@ -23,6 +22,7 @@ router.get('/username', (req, res) => {
             return res.status(500).send({ message: 'Error getting connection from pool' });
         }
         const query = 'SELECT givenName, About FROM Users WHERE UserID = UNHEX(?)';
+
         connection.query(query, [userId], (err, results) => {
             connection.release();
             if (err) {
@@ -38,6 +38,7 @@ router.get('/username', (req, res) => {
     });
 });
 
+// Post username and about depending on updated value
 router.post('/update-profile', (req, res) => {
     const userId = req.cookies.userID;
     const { field, value } = req.body;

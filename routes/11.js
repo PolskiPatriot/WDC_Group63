@@ -15,6 +15,7 @@ router.get('/', function (req, res) {
     }
 });
 
+// Transporter for mail
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
@@ -25,6 +26,7 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+// Send email to user, check if email is associated with google account
 router.post('/sendEmail', function(req, res) {
     const email = req.body.email;
     req.pool.query('SELECT * FROM Users WHERE email = ? AND password IS NOT NULL', [email], function(error, results) {

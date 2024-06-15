@@ -15,9 +15,8 @@ document.getElementById('sendRequestButton').addEventListener('click', function(
                 } else {
                     alert('Reset failed: ' + data.message);
                 }
-            } 
+            }
         }
     };
-
     xhttp.send(JSON.stringify({ email: email }));
 });

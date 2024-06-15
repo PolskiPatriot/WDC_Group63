@@ -5,7 +5,6 @@ const eventColors = [];
 function daysInMonth(month, year) {
     return new Date(year, month + 1, 0).getDate();
 }
-
 function fetchEventsForMonth(month, year, callback) {
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -13,6 +12,8 @@ function fetchEventsForMonth(month, year, callback) {
             if (this.status == 200) {
                 const response = JSON.parse(this.responseText);
                 callback(0, response);
+            } else {
+                callback(this.status, null);
             }
         }
     };
@@ -32,7 +33,7 @@ function getColorClass(eventID) {
 }
 function createButton(text, className, trueEventID) {
     const anchor = document.createElement('a');
-    anchor.href = `/event?EventID=${trueEventID}`;
+    anchor.href = `/event?EventID=0x${trueEventID}`;
     const button = document.createElement('button');
     button.type = 'button';
     button.className = className;

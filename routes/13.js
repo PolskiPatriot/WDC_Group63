@@ -18,9 +18,10 @@ router.get('/', function (req, res) {
     }
 });
 
+// Google signup
 router.post('/google-signup', async (req, res) => {
-    const { token } = req.body;
     try {
+        const { token } = req.body;
         const ticket = await client.verifyIdToken({
             idToken: token,
             audience: '119246077266-jsdsl8ks1ps352c9rkarvjt66nafidno.apps.googleusercontent.com'
@@ -36,46 +37,42 @@ router.post('/google-signup', async (req, res) => {
             }
             connection.query(query, [userId, payload.given_name, payload.family_name, payload.email], (err, results) => {
                 connection.release();
-
                 if (err) {
                     return res.status(500).send('Error inserting data');
                 }
-                res.cookie('userID', userId.toString('hex'), { httpOnly: true, maxAge: 900000 });
-                res.status(200).send('User registered successfully');
-            });
-        });
-    } catch (error) {
-        res.status(500);
-    }
-});
-
-router.post('/signup', async (req, res) => {
-    const { firstName, lastName, email, password } = req.body;
-    const userId = crypto.randomBytes(16);
-
-    try {
-        const hashedPassword = await argon2.hash(password);
-        const username = generateFromEmail(email, 3);
-        const query = 'INSERT INTO Users (UserID, givenName, familyName, email, password) VALUES (?, ?, ?, ?, ?)';
-        console.log('USERID inserting data: ' + firstName);
-
-        req.pool.getConnection((error, connection) => {
-            if (error) {
-                return res.status(500);
-            }
-
-            connection.query(query, [userId, firstName, lastName, email, hashedPassword], (err) => {
-                connection.release();
-
-                if (err) {
-                    return res.status(500).send('Error inserting data');
-                }
-                res.cookie('userID', userId.toString('hex'), { httpOnly: true, maxAge: 900000 });
+                res.cookie('userID', userId.toString('hex'), { httpOnly: true });
                 res.status(200).send('User registered successfully');
             });
         });
     } catch (err) {
-        res.status(500);
+        res.status(500).send('Error verifying token');
+    }
+});
+
+// Normal signup
+router.post('/signup', async (req, res) => {
+    try {
+        const { firstName, lastName, email, password } = req.body;
+        const userId = crypto.randomBytes(16);
+        const hashedPassword = await argon2.hash(password);
+        const username = generateFromEmail(email, 3);
+        const query = 'INSERT INTO Users (UserID, givenName, familyName, email, password) VALUES (?, ?, ?, ?, ?)';
+        console.log('USERID inserting data: ' + userId);
+        req.pool.getConnection((error, connection) => {
+            if (error) {
+                return res.status(500).send('Error getting connection');
+            }
+            connection.query(query, [userId, firstName, lastName, email, hashedPassword], (err) => {
+                connection.release();
+                if (err) {
+                    return res.status(500).send('Error inserting data');
+                }
+                res.cookie('userID', userId.toString('hex'), { httpOnly: true });
+                res.status(200).send('User registered successfully');
+            });
+        });
+    } catch (err) {
+        res.status(500).send('Error hashing password');
     }
 });
 

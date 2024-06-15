@@ -1,11 +1,9 @@
 function login() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "/Signin/login", true);
     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState === 4) {
             if (xhttp.status === 200) {
@@ -26,6 +24,7 @@ function login() {
 
 function google_callback(response) {
     const responsePayload = decodeJwtResponse(response.credential);
+
 
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "/Signin/google-login", true);
@@ -54,6 +53,5 @@ function decodeJwtResponse(token) { //taken from https://stackoverflow.com/quest
     var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
-
     return JSON.parse(jsonPayload);
 }

@@ -12,6 +12,7 @@ router.get('/', function (req, res, next) {
     }
 });
 
+// Get Events for month
 router.get('/getEventsForMonth', function (req, res, next) {
     var userID = req.cookies.userID;
     var month = req.query.month;
@@ -28,23 +29,24 @@ router.get('/getEventsForMonth', function (req, res, next) {
         var startDate = new Date(year, month - 1, 1).toISOString().slice(0, 10);
         var endDate = new Date(year, month, 0).toISOString().slice(0, 10);
         var query = `
-                SELECT Events.EventID, Events.startDate, Events.endDate, Events.location
-                FROM Events
-                JOIN EventJoin ON Events.EventID = EventJoin.EventID
-                WHERE EventJoin.UserID = UNHEX(?) AND (
-                    (Events.startDate BETWEEN ? AND ?) OR
-                    (Events.endDate BETWEEN ? AND ?)
-                )
-        ;
+            SELECT Events.EventID, Events.startDate, Events.endDate, Events.location, HEX(Events.EventID) as TrueEventID
+            FROM Events
+            JOIN EventJoin ON Events.EventID = EventJoin.EventID
+            WHERE EventJoin.UserID = UNHEX(?) AND (
+                (Events.startDate BETWEEN ? AND ?) OR
+                (Events.endDate BETWEEN ? AND ?)
+            );
         `;
         connection.query(query, [userID, startDate, endDate, startDate, endDate], function (error, results) {
             connection.release();
             if (error) {
                 return next(error);
             }
+            if (!results || results.length === 0) {
+                return res.status(404).send('No events found');
+            }
             res.json(results);
         });
     });
 });
-
 module.exports = router;

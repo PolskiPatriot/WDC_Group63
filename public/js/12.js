@@ -5,7 +5,6 @@ document.getElementById('confirmButton').addEventListener('click', function() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "emailReset/confirmReset", true);
     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState === 4) {
             if (xhttp.status >= 200 && xhttp.status < 300) {
