@@ -40,45 +40,44 @@ router.post('/google-login', async (req, res) => {
             }
 
             if (results.length === 0) {
-                return res.status(401).json({ success: false, message: 'User not found' });
+                return res.status(401);
             }
             const userId = results[0].UserID;
             res.cookie('userID', userId.toString('hex'), { httpOnly: true });
-            res.status(200).json({ success: true, message: 'Login successful' });
+            res.status(200);
         });
     });
 });
 
 // Basic login
-router.post('/login', async (req, res) => {
+router.post('/login', async (req, res, next) => {
     const { email, password } = req.body;
     const query = 'SELECT UserID, password FROM Users WHERE email = ?';
-    req.pool.getConnection((error, connection) => {
-        if (error) {
-            return res.status(500);
-        }
-        connection.query(query, [email], async (err, results) => {
+
+    try {
+        const connection = await pool.getConnection();
+        try {
+            const [results] = await connection.query(query, [email]);
             connection.release();
-            if (err) {
-                return res.status(500);
-            }
+
             if (results.length === 0) {
-                return res.status(401).send({ success: false, message: 'Invalid email or password' });
+                return res.status(401);
             }
             const storedPassword = results[0].password;
             const userId = results[0].UserID;
-            try {
-                if (await argon2.verify(storedPassword, password)) {
-                    res.cookie('userID', userId.toString('hex'), { httpOnly: true });
-                    return res.status(200).send({ success: true, message: 'Login successful' });
-                } else {
-                    return res.status(401).send({ success: false, message: 'Invalid email or password' });
-                }
-            } catch (error) {
-                return res.status(500).send('Internal Server Error');
+            if (await argon2.verify(storedPassword, password)) {
+                res.cookie('userID', userId.toString('hex'), { httpOnly: true });
+                return res.status(200);
+            } else {
+                return res.status(401);
             }
-        });
-    });
+        } catch (err) {
+            connection.release();
+            res.status(500);
+        }
+    } catch (err) {
+        res.status(500);
+    }
 });
 
 module.exports = router;

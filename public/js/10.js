@@ -12,6 +12,8 @@ function login() {
                     alert('Login successful');
                     window.location.replace('/');
                 }
+            } else {
+                alert("There was an error", xhttp.statusText);
             }
         }
     };
