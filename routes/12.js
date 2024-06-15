@@ -16,7 +16,7 @@ router.get('/', function(req, res) {
 
 
 // Confirm Password reset
-router.post('/confirmReset', async function(req, res) {
+router.post('/confirmReset', function(req, res) {
     const { resetCode, newPassword } = req.body;
     const { resetCookie } = req.cookies;
     const [email, storedResetPassword] = resetCookie.split(':');
