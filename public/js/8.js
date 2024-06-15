@@ -67,8 +67,9 @@ function load() {
 
 
                 const buttonJoin = document.createElement('button');
-                buttonJoin.onclick = function () { joinEvent(/*event id here*/); };
                 buttonJoin.classList.add('group-button');
+                buttonJoin.id = ('event' + i);
+                buttonJoin.classList.add('event' + i);
                 buttonJoin.type = "button";
                 buttonJoin.append("Attend");
 
@@ -89,17 +90,5 @@ function load() {
         }
     };
     xhttp.open('GET', '/viewEvents/getContent', true);
-    xhttp.send();
-}
-
-function joinEvent(eventID) {
-    var xhttp = new XMLHttpRequest();
-
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            window.location.reload();
-        }
-    };
-    xhttp.open('GET', '/viewEvents/joinEvent?eventID=' + encodeURIComponent(eventID), true);
     xhttp.send();
 }

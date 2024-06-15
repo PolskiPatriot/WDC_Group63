@@ -15,7 +15,8 @@ router.get('/getContent', function (req, res) {
     if (error) {
       res.sendStatus(500);
     }
-    var query = "SELECT * FROM Events INNER JOIN Posts ON Events.EventID = Posts.EventID";
+    // add public groups
+    var query = "SELECT HEX(Events.EventID) as EEID, HEX(Posts.EventID) as PEID, startDate, endDate, location, responseCount, private, title, content FROM Events INNER JOIN Posts ON Events.EventID = Posts.EventID WHERE Private = 1";
     connection.query(query, function (err, eventInfo) {
       connection.release();
       if (err) {
