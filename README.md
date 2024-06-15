@@ -15,7 +15,7 @@ mysql -u root -p
 CREATE DATABASE uDatabase;
 EXIT;
 
-mysql -u root -p uDatabase < mysql_dump.sql
+mysql -u root -p uDatabase < finmysql.sql
 
 
 Emails:
