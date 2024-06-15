@@ -96,7 +96,7 @@ router.post('/manageUser', function (req, res) {
       query = "UPDATE GroupJoin SET UserLevel = (UserLevel - 1) WHERE JoinID = UNHEX(?)";
       break;
     case 2:
-      query = "DELETE FROM GroupJoin WHERE JoinID = UNHEX(?)";
+      query = "UPDATE BranchOrg SET memberCount=memberCount - 1 WHERE OrgID = (SELECT OrgID FROM GroupJoin WHERE JoinID = UNHEX(?))";
       break;
     default:
       res.send("INVALID TYPE");
@@ -107,13 +107,27 @@ router.post('/manageUser', function (req, res) {
       res.send(500);
     }
     connection.query(query, [JoinID], function (err, success) {
-      connection.release();
-      if (err) {
-        res.sendStatus(500);
+
+      if (manageType === 2) {
+        query = "DELETE FROM GroupJoin WHERE JoinID = UNHEX(?)";
+        connection.query(query, [JoinID], function (err, kick) {
+          connection.release();
+          if (err) {
+            res.sendStatus(500);
+            return;
+          }
+          res.send(kick);
+          return;
+        });
+      } else {
+        connection.release();
+        if (err) {
+          res.sendStatus(500);
+          return;
+        }
+        res.send(success);
         return;
       }
-      res.send(success);
-      return;
     });
   });
 });

@@ -66,10 +66,6 @@ div.posts-container {
     border-color: royalblue;
 }
 
-.posts-container a {
-    margin-left: 28.25vw;
-}
-
 .post {
     background-color: white;
     margin: 0.5em 0.5em 0.5em 0em;
@@ -234,16 +230,17 @@ div .event-rsvp {
     font-size: 1.5vw;
     float: right;
     background: white;
-    border-style: dotted;
-    border-width: 0.1em;
-    border-color: black;
+    border-style: none;
+    outline-color: #5271ff;
+    outline-width: 5px;
+    outline-style: solid;
     max-width: fit-content;
     max-height: fit-content;
     border-radius: 1em;
-    padding: 0.15em;
-    padding-top: 0.25em;
+    padding: 2px 15px;
     margin-top: 0.3em;
     margin-left: 0.4em;
+    margin-right: 20px;
     text-decoration: none;
     color: black;
 }

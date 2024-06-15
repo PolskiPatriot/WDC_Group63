@@ -77,22 +77,22 @@ router.get('/', function(req, res, next) {
 		queries=["SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID, HEX(Posts.OrgID) AS TrueOrgID FROM Posts "
 				+"LEFT JOIN Events "
 				+"ON Events.EventID=Posts.EventID "
-				+"WHERE Posts.Pinned!='false' AND Posts.private='false'"
+				+"WHERE Posts.Pinned!='false' AND Posts.OrgID="+req.query.id+" AND Posts.private='false'"
 				+"UNION ALL "
 				+"SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID, HEX(Posts.OrgID) AS TrueOrgID FROM Posts "
 				+"RIGHT JOIN Events "
 				+"ON Events.EventID=Posts.EventID "
-				+"WHERE Posts.EventID IS NULL AND Posts.Pinned!='false' AND Posts.private='false'",
+				+"WHERE Posts.EventID IS NULL AND Posts.Pinned!='false' AND Posts.OrgID="+req.query.id +" AND Posts.private='false'",
 
 				"SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID, HEX(Posts.OrgID) AS TrueOrgID FROM Posts "
 				+"LEFT JOIN Events "
 				+"ON Events.EventID=Posts.EventID "
-				+"WHERE Posts.Pinned='false' AND Posts.private='false' "
+				+"WHERE Posts.Pinned='false' AND Posts.OrgID="+req.query.id +" AND Posts.private='false' "
 				+"UNION ALL "
 				+"SELECT Posts.*, Events.*, HEX(Posts.EventID) AS TrueEventID, HEX(Posts.PostID) AS TruePostID, HEX(Posts.OrgID) AS TrueOrgID FROM Posts "
 				+"RIGHT JOIN Events "
 				+"ON Events.EventID=Posts.EventID "
-				+"WHERE Posts.EventID IS NULL AND Posts.Pinned='false' AND Posts.private='false'",
+				+"WHERE Posts.EventID IS NULL AND Posts.Pinned='false' AND Posts.OrgID="+req.query.id +" AND Posts.private='false'",
 				"SELECT *, HEX(EventID) AS TrueEventID FROM EventJoin"
 			];
 	}

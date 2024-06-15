@@ -40,7 +40,7 @@ router.get('/', function(req, res, next) {
 	var joinedBool = false;
 	var JoinedOrgBool = false;
 	var userID;
-	var userlevel = 0;
+	var UserLevel = 0;
 	console.log(queries);
 	connection.query(queries.join(';'), function(err, results) {
 		console.log(results[3]);
@@ -53,17 +53,18 @@ router.get('/', function(req, res, next) {
 				JoinedOrgBool = true;
 			}
 			userID = req.cookies.userID;
-			userlevel = results[3];
+			UserLevel = results[3];
 		} else {
 			userID = 0;
 		}
+		console.log(UserLevel);
 		res.render(path.join(__dirname, '../public', '5.html'), {
 			postData:results[0][0],
             groupData:results[1][0],
 			joinedBool: joinedBool,
 			JoinedOrgBool: JoinedOrgBool,
 			userID: userID,
-			userLevel: userlevel
+			UserLevel: UserLevel
 
 		});
 	});

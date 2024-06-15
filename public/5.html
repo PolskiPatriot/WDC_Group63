@@ -123,7 +123,7 @@
       <p class="description"><%= groupData.aboutOrg %> </p>
 
 
-      <% if (userLevel[0].UserLevel < 2 ) {%>
+      <% if (UserLevel[0] < 0 ) {%>
       <button class="dotted-button <% if (JoinedOrgBool) { %> Joined <% } %>" type="button" id="joinButton" onclick="joinOrg('<%= groupData.TrueOrgID %>', '0x<%=userID%>')">
         <% if (JoinedOrgBool) { %>
         Joined
