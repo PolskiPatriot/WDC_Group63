@@ -19,7 +19,7 @@
         height="260px"></iframe>
     <main>
         <div class="group-Banner">
-            <% if (userLevel < 2) { %>
+            <% if (userLevel < 4) { %>
                 <button id="joinButton" class="create <% if (joinedBool) { %> Joined <% } %>" type="button" onclick="joinOrg('<%= OrgData[0].TrueOrgID %>', '0x<%=userID%>')">
                     <% if (joinedBool) { %>
                         Joined
@@ -29,7 +29,7 @@
                     </button>
             <% } %>
 
-            <% if (userLevel > 0) { %>
+            <% if (userLevel > 1) { %>
                 <a class="create" href="/editPost?id=<%= OrgData[0].TrueOrgID %>">New Post</a>
                 <a class="create" href="/editEvent?id=<%= OrgData[0].TrueOrgID %>">New Event</a>
             <% } %>
@@ -90,10 +90,10 @@
 
                                 <div class="event-rsvp">
 
-                                    <p id="responseCount0x<%=postData.TrueEventID%>" class="<% if (PinnedjoinHistory[postData.TrueEventID] == 1) { %> rsvped <% } %>">
-                                        <%= postData.responseCount %> Attending </p>
+                                    <button type="button" onclick="viewAttending('0x<%= postData.TrueEventID %>', '<%= OrgData[0].orgName %>')" id="responseCount0x<%=postData.TrueEventID%>" class="<% if (PinnedjoinHistory[postData.TrueEventID] == 1) { %> rsvped <% } %>">
+                                        <%= postData.responseCount %> Attending </button>
 
-                                        <% if (userLevel > 0) { %>
+                                        <% if (userLevel > 1) { %>
                                             <a href="/editEvent?id=<%= postData.TrueOrgID%>&EventID=0x<%=postData.TrueEventID%>">Edit</a>
                                         <% } %>
 
@@ -110,7 +110,7 @@
                                 <%
                                     } else {
                                 %>
-                                <% if (userLevel > 0) { %>
+                                <% if (userLevel > 1) { %>
                                 <div class="event-rsvp">
                                     <a href="/editPost?id=<%=postData.TrueOrgID%>&EventID=0x<%= postData.TruePostID%>">Edit</a>
 
@@ -184,9 +184,9 @@
 
 
                                 <div class="event-rsvp">
-                                    <p id="responseCount0x<%=postData.TrueEventID%>" class="<% if (joinHistory[postData.TrueEventID] == 1) { %> rsvped <% } %>">
-                                        <%= postData.responseCount %> Attending </p>
-                                        <% if (userLevel > 0) { %>
+                                    <button type="button" onclick="viewAttending('0x<%= postData.TrueEventID %>', '<%= OrgData[0].orgName %>')" id="responseCount0x<%=postData.TrueEventID%>" class="<% if (PinnedjoinHistory[postData.TrueEventID] == 1) { %> rsvped <% } %>">
+                                        <%= postData.responseCount %> Attending </button>
+                                        <% if (userLevel > 1) { %>
 
                                             <a href="/editEvent?id=<%= postData.TrueOrgID%> &EventID=0x<%= postData.TrueEventID%>">Edit</a>
                                         <% } %>
@@ -202,7 +202,7 @@
                                 <%
                                     } else {
                                 %>
-                                <% if (userLevel > 0) { %>
+                                <% if (userLevel > 1) { %>
                                 <div class="event-rsvp">
                                     <a href="/editPost?id=<%=postData.TrueOrgID%>&EventID=0x<%= postData.TruePostID%>">Edit</a>
                                 </div>
@@ -231,7 +231,7 @@
             <h1><%= OrgData[0].orgName %></h1>
             <br>
             <div class="member-count">
-                <% if (userLevel != 0) { %>
+                <% if (userLevel > 1) { %>
                     <a href="/viewUsers?orgName=<%= OrgData[0].orgName %>"> <%= OrgData[0].memberCount %> Members</a>
                 <% } else { %>
                     <a href="javascript:{}"> <%= OrgData[0].memberCount %> Members</a>
@@ -239,7 +239,7 @@
             </div>
             <div class="about-text">
                 <h2> About</h2>
-                <% if (userLevel > 0) { %>
+                <% if (userLevel > 1) { %>
                     <span class="edits"> edit </span>
                 <% } %>
             </div>
@@ -265,7 +265,7 @@
             </div>
             <% if (RelatedBranches.length > 0) { %>
             <h2 class="header-text">Related Branches</h2>
-            <% if (userLevel != 0) { %>
+            <% if (userLevel > 1) { %>
                 <span class="edits"> edit </span>
             <% } %>
 
