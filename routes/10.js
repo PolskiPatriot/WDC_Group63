@@ -50,28 +50,32 @@ router.post('/google-login', async (req, res) => {
 });
 
 // Basic login
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const query = 'SELECT UserID, password FROM Users WHERE email = ?';
     req.pool.getConnection((error, connection) => {
         if (error) {
             return res.status(500);
         }
-        connection.query(query, [email], (err, results) => {
+        connection.query(query, [email], async (err, results) => {
             connection.release();
             if (err) {
                 return res.status(500);
             }
             if (results.length === 0) {
-                return res.status(401);
+                return res.status(401).send({ success: false, message: 'Invalid email or password' });
             }
             const storedPassword = results[0].password;
             const userId = results[0].UserID;
-            if (argon2.verify(storedPassword, password)) {
-                res.cookie('userID', userId.toString('hex'), { httpOnly: true});
-                return res.status(200).send({ success: true, message: 'Login successful' });
-            } else {
-                return res.status(401).send({ success: false, message: 'Invalid email or password' });
+            try {
+                if (await argon2.verify(storedPassword, password)) {
+                    res.cookie('userID', userId.toString('hex'), { httpOnly: true });
+                    return res.status(200).send({ success: true, message: 'Login successful' });
+                } else {
+                    return res.status(401).send({ success: false, message: 'Invalid email or password' });
+                }
+            } catch (error) {
+                return res.status(500).send('Internal Server Error');
             }
         });
     });
