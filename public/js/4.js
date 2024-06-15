@@ -29,7 +29,7 @@ function load() {
                         userLevelTitle = "Site Manager";
                         break;
                     default:
-                        userLevelTitle = "Non Org Member";
+                        userLevelTitle = "";
                         break;
                 }
 
@@ -41,6 +41,8 @@ function load() {
                 actionsEl.classList.add('actions');
 
                 // permissions to press buttons depends on OwnUserLevel
+                // managers can only view
+                // admins, super admins, and site managers can manipulate all lower ranked members
                 if (currentUsersLevel < (OwnUserLevel - 1)) {
                     const promoteButtonEl = document.createElement('button');
                     promoteButtonEl.onclick = function () { manageUser(res[i].JoinID, 0); };
@@ -62,10 +64,6 @@ function load() {
                     kickButtonEl.append("Kick");
                     actionsEl.appendChild(kickButtonEl);
                 }
-
-
-                // IF SUPER ADMIN, CAN MANAGE USERS BELOW SUPER ADMIN
-
 
                 // construct group
                 groupEl.appendChild(actionsEl);
