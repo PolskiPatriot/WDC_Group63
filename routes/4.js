@@ -20,6 +20,7 @@ router.get('/getContent', function (req, res) {
     if (error) {
       res.send(500);
     }
+    // get branchOrgID and member count
     var query = "SELECT HEX(OrgID) AS UUID, memberCount FROM BranchOrg WHERE orgName = ?";
     connection.query(query, [orgName], function (err, groupUUID) {
       if (err) {
@@ -28,16 +29,28 @@ router.get('/getContent', function (req, res) {
       }
       var UUID = groupUUID[0].UUID;
       var memberCount = groupUUID[0].memberCount;
+      // list all members of org
       query = "SELECT givenName AS Name, HEX(GroupJoin.JoinID) AS JoinID, UserLevel FROM GroupJoin INNER JOIN Users ON GroupJoin.UserID = Users.UserID WHERE GroupJoin.OrgID = UNHEX(?) AND UserLevel < 5";
       connection.query(query, [UUID], function (err, userList) {
-        connection.release();
         if (err) {
           res.sendStatus(500);
           return;
         }
-        userList[0].memberCount = memberCount;
-        res.send(userList);
-        return;
+        query = "SELECT UserLevel FROM GroupJoin WHERE OrgID = UNHEX(?) AND UserID = UNHEX(?)";
+        connection.query(query, [UUID, req.cookies.userID], function (err, userLevel) {
+          connection.release();
+          if (err) {
+            res.sendStatus(500);
+            return;
+          }
+          userList[0].memberCount = memberCount;
+          userList[0].OwnUserLevel = userLevel[0].UserLevel;
+          res.send(userList);
+          return;
+        });
+
+
+
       });
     });
   });
