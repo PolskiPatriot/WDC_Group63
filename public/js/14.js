@@ -52,6 +52,9 @@ function createItem(day, events, displayedEvents) {
         const eventStart = new Date(event.startDate);
         const eventEnd = new Date(event.endDate);
         const currentDate = new Date(day.year, day.month, day.date);
+        eventStart.setHours(0, 0, 0, 0);
+        eventEnd.setHours(23, 59, 59, 999);
+        currentDate.setHours(0, 0, 0, 0);
         if (currentDate >= eventStart && currentDate <= eventEnd) {
             dayEvents.push(event);
         }
