@@ -184,7 +184,7 @@ router.get('/join', function(req, res, next) {
 	console.log("test");
 	var queries = ['INSERT INTO GroupJoin VALUES(UNHEX(REPLACE(UUID(), "-", "")),  '
 				+"0x" +req.query.OrgID + ", "
-				+req.query.Userid + ", 0)",
+				+req.query.Userid + ", 1)",
 				'UPDATE BranchOrg SET memberCount=memberCount + 1 WHERE OrgID=' +"0x" +req.query.OrgID ];
 
 	connection.query(queries.join(';'), function(err, results) {
