@@ -45,7 +45,7 @@ router.post('/google-signup', async (req, res) => {
             });
         });
     } catch (err) {
-        res.status(500).send('Error verifying token');
+        res.status(500).send();
     }
 });
 
@@ -72,7 +72,7 @@ router.post('/signup', async (req, res) => {
             });
         });
     } catch (err) {
-        res.status(500).send('Error hashing password');
+        res.status(500).send();
     }
 });
 

@@ -61,22 +61,22 @@ router.post('/login', async (req, res, next) => {
             connection.release();
 
             if (results.length === 0) {
-                return res.status(401);
+                return res.status(401).send({ success: false });
             }
             const storedPassword = results[0].password;
             const userId = results[0].UserID;
             if (await argon2.verify(storedPassword, password)) {
                 res.cookie('userID', userId.toString('hex'), { httpOnly: true });
-                return res.status(200);
+                return res.status(200).send({ success: true });
             } else {
-                return res.status(401);
+                return res.status(401).send({ success: false });
             }
         } catch (err) {
             connection.release();
-            res.status(500);
+            res.status(500).send({ success: false });
         }
     } catch (err) {
-        res.status(500);
+        res.status(500).send({ success: false });
     }
 });
 
