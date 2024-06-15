@@ -1,7 +1,4 @@
-# Template Repository for COMP SCI 2207/7207 Web & Database Computing (2023 Semester 1)
-
 Read Me:
-
 --> LINK TO VIDEO <--
 https://www.youtube.com/watch?v=bEV5VJO6jPI
 --> LINK TO VIDEO <--
@@ -15,11 +12,11 @@ npm install mysql
 npm install unique-username-generator 
 npm install google-auth-library
 
-mysql -u root -p
+service mysql start
 CREATE DATABASE uDatabase;
 EXIT;
 
-mysql -u root -p uDatabase < fin.sql
+mysql uDatabase < fin.sql
 
 npm start
 
