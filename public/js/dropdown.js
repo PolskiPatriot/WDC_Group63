@@ -1,3 +1,5 @@
+var opened = 0;
+
 function menuOpen() {
     disableButtons();
     parent.document.getElementById('dropdown').classList.toggle("visible");
@@ -32,6 +34,11 @@ function disableButtons() {
             }
         }
     };
-    xhttp.open('GET', '/dropdown/loginStatus', true);
-    xhttp.send();
+    if (opened == 0) {
+        opened = 1;
+        xhttp.open('GET', '/dropdown/loginStatus', true);
+        xhttp.send();
+    } else {
+        opened = 0;
+    }
 }
