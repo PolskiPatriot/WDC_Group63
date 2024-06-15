@@ -14,19 +14,19 @@ function load() {
                 var userLevelTitle;
                 switch (currentUsersLevel) {
                     case 1:
-                        userLevelTitle = "Org Member";
+                        userLevelTitle = "MEMBER: ";
                         break;
                     case 2:
-                        userLevelTitle = "Org Moderator";
+                        userLevelTitle = "MODERATOR: ";
                         break;
                     case 3:
-                        userLevelTitle = "Org Admin";
+                        userLevelTitle = "ADMIN: ";
                         break;
                     case 4:
-                        userLevelTitle = "Org Super Admin";
+                        userLevelTitle = "SUPERADMIN: ";
                         break;
                     case 5:
-                        userLevelTitle = "Site Manager";
+                        userLevelTitle = "SITE MANAGER: ";
                         break;
                     default:
                         userLevelTitle = "";
