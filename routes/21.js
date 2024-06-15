@@ -53,7 +53,7 @@ router.post('/createOrg', function (req, res) {
             }
 
             query = "SELECT REPLACE(UUID(), '-','') AS UUID";
-            connection.query(query, [orgName, orgAbout, UUID], function (err, branchUUID) {
+            connection.query(query, function (err, branchUUID) {
               if (err) {
                 res.sendStatus(500);
                 return;
