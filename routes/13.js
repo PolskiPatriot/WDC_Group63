@@ -33,12 +33,12 @@ router.post('/google-signup', async (req, res) => {
         console.log('USERID inserting data: ' + payload.given_name);
         req.pool.getConnection((error, connection) => {
             if (error) {
-                return res.status(500).send('Error getting connection');
+                return res.status(500);
             }
             connection.query(query, [userId, payload.given_name, payload.family_name, payload.email], (err, results) => {
                 connection.release();
                 if (err) {
-                    return res.status(500).send('Error inserting data');
+                    return res.status(500);
                 }
                 res.cookie('userID', userId.toString('hex'), { httpOnly: true });
                 res.status(200).send('User registered successfully');
@@ -60,12 +60,12 @@ router.post('/signup', async (req, res) => {
         console.log('USERID inserting data: ' + userId);
         req.pool.getConnection((error, connection) => {
             if (error) {
-                return res.status(500).send('Error getting connection');
+                return res.status(500);
             }
             connection.query(query, [userId, firstName, lastName, email, hashedPassword], (err) => {
                 connection.release();
                 if (err) {
-                    return res.status(500).send('Error inserting data');
+                    return res.status(500);
                 }
                 res.cookie('userID', userId.toString('hex'), { httpOnly: true });
                 res.status(200).send('User registered successfully');

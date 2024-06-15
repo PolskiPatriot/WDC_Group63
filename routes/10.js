@@ -36,14 +36,14 @@ router.post('/google-login', async (req, res) => {
             connection.release();
 
             if (err) {
-                return res.status(500).json({ success: false, message: 'Error fetching data' });
+                return res.status(500);
             }
 
             if (results.length === 0) {
                 return res.status(401).json({ success: false, message: 'User not found' });
             }
             const userId = results[0].UserID;
-            res.cookie('userID', userId.toString('hex'), { httpOnly: true});
+            res.cookie('userID', userId.toString('hex'), { httpOnly: true });
             res.status(200).json({ success: true, message: 'Login successful' });
         });
     });

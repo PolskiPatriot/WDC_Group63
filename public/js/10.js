@@ -25,7 +25,6 @@ function login() {
 function google_callback(response) {
     const responsePayload = decodeJwtResponse(response.credential);
 
-
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "/Signin/google-login", true);
     xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -39,6 +38,9 @@ function google_callback(response) {
                 } else {
                     alert('Login failed: ' + data.message);
                 }
+            } else if (xhttp.status === 401) {
+                var dataFail = JSON.parse(xhttp.responseText);
+                alert('Login failed: ' + dataFail.message);
             }
         }
     };

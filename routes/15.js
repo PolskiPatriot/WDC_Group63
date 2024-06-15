@@ -19,7 +19,7 @@ router.get('/username', (req, res) => {
     }
     req.pool.getConnection((error, connection) => {
         if (error) {
-            return res.status(500).send({ message: 'Error getting connection from pool' });
+            return res.status(500);
         }
         const query = 'SELECT givenName, About FROM Users WHERE UserID = UNHEX(?)';
 
@@ -60,7 +60,7 @@ router.post('/update-profile', (req, res) => {
         connection.query(query, [value, userId], (err) => {
             connection.release();
             if (err) {
-                return res.status(500).send({ message: 'Error updating data' });
+                return res.status(500);
             }
             res.status(200).send({ message: 'Profile updated successfully' });
         });
