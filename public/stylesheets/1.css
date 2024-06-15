@@ -79,21 +79,22 @@ img {
 }
 
 .postType {
-  height: 70px;
+  height: 90px;
   margin: 0px 5px 0px 0px;
-  padding: 0px 20px;
+  padding: 0px 35px;
   border: 5px;
-  border-style: dashed;
-  border-color: black;
-  border-radius: 50px;
-  border-width: 0.0725em;
+  border-style: none;
+  border-radius: 500px;
   background-color: transparent;
   font-size: 2.5em;
   color: black;
   text-align: center;
-  line-height: 70px;
+  line-height: 90px;
   vertical-align: top;
   float: right;
+  outline-color: #5271ff;
+  outline-width: 5px;
+  outline-style: solid;
 }
 
 .postType a {
@@ -147,10 +148,8 @@ img {
   margin: 0px 20px 0px 0px;
   padding: 0px 20px;
   border: 5px;
-  border-style: dashed;
-  border-color: black;
-  border-radius: 50px;
-  border-width: 0.0725em;
+  border-style: none;
+  border-radius: 5000px;
   background-color: transparent;
   font-size: 2em;
   color: black;
@@ -158,6 +157,9 @@ img {
   line-height: 50px;
   vertical-align: top;
   float: right;
+  outline-color: #5271ff;
+  outline-width: 5px;
+  outline-style: none;
 }
 
 .eventAttendees p {
@@ -168,18 +170,19 @@ img {
   height: 50px;
   margin: 0px 5px 0px 0px;
   padding: 0px 20px;
-  border-radius: 50px;
+  border-radius: 500px;
   background-color: transparent;
-  border-style: dashed;
-  border-color: black;
-  border-width: 0.058em;
-  font-size: 2.5em;
+  border-style: none;
+  font-size: 2em;
   color: black;
   text-align: center;
   line-height: 50px;
   vertical-align: top;
   float: right;
   box-sizing: content-box;
+  outline-color: #5271ff;
+  outline-width: 5px;
+  outline-style: solid;
 }
 
 .eventRSVP:hover {

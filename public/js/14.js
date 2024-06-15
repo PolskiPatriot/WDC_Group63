@@ -60,7 +60,7 @@ function createItem(day, events, displayedEvents) {
         for (let i = 0; i < dayEvents.length; i++) {
             const event = dayEvents[i];
             const colorClass = getColorClass(event.EventID);
-            const button = createButton('Event at ' + event.location + ' from ' + new Date(event.startDate).toLocaleDateString() + ' to ' + new Date(event.endDate).toLocaleDateString(), colorClass, event.TrueEventID);
+            const button = createButton(event.location + ' from ' + new Date(event.startDate).toLocaleDateString() + ' to ' + new Date(event.endDate).toLocaleDateString(), colorClass, event.TrueEventID);
             interiorDiv.appendChild(button);
             if (!displayedEvents.has(event.EventID)) {
                 const subDivButton = button.cloneNode(true);

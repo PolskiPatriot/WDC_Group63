@@ -1,61 +1,62 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
 
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
 
-  .search-icon,
-  .menu-icon {
-    cursor: pointer;
-  }
+.search-icon,
+.menu-icon {
+  cursor: pointer;
+}
 
-  main {
-    padding: 20px;
-  }
+main {
+  padding: 20px;
+}
 
-  #event-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
-  }
+#event-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
 
-  .event-card {
-    background-color: bisque;
-    border-radius: 10px;
-    padding: 20px;
-    position: relative;
-  }
+.event-card {
+  background-color: #9eadf0;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  font-size: 2em;
+}
 
-  .event-card h2 {
-    margin-top: 0;
-  }
+.event-card h2 {
+  margin-top: 0;
+}
 
-  .event-card p {
-    margin-bottom: 20px;
-  }
+.event-card p {
+  margin-bottom: 20px;
+}
 
-  .event-card button {
-    background-color: #4285f4;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+.event-card button {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-  .responded {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    font-size: 14px;
-  }
+.responded {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 14px;
+}
 
-  .group-button{
-    float: right;
-  }
+.group-button {
+  float: right;
+}

@@ -27,12 +27,15 @@ div.return {
 
 .return button {
   background: white;
-  border-style: dotted;
+  border-style: none;
+  margin-right: 5px;
   border-width: 0.3em;
-  padding: 0.5em;
+  padding: 0.5em 0.8em;
   border-radius: 100em;
   font-size: 1em;
-  border-color: black;
+  outline-color: #5271ff;
+  outline-width: 5px;
+  outline-style: solid;
 }
 
 .return a:visited {
@@ -55,7 +58,7 @@ div.return {
 
 div.actions {
   float: right;
-  padding-right: 1.5em;
+  padding-right: 0.5em;
 }
 
 .actions a {
@@ -69,23 +72,28 @@ div.actions {
 
 .actions button {
   background: white;
-  border-style: dotted;
-  border-width: 0.1em;
-  border-color: black;
-  padding: 1.25em 1.5em;
+  border-style: none;
+  padding: 1em 1.5em;
   border-radius: 100em;
-  margin-left: 1.5em;
+  margin: 0.4em 0em 0.4em 1.25em ;
   font-size: 1em;
+  outline-color: #5271ff;
+  outline-width: 5px;
+  outline-style: solid;
 }
 
 .singleUser {
   align-items: center;
   padding: auto;
-  height: 5em;
-  background-color: rgb(250, 229, 221);
+  height: 4em;
+  background-color: white;
   border-radius: 100em;
   margin-bottom: 0.75em;
   margin-left: 2vw;
-  padding: 0px 0px 0px 20px;
-  line-height: 5em;
+  padding: 0px 0px 0px 40px;
+  line-height: 4em;
+  font-size: 1.5em;
+  border-color: #5271ff;
+  border-width: 5px;
+  border-style: solid;
 }

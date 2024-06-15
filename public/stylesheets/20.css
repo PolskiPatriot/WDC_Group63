@@ -21,14 +21,17 @@ body {
 .organisation {
     width: 75vw;
     height: 5em;
-    background: rgb(250, 229, 221);
-    border-radius: 500px;
+    background-color: white;
+    border-radius: 100em;
     display: inline-block;
     text-align: left;
     color: black;
     font-size: 1.5vw;
     line-height: 5em;
     margin-bottom: 0.5em;
+    border-color: #5271ff;
+    border-width: 5px;
+    border-style: solid;
 }
 
 .organisation img {
@@ -40,19 +43,19 @@ body {
 }
 
 .organisation button {
-    height: 6vw;
-    width: 6vw;
+    float: right;
     font-size: 1vw;
     font-weight: bold;
-    float: right;
-    border-style: dotted;
-    border-width: 0.30em;
-    border-color: black;
+    border-style: none;
     background-color: white;
-    border-radius: 100px;
-    margin: 0.8vw;
+    border-radius: 1000px;
+    margin: 0.8vw 1.8vw;
     text-align: center;
-    padding: 0;
+    width: 6vw;
+    height: 6vw;
+    outline-color: #5271ff;
+    outline-width: 5px;
+    outline-style: solid;
 }
 
 form {
@@ -119,22 +122,28 @@ form {
 }
 
 .OK {
-    border-style: solid green;
-    border-color: #04AA6D;
+    outline-color: #35eb62;
+    outline-width: 5px;
+    outline-style: solid;
+    border-style: none;
     padding-left: 2em;
     padding-right: 2em;
     font-size: 1em;
     border-radius: 1em;
+    margin-right: 20px
 }
 
 .CANCEL {
-    border-style: solid #990000;
-    border-color: red;
+    outline-color: #e65a5a;
+    outline-width: 5px;
+    outline-style: solid;
+    border-style: none;
     padding-left: 1em;
     padding-right: 1em;
     font-size: 1em;
     border-radius: 1em;
 }
+
 
 
 #warning {

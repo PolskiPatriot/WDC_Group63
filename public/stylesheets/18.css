@@ -18,15 +18,19 @@ body {
 .organisation {
     width: 75vw;
     height: 5em;
-    background: rgb(250, 229, 221);
-    border-radius: 500px;
+    background-color: white;
+    border-radius: 100em;
     display: inline-block;
     text-align: left;
     color: black;
     font-size: 1.5vw;
     line-height: 5em;
     margin-bottom: 0.5em;
+    border-color: #5271ff;
+    border-width: 5px;
+    border-style: solid;
 }
+
 
 .organisation img {
     width: 6vw;
@@ -44,15 +48,16 @@ body {
     float: right;
     font-size: 1vw;
     font-weight: bold;
-    border-style: dotted;
-    border-width: 0.30em;
-    border-color: black;
+    border-style: none;
     background-color: white;
-    border-radius: 100px;
-    margin: 0.8vw 10px;
+    border-radius: 1000px;
+    margin: 0.8vw 1.8vw;
     text-align: center;
     width: 6vw;
     height: 6vw;
+    outline-color: #5271ff;
+    outline-width: 5px;
+    outline-style: solid;
 }
 
 .organisation button:hover {

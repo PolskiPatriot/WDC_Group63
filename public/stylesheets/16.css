@@ -6,6 +6,7 @@ input{
   margin-bottom: 20px;
   margin-left: 10px;
   border-radius: 25px;
+  padding: 5px;
   padding-left: 5px;
   width: 150px;
   font-size: 0.7em;
@@ -40,9 +41,11 @@ label{
   font-size: 5em;
 }
 #SUBMIT{
-  border-style: solid green;
-  border-color: #04AA6D;
+  outline-color: #35eb62;
+  outline-width: 5px;
+  outline-style: solid;
   position: absolute;
+  border-style: none;
   padding-left: 2em;
   padding-right: 2em;
   margin-left: 21em;

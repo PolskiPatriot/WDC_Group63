@@ -42,6 +42,7 @@ body {
 #monthYear{
   position:relative;
   margin-left: auto;
+  margin-right: 100px;
 }
 #mainDiv {
   position: absolute;
@@ -98,16 +99,17 @@ body {
 .eventButton1{
   background-color: #E4E0DC;
   border-style: none;
-  padding: 0.5em 2vw;
-  font-size: 1em;
+  padding: 10px;
+  font-size: 0.7em;
   text-align: center;
-  border-radius: 1vw;
   font-weight: bold;
   color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  height: 6vw;
 }
 
 .eventButton2{

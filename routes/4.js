@@ -43,7 +43,6 @@ router.get('/getContent', function (req, res) {
             res.sendStatus(500);
             return;
           }
-          console.log(userList);
           userList[0].memberCount = memberCount;
           userList[0].OwnUserLevel = 0;
           res.send(userList);

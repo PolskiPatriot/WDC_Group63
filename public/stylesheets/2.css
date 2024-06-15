@@ -256,6 +256,7 @@ div.about-tab {
     float: left;
     display: inline;
     height: 3em;
+    width: 3em;
     margin-top: 0.5em;
     border-radius: 3em 3em 3em 3em;
 }

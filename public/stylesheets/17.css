@@ -7,9 +7,7 @@ body {
   top: 8vw;
   box-sizing: content-box;
   width: 40vw;
-  height: auto;
   position: relative;
-  overflow: auto;
   padding-left: 1em;
   padding-right: 1em;
   border-radius: 2vw;
@@ -19,6 +17,7 @@ body {
   font-size: 1em;
   font-family: sans-serif;
   margin-top: 150px;
+  height: 700px;
 }
 
 #pageTitle {

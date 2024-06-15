@@ -46,17 +46,22 @@ body {
 }
 
 .OK {
-    border-style: solid green;
-    border-color: #04AA6D;
+    outline-color: #35eb62;
+    outline-width: 5px;
+    outline-style: solid;
+    border-style: none;
     padding-left: 2em;
     padding-right: 2em;
     font-size: 1em;
     border-radius: 1em;
+    margin-right: 20px
 }
 
 .CANCEL {
-    border-style: solid #990000;
-    border-color: red;
+    outline-color: #e65a5a;
+    outline-width: 5px;
+    outline-style: solid;
+    border-style: none;
     padding-left: 1em;
     padding-right: 1em;
     font-size: 1em;

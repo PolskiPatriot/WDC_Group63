@@ -1,232 +1,238 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #4285f4;
-    color: white;
-    padding: 10px;
-  }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4285f4;
+  color: white;
+  padding: 10px;
+}
 
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
 
-  .search-icon,
-  .menu-icon {
-    cursor: pointer;
-  }
+.search-icon,
+.menu-icon {
+  cursor: pointer;
+}
 
-  main {
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
+main {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
 
-  .event-container {
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    padding: 20px;
-    width: 93vw;
-  }
+.event-container {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  width: 93vw;
+}
 
-  .event-details {
-    background-color: #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    display: inline-block;
-    width:25vw;
-  }
+.event-details {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: inline-block;
+  width: 25vw;
+}
 
 
 
-  .event-buttons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+.event-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-  .dotted-button {
-    background-color: #4285f4;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    position: relative;
-    margin-right: 80%;
-  }
+.dotted-button {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  margin-right: 80%;
+}
 
-  .dotted-button::before {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    border: 2px dotted white;
-    border-radius: 7px;
-  }
+.dotted-button::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px dotted white;
+  border-radius: 7px;
+}
 
-  .attendees {
-    font-weight: bold;
-    display: inline-flex;
-    align-items: center;
-    padding: 6px 12px;
-    border-radius: 20px;
-    background-color: #e6e6e6;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-  }
+.attendees {
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background-color: #e6e6e6;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
 
-  .details-container {
-    display: flex;
-    gap: 20px;
-  }
+.details-container {
+  display: flex;
+  gap: 20px;
+}
 
-  .details{
-    /*
+.details {
+  /*
     flex: 1;
     background-color: white;
     border-radius: 10px;
     padding: 20px;
   */
-    flex: 1;
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    width: 200%;
-    box-sizing: border-box;
-  }
-  .details-title{
-    font-size: 35px;
-    width: 175px;
-    display: inline-block;
-    vertical-align: middle;
-  }
+  flex: 1;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 200%;
+  box-sizing: border-box;
+}
 
-  .banner {
-    background-image: url('https://binaryfortressdownloads.com/Download/WPF/Images/25993/WallpaperFusion-mountains-yellow-green-1680x480.jpg');
-    background-position: center;
-    background-size: cover;
-    width: 100%;
-    height: 1%;
-    padding: 150px;
-    overflow: hidden;
-    z-index: -1;
-  }
+.details-title {
+  font-size: 35px;
+  width: 175px;
+  display: inline-block;
+  vertical-align: middle;
+}
 
-
-  .pill-textbox {
-    width: 200px;
-    height: 40px;
-    padding: 10px;
-    border: 2px solid black;
-    border-radius: 20px;
-    background-color: white;
-    font-size: 16px;
-    box-sizing: border-box;
-    display: inline-block;
-    vertical-align: middle;
-
-  }
-
-  .searchBox{
-    display: inline;
-  }
+.banner {
+  background-image: url('https://binaryfortressdownloads.com/Download/WPF/Images/25993/WallpaperFusion-mountains-yellow-green-1680x480.jpg');
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 1%;
+  padding: 150px;
+  overflow: hidden;
+  z-index: -1;
+}
 
 
-  .notes-container{
-    font-size: 25px;
-  }
+.pill-textbox {
+  width: 200px;
+  height: 40px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 20px;
+  background-color: white;
+  font-size: 16px;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
 
-  .notes-container textarea {
-    font-size: 19px;
-    resize:vertical;
-    width: 90%;
-    height:6em;
-    margin-left: 2vw;
-    background-color: transparent;
-    border-width: 0.05em;
-    border-radius: 1em;
-    padding-left: 10px;
-  }
+}
 
-  .notes-container textarea:focus {
-   outline: none;
-  }
+.searchBox {
+  display: inline;
+}
 
-  .notes-container h2 {
-    font-size: 1.2em;
-    font-weight: normal;
-    margin-top:0px;
-    padding-bottom: 10px;
-    float:left;
-  }
 
-  .notes{
-    font-size: 20px;
-    vertical-align: middle;
-    margin-left: 20px;
-  }
+.notes-container {
+  font-size: 25px;
+}
 
-  .visibility-toggle {
-    font-size: 1.2em;
-    float:left;
-  }
+.notes-container textarea {
+  font-size: 19px;
+  resize: none;
+  width: 90%;
+  height: 6em;
+  margin-left: 2vw;
+  background-color: transparent;
+  border-width: 0.05em;
+  border-radius: 1em;
+  padding-left: 10px;
+}
 
-  .visibility-toggle input {
-    margin-left: 0.5em;
-    -ms-transform: scale(1.5);
-    -webkit-transform: scale(1.5) ;
-    transform: scale(1.5);
-    vertical-align: middle;
-  }
-  .event-buttons {
-    margin-top:4%;
-    display: inline;
-    align-items: center;
-    float: right;
-    margin-bottom: 5px;
-  }
+.notes-container textarea:focus {
+  outline: none;
+}
 
-  .event-buttons button {
-    display: inline-block;
-    font-size: 2em;
-    width: 7.5vw;
-    border-radius: 1em;
-    border-style:solid;
-    background-color: transparent;
-    text-decoration: none;
-    color: black;
-    text-align: center;
-  }
+.notes-container h2 {
+  font-size: 1.2em;
+  font-weight: normal;
+  margin-top: 0px;
+  padding-bottom: 10px;
+  float: left;
+}
 
-  .event-buttons button:hover {
-    background-color: #dddddd;
-  }
-  .event-buttons button:active {
-    background-color: #aaaaaa;
-  }
+.notes {
+  font-size: 20px;
+  vertical-align: middle;
+  margin-left: 20px;
+}
 
-  .delete {
-    border-color: black;
-  }
+.visibility-toggle {
+  font-size: 1.2em;
+  float: left;
+}
 
-  .post {
-    border-color: #05ab05;
-  }
+.visibility-toggle input {
+  margin-left: 0.5em;
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+  vertical-align: middle;
+}
 
-  .cancel {
-    border-color: red;
-  }
+.event-buttons {
+  margin-top: 4%;
+  display: inline;
+  align-items: center;
+  float: right;
+  margin-bottom: 5px;
+}
 
+
+.event-buttons button {
+  display: inline-block;
+  font-size: 2em;
+  width: 7.5vw;
+  border-radius: 1em;
+  border-style: none;
+  background-color: transparent;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  outline-width: 5px;
+  outline-style: solid;
+  margin-left: 15px;
+}
+
+.event-buttons button:hover {
+  background-color: #dddddd;
+}
+
+.event-buttons button:active {
+  background-color: #aaaaaa;
+}
+
+.delete {
+  border-color: black;
+}
+
+.post {
+  outline-color: #35eb62;
+}
+
+.cancel {
+  outline-color: #e65a5a;
+}
