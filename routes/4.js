@@ -6,6 +6,9 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function (req, res) {
   if (req.level > 1) {
+
+
+
     res.sendFile(path.join(__dirname, '../public', '4.html'));
     return;
   } else {
@@ -16,43 +19,68 @@ router.get('/', function (req, res) {
 
 router.get('/getContent', function (req, res) {
   var orgName = req.query.orgName;
+  var eventID;
+  if (req.query.id) {
+    eventID = req.query.id;
+  }
   req.pool.getConnection((error, connection) => {
     if (error) {
       res.send(500);
     }
-    // get branchOrgID and member count
-    var query = "SELECT HEX(OrgID) AS UUID, memberCount FROM BranchOrg WHERE orgName = ?";
-    connection.query(query, [orgName], function (err, groupUUID) {
-      if (err) {
-        res.sendStatus(500);
-        return;
-      }
-      var UUID = groupUUID[0].UUID;
-      var memberCount = groupUUID[0].memberCount;
-      // list all members of org
-      query = "SELECT givenName AS Name, HEX(GroupJoin.JoinID) AS JoinID, UserLevel FROM GroupJoin INNER JOIN Users ON GroupJoin.UserID = Users.UserID WHERE GroupJoin.OrgID = UNHEX(?) AND UserLevel < 5";
-      connection.query(query, [UUID], function (err, userList) {
+    var query;
+    if (eventID) {
+      query = "SELECT COUNT(JoinID) AS Count FROM EventJoin WHERE EventID = " + eventID;
+      connection.query(query, function (err, success) {
         if (err) {
           res.sendStatus(500);
           return;
         }
-        query = "SELECT UserLevel FROM GroupJoin WHERE OrgID = UNHEX(?) AND UserID = UNHEX(?)";
-        connection.query(query, [UUID, req.cookies.userID], function (err, userLevel) {
-          connection.release();
+        var memberCount = success[0].Count;
+        // list all members of event
+        query = "SELECT givenName AS Name, EventID FROM EventJoin INNER JOIN Users ON EventJoin.UserID = Users.UserID WHERE EventID = " + eventID;
+        connection.query(query, function (err, userList) {
           if (err) {
             res.sendStatus(500);
             return;
           }
+          console.log(userList);
           userList[0].memberCount = memberCount;
-          userList[0].OwnUserLevel = userLevel[0].UserLevel;
+          userList[0].OwnUserLevel = 0;
           res.send(userList);
-          return;
         });
-
-
-
       });
-    });
+    } else {
+      // get branchOrgID and member count
+      query = "SELECT HEX(OrgID) AS UUID, memberCount FROM BranchOrg WHERE orgName = ?";
+      connection.query(query, [orgName], function (err, groupUUID) {
+        if (err) {
+          res.sendStatus(500);
+          return;
+        }
+        var UUID = groupUUID[0].UUID;
+        var memberCount = groupUUID[0].memberCount;
+        // list all members of org
+        query = "SELECT givenName AS Name, HEX(GroupJoin.JoinID) AS JoinID, UserLevel FROM GroupJoin INNER JOIN Users ON GroupJoin.UserID = Users.UserID WHERE GroupJoin.OrgID = UNHEX(?) AND UserLevel < 5";
+        connection.query(query, [UUID], function (err, userList) {
+          if (err) {
+            res.sendStatus(500);
+            return;
+          }
+          query = "SELECT UserLevel FROM GroupJoin WHERE OrgID = UNHEX(?) AND UserID = UNHEX(?)";
+          connection.query(query, [UUID, req.cookies.userID], function (err, userLevel) {
+            connection.release();
+            if (err) {
+              res.sendStatus(500);
+              return;
+            }
+            userList[0].memberCount = memberCount;
+            userList[0].OwnUserLevel = userLevel[0].UserLevel;
+            res.send(userList);
+            return;
+          });
+        });
+      });
+    }
   });
 });
 
