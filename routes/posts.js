@@ -137,9 +137,25 @@ router.get('/delete', function(req, res, next){
 			console.error("error ", error);
 		}
 	});
-	var queries = ["DELETE from Posts where Posts.PostID=0x"+req.query.id];
+	var queries = ["SELECT *, HEX(EventID) AS TrueEventID from Posts where Posts.PostID=0x"+req.query.id];
 
 	connection.query(queries.join(';'), function(err, results) {
+
+		console.log(results);
+		if (results[0].EventID){
+			queries = ['DELETE FROM Events WHERE Events.EventID = 0x' + results[0].TrueEventID + ''];
+			console.log("event");
+		} else {
+			var queries = ["DELETE from Posts where Posts.PostID=0x"+req.query.id];
+			console.log("update");
+		}
+		connection.query(queries.join(';'), function (err, results) {
+			if (err) {
+				console.log(err);
+				res.sendStatus(500);
+			}
+			console.log(results);
+		});
 
 		res.status(200).send("ok");
 	});
