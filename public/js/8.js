@@ -66,15 +66,6 @@ function load() {
                 responseCount.appendChild(rCount);
 
 
-                const buttonJoin = document.createElement('button');
-                buttonJoin.classList.add('group-button');
-                buttonJoin.id = ('event' + i);
-                buttonJoin.classList.add('event' + i);
-                buttonJoin.type = "button";
-                buttonJoin.append("Attend");
-
-
-
                 parent.appendChild(eventCard);
                 eventCard.appendChild(eventName);
                 eventCard.appendChild(DateW);
@@ -85,7 +76,6 @@ function load() {
                 LocationW.appendChild(eventPlace);
                 eventCard.appendChild(responseW);
                 responseW.appendChild(responseCount);
-                eventCard.appendChild(buttonJoin);
             }
         }
     };
