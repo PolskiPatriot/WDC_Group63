@@ -18,10 +18,9 @@ router.get('/', function (req, res) {
     }
 });
 
-// Google signup
 router.post('/google-signup', async (req, res) => {
+    const { token } = req.body;
     try {
-        const { token } = req.body;
         const ticket = await client.verifyIdToken({
             idToken: token,
             audience: '119246077266-jsdsl8ks1ps352c9rkarvjt66nafidno.apps.googleusercontent.com'
@@ -33,46 +32,50 @@ router.post('/google-signup', async (req, res) => {
         console.log('USERID inserting data: ' + payload.given_name);
         req.pool.getConnection((error, connection) => {
             if (error) {
-                return res.status(500);
+                return res.status(500).send('Error getting connection');
             }
             connection.query(query, [userId, payload.given_name, payload.family_name, payload.email], (err, results) => {
                 connection.release();
+
                 if (err) {
-                    return res.status(500);
+                    return res.status(500).send('Error inserting data');
                 }
                 res.cookie('userID', userId.toString('hex'), { httpOnly: true });
                 res.status(200).send('User registered successfully');
             });
         });
-    } catch (err) {
-        res.status(500).send();
+    } catch (error) {
+        res.status(500);
     }
 });
 
-// Normal signup
 router.post('/signup', async (req, res) => {
+    const { firstName, lastName, email, password } = req.body;
+    const userId = crypto.randomBytes(16);
+
     try {
-        const { firstName, lastName, email, password } = req.body;
-        const userId = crypto.randomBytes(16);
         const hashedPassword = await argon2.hash(password);
         const username = generateFromEmail(email, 3);
         const query = 'INSERT INTO Users (UserID, givenName, familyName, email, password) VALUES (?, ?, ?, ?, ?)';
-        console.log('USERID inserting data: ' + userId);
+        console.log('USERID inserting data: ' + firstName);
+
         req.pool.getConnection((error, connection) => {
             if (error) {
                 return res.status(500);
             }
+
             connection.query(query, [userId, firstName, lastName, email, hashedPassword], (err) => {
                 connection.release();
+
                 if (err) {
-                    return res.status(500);
+                    return res.status(500).send('Error inserting data');
                 }
                 res.cookie('userID', userId.toString('hex'), { httpOnly: true });
                 res.status(200).send('User registered successfully');
             });
         });
     } catch (err) {
-        res.status(500).send();
+        res.status(500);
     }
 });
 

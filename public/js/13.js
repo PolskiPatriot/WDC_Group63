@@ -5,6 +5,7 @@ window.onload = function () {
     });
     google.accounts.id.prompt();
 };
+
 function google_callback(response) {
     const responsePayload = decodeJwtResponse(response.credential);
     var xhttp = new XMLHttpRequest();
@@ -16,6 +17,8 @@ function google_callback(response) {
                 alert(xhttp.responseText);
                 if (xhttp.responseText === "User registered successfully") {
                     window.location.href = '/';
+
+
                 }
             } else {
                 alert("There was an error", xhttp.statusText);
@@ -27,7 +30,6 @@ function google_callback(response) {
     }));
 }
 
-
 function decodeJwtResponse(token) { // Got this from https://stackoverflow.com/questions/38552003/how-to-decode-jwt-token-in-javascript-without-using-a-library
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -36,6 +38,7 @@ function decodeJwtResponse(token) { // Got this from https://stackoverflow.com/q
     }).join(''));
     return JSON.parse(jsonPayload);
 }
+
 function signUp() {
     const firstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
