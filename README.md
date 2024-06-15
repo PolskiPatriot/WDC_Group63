@@ -45,3 +45,4 @@ SiteManager
 siteManager@mail.service
 secretCode
 
+Credits: Daniel, Mitchell, Smit, Filip
