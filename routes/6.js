@@ -73,14 +73,20 @@ router.post('/', function (req, res) {
 	endTime.setHours(endTime.getHours() + parseInt(req.body.duration));
 	time = time.toISOString().slice(0, 19).replace("T", ' ');
 	endTime = endTime.toISOString().slice(0, 19).replace("T", ' ');
-
-
+	var eventUUID;
+	var query = "SELECT REPLACE(UUID(), '-','') AS UUID";
+	connection.query(query, function (err, eventID) {
+		if (err) {
+			res.sendStatus(500);
+			return;
+		}
+		eventUUID = eventID[0].UUID;
+	});
 	let pinned = 0;
 	if (req.body.pinned == "on") pinned = 1;
 
 	let visibility = 0;
 	if (req.body.answer != "0") visibility = 1;
-
 	var queries;
 	if (req.query.EventID) {
 		queries = ['UPDATE Events SET '
@@ -96,13 +102,13 @@ router.post('/', function (req, res) {
 			+ 'WHERE EventID=0x' + req.query.EventID];
 
 	} else {
-		queries = ['INSERT INTO Events VALUES(UNHEX(REPLACE(UUID(), "-", "")), '
+		queries = ['INSERT INTO Events VALUES("'+ eventUUID + '", '
 			+ '"' + time + '", '
 			+ '"' + endTime + '", '
 			+ '"' + req.body.address + '", '
 			+ '"0")'
 			, 'INSERT INTO Posts VALUES(UNHEX(REPLACE(UUID(), "-", "")), '
-			+ ' (SELECT EventID from Events limit 1),'
+			+ '"' + eventUUID + '",'
 			+ ' (SELECT OrgID from BranchOrg where OrgID=0x' + req.query.id + '),'
 			+ ' NULL, '
 			+ '"' + visibility + '", '
@@ -115,12 +121,13 @@ router.post('/', function (req, res) {
 		'SELECT * FROM BranchOrg WHERE OrgId=0x' + req.query.id
 		];
 	}
-
-
-
-
+	console.log(1);
 	connection.query(queries.join(';'), function (err, results) {
-		if (err) throw err;
+		if (err) {
+			console.log(err);
+			res.sendStatus(500);
+		}
+		console.log(results);
 		if (!req.query.EventID) {
 			const transporter = nodemailer.createTransport({
 				service: 'gmail',
@@ -143,7 +150,6 @@ router.post('/', function (req, res) {
 
 			transporter.sendMail(mailOptions, function (err, info) {
 				if (err) throw err;
-
 			});
 		}
 	});
