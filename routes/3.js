@@ -100,7 +100,7 @@ router.get('/', function(req, res, next) {
 	"SELECT Posts.title, Events.startDate, Events.responseCount FROM Posts, Events WHERE Posts.OrgID="+req.query.id + " AND Posts.EventID= Events.EventID ORDER BY Events.startDate ASC LIMIT 3",
 
 	'SELECT *, HEX(BranchOrg.OrgID) AS TrueOrgID FROM BranchOrg INNER JOIN MainOrg ON BranchOrg.MainOrgID = MainOrg.MainOrgID '
-	+'WHERE BranchOrg.MainOrgID = (SELECT MainOrgID FROM BranchOrg Where BranchOrg.OrgID = "'+req.query.id + '") '
+	+'WHERE BranchOrg.MainOrgID = (SELECT BranchOrg.MainOrgID FROM BranchOrg Where BranchOrg.OrgID = '+req.query.id + ') '
 	+'AND BranchOrg.OrgID != '+req.query.id];
 
 	if (req.cookies.userID) {
@@ -170,7 +170,8 @@ router.get('/', function(req, res, next) {
 			userLevel = -1;
 			userID = 0;
 		}
-
+		console.log(queries[5]);
+		console.log(results[5]);
 		res.render(path.join(__dirname, '../public', '3.html'), {
 
 			pinnedData:results[0],

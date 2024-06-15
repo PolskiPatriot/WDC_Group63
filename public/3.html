@@ -239,9 +239,6 @@
             </div>
             <div class="about-text">
                 <h2> About</h2>
-                <% if (userLevel > 0) { %>
-                    <span class="edits"> edit </span>
-                <% } %>
             </div>
             <p> <%= OrgData[0].aboutOrg %> </p>
 
@@ -261,26 +258,29 @@
                     </span>
                     <span class="attending"><%=eventData.responseCount%> attending</span>
                     <br> <br>
-               <% }) }%>
+               <% }) } else { %>
+                    <p>This organisation has no upcoming events.</p>
+                    <br>
+                <% } %>
             </div>
-            <% if (RelatedBranches.length > 0) { %>
+
             <h2 class="header-text">Related Branches</h2>
-            <% if (userLevel != 0) { %>
-                <span class="edits"> edit </span>
-            <% } %>
 
             <br>
-
+            <% if (RelatedBranches.length > 0) { %>
             <div class="branches-container">
             <%  RelatedBranches.forEach(function (BranchData) { %>
                 <div class="branch">
 
                 <a href="/groupManager?id=0x<%= BranchData.TrueOrgID %>">
                     <img class="group-logo" src="/images/groupLogo.png" alt="group icon">
-                    <p>Group Name</p>
+                    <p><%= BranchData.orgName %></p>
                 </a>
                 </div>
-            <% }) } %>
+            <% }) } else { %>
+                <p>This organisation has no related branches.</p>
+                <br>
+            <% } %>
 
             </div>
         </div>
