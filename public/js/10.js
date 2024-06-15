@@ -1,5 +1,3 @@
-const e = require("express");
-
 function login() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
@@ -17,7 +15,7 @@ function login() {
                     window.location.replace('/');
                 }
             } else {
-                alert('Login error');
+                alert("There was an error", xhttp.statusText);
             }
         }
     };
@@ -44,8 +42,6 @@ function google_callback(response) {
                 } else {
                     alert('Login failed: ' + data.message);
                 }
-            } else {
-                alert('Login error');
             }
         }
     };
@@ -54,7 +50,7 @@ function google_callback(response) {
     }));
 }
 
-function decodeJwtResponse(token) { //taken from https://stackoverflow.com/questions/68927855/sign-in-with-google-console-log
+function decodeJwtResponse(token) {
     var base64Url = token.split('.')[1];
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {

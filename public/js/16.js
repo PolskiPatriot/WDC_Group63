@@ -9,6 +9,8 @@ function onload_user() {
             document.getElementById('last-name').value = data.familyName;
             document.getElementById('email').value = data.email;
             document.getElementById('phone').value = data.phonenumber;
+        } else {
+            alert("There was an error", xhttp.statusText);
         }
     };
     xhttp.send();
@@ -25,6 +27,8 @@ function Update() {
         if (xhttp.status >= 200 && xhttp.status < 300) {
             var data = JSON.parse(xhttp.responseText);
             alert(data.message);
+        } else {
+            alert("There was an error", xhttp.statusText);
         }
     };
     xhttp.send(JSON.stringify({

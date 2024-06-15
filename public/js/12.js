@@ -15,6 +15,8 @@ document.getElementById('confirmButton').addEventListener('click', function() {
                 } else {
                     alert('Error ' + data.message);
                 }
+            } else {
+                alert('Password reset fail');
             }
         }
     };

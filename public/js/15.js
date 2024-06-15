@@ -57,6 +57,8 @@ function edit(name) {
                     if (data.message) {
                         alert(data.message);
                     }
+                } else {
+                    alert("There was an error", xhttp.statusText);
                 }
             }
         };

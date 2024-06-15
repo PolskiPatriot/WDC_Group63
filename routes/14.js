@@ -43,7 +43,7 @@ router.get('/getEventsForMonth', function (req, res, next) {
                 return next(error);
             }
             if (!results || results.length === 0) {
-                return res.status(404).send('No events found');
+                return res.status(404);
             }
             res.json(results);
         });

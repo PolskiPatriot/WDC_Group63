@@ -17,8 +17,6 @@ function google_callback(response) {
                 alert(xhttp.responseText);
                 if (xhttp.responseText === "User registered successfully") {
                     window.location.href = '/';
-
-
                 }
             } else {
                 alert("There was an error", xhttp.statusText);

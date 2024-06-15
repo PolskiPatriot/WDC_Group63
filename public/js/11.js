@@ -15,6 +15,8 @@ document.getElementById('sendRequestButton').addEventListener('click', function(
                 } else {
                     alert('Reset failed: ' + data.message);
                 }
+            } else {
+                alert("There was an error", xhttp.statusText);
             }
         }
     };
