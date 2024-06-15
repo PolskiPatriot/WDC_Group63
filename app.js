@@ -84,6 +84,7 @@ app.use(function (req, res, next) {
             if (error) {
                 res.send(500);
             }
+            // query greatest permission level
             var query = "SELECT UserLevel FROM GroupJoin WHERE UserID = UNHEX(?) ORDER BY UserLevel DESC LIMIT 1";
             connection.query(query, [req.cookies.userID], function (err, UserLevel) {
                 connection.release();
